@@ -86,7 +86,11 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
               href={resumeFileUrl}
               target="_blank"
               className="btn btn-outline btn-sm text-xs mt-6 opacity-50"
-              rel="noreferrer"
+              rel="noreferrer noopener"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open(resumeFileUrl, '_blank', 'noopener,noreferrer');
+              }}
             >
               View Resume
             </a>
