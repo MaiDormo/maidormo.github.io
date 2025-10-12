@@ -333,6 +333,11 @@ interface Config {
   seo?: SEO;
 
   /**
+   * Custom bio text for avatar card
+   */
+  customBio?: string;
+
+  /**
    * Social links
    */
   social?: Social;
@@ -381,6 +386,18 @@ interface Config {
    * Blog config
    */
   blog?: Blog;
+
+  /**
+   * GitHub Stats config
+   */
+  githubStats?: {
+    display?: boolean;
+    /**
+     * Languages to exclude from the Top Languages section
+     * example: ['HTML', 'CSS', 'Dockerfile']
+     */
+    excludeLanguages?: Array<string>;
+  };
 
   /**
    * Theme config

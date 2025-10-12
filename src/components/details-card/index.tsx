@@ -65,26 +65,31 @@ const ListItem: React.FC<{
   skeleton?: boolean;
 }> = ({ icon, title, value, link, skeleton = false }) => {
   return (
-    <div className="flex justify-start py-2 px-1 items-center">
-      <div className="grow font-medium gap-2 flex items-center my-1">
-        {icon} {title}
+    <div className="flex justify-between py-2.5 px-3 items-center hover:bg-base-200/50 rounded-lg transition-colors duration-300 group">
+      <div className="font-medium gap-2.5 flex items-center text-sm text-base-content/80">
+        <span className="text-lg text-base-content/60 group-hover:text-primary transition-colors duration-300">{icon}</span>
+        <span>{title}</span>
       </div>
       <div
         className={`${
           skeleton ? 'grow' : ''
-        } text-sm font-normal text-right mr-2 ml-3 ${link ? 'truncate' : ''}`}
+        } text-sm font-normal text-right ml-3 ${link ? 'truncate' : ''}`}
         style={{
           wordBreak: 'break-word',
         }}
       >
-        <a
-          href={link}
-          target="_blank"
-          rel="noreferrer"
-          className="flex justify-start py-2 px-1 items-center"
-        >
-          {value}
-        </a>
+        {link ? (
+          <a
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            className="text-base-content/70 hover:text-primary transition-colors duration-300 hover:underline"
+          >
+            {value}
+          </a>
+        ) : (
+          <span className="text-base-content/70">{value}</span>
+        )}
       </div>
     </div>
   );
@@ -110,12 +115,13 @@ const OrganizationItem: React.FC<{
               target="_blank"
               rel="noreferrer"
               key={company}
+              className="text-base-content/70 hover:text-primary transition-colors duration-300 hover:underline"
             >
               {company}
             </a>
           );
         } else {
-          return <span key={company}>{company}</span>;
+          return <span key={company} className="text-base-content/70">{company}</span>;
         }
       });
     }
@@ -123,14 +129,15 @@ const OrganizationItem: React.FC<{
   };
 
   return (
-    <div className="flex justify-start py-2 px-1 items-center">
-      <div className="grow font-medium gap-2 flex items-center my-1">
-        {icon} {title}
+    <div className="flex justify-between py-2.5 px-3 items-center hover:bg-base-200/50 rounded-lg transition-colors duration-300 group">
+      <div className="font-medium gap-2.5 flex items-center text-sm text-base-content/80">
+        <span className="text-lg text-base-content/60 group-hover:text-primary transition-colors duration-300">{icon}</span>
+        <span>{title}</span>
       </div>
       <div
         className={`${
           skeleton ? 'grow' : ''
-        } text-sm font-normal text-right mr-2 ml-3 space-x-2 ${link ? 'truncate' : ''}`}
+        } text-sm font-normal text-right ml-3 space-x-2 ${link ? 'truncate' : ''}`}
         style={{
           wordBreak: 'break-word',
         }}
@@ -169,9 +176,9 @@ const DetailsCard = ({ profile, loading, social, github }: Props) => {
   };
 
   return (
-    <div className="card shadow-lg card-sm bg-base-100">
-      <div className="card-body">
-        <div className="text-base-content">
+    <div className="card shadow-lg bg-base-100 border border-base-300 hover:border-primary/30 transition-all duration-300">
+      <div className="card-body p-4">
+        <div className="text-base-content space-y-1">
           {loading || !profile ? (
             renderSkeleton()
           ) : (

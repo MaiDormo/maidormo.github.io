@@ -61,6 +61,7 @@ export const getSanitizedConfig = (
         description: config?.seo?.description,
         imageURL: config?.seo?.imageURL,
       },
+      customBio: config?.customBio,
       social: {
         linkedin: config?.social?.linkedin,
         x: config?.social?.x,
@@ -117,6 +118,10 @@ export const getSanitizedConfig = (
         source: config?.blog?.source || 'dev',
         limit: config?.blog?.limit || 5,
         display: !!config?.blog?.username && !!config?.blog?.source,
+      },
+      githubStats: {
+        display: config?.githubStats?.display ?? true,
+        excludeLanguages: config?.githubStats?.excludeLanguages || [],
       },
       themeConfig: {
         defaultTheme: config?.themeConfig?.defaultTheme || DEFAULT_THEMES[0],

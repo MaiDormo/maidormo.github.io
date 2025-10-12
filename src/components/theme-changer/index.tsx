@@ -40,21 +40,21 @@ const ThemeChanger = ({
   };
 
   return (
-    <div className="card overflow-visible shadow-lg card-sm bg-base-100">
+    <div className="card overflow-visible shadow-lg bg-base-100 border border-base-300 hover:border-primary/30 transition-all duration-300">
       <div className="flex-row items-center space-x-4 flex pl-6 pr-2 py-4">
         <div className="flex-1">
-          <h5 className="card-title">
+          <h5 className="card-title text-lg">
             {loading ? (
               skeleton({
                 widthCls: 'w-20',
-                heightCls: 'h-8',
+                heightCls: 'h-6',
                 className: 'mb-1',
               })
             ) : (
-              <span className="text-base-content opacity-70">Theme</span>
+              <span className="text-base-content">Theme</span>
             )}
           </h5>
-          <span className="text-base-content/50 capitalize text-sm">
+          <span className="text-base-content/60 capitalize text-sm">
             {loading
               ? skeleton({ widthCls: 'w-16', heightCls: 'h-5' })
               : theme === themeConfig.defaultTheme
@@ -73,13 +73,13 @@ const ThemeChanger = ({
             <div title="Change Theme" className="dropdown dropdown-end">
               <div
                 tabIndex={0}
-                className="btn btn-ghost m-1 normal-case opacity-50 text-base-content flex items-center whitespace-nowrap"
+                className="btn btn-ghost m-1 normal-case text-base-content/70 hover:text-primary flex items-center whitespace-nowrap transition-colors duration-300"
               >
                 <RiDice4Line className="inline-block w-5 h-5 stroke-current" />
               </div>
               <div
                 tabIndex={0}
-                className="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content max-h-96 min-w-max rounded-lg bg-base-200 text-base-content z-10"
+                className="mt-16 overflow-y-auto shadow-2xl top-px dropdown-content max-h-96 min-w-max rounded-lg bg-base-200 border border-base-300 text-base-content z-10"
               >
                 <ul className="p-4 menu menu-sm">
                   {[
@@ -92,9 +92,9 @@ const ThemeChanger = ({
                       {}
                       <a
                         onClick={(e) => changeTheme(e, item)}
-                        className={`${theme === item ? 'active' : ''}`}
+                        className={`${theme === item ? 'active bg-primary/10 text-primary' : 'hover:bg-base-300'} rounded-lg transition-colors duration-300`}
                       >
-                        <span className="opacity-60 capitalize">
+                        <span className="capitalize">
                           {item === themeConfig.defaultTheme ? 'Default' : item}
                         </span>
                       </a>

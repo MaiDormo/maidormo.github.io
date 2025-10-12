@@ -1,6 +1,7 @@
 import React from 'react';
 import { SanitizedCertification } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
+import { FaCertificate } from 'react-icons/fa';
 
 const ListItem = ({
   year,
@@ -13,18 +14,23 @@ const ListItem = ({
   body?: React.ReactNode;
   link?: string;
 }) => (
-  <li className="mb-5 ml-4">
+  <li className="mb-6 ml-4 last:mb-0 group">
     <div
-      className="absolute w-2 h-2 bg-base-300 rounded-full border border-base-300 mt-1.5"
-      style={{ left: '-4.5px' }}
+      className="absolute w-3 h-3 bg-primary rounded-full border-2 border-base-100 mt-1.5 group-hover:scale-125 transition-transform duration-300"
+      style={{ left: '-6.5px' }}
     ></div>
-    <div className="my-0.5 text-xs">{year}</div>
-    <div className="font-medium">
-      <a href={link} target="_blank" rel="noreferrer">
+    <div className="my-0.5 text-xs text-base-content/60 font-medium uppercase tracking-wider">{year}</div>
+    <div className="font-semibold text-base text-base-content group-hover:text-primary transition-colors duration-300">
+      <a 
+        href={link} 
+        target="_blank" 
+        rel="noreferrer"
+        className="hover:underline"
+      >
         {name}
       </a>
     </div>
-    <h3 className="mb-4 font-normal">{body}</h3>
+    <h3 className="mt-1 font-normal text-sm text-base-content/70 leading-relaxed">{body}</h3>
   </li>
 );
 
@@ -59,21 +65,26 @@ const CertificationCard = ({
   };
 
   return (
-    <div className="card shadow-lg card-sm bg-base-100">
+    <div className="card shadow-lg bg-base-100 border border-base-300 hover:border-primary/30 transition-all duration-300">
       <div className="card-body">
-        <div className="mx-3">
-          <h5 className="card-title">
+        <div className="flex items-center gap-3 mb-3">
+          {loading ? (
+            skeleton({ widthCls: 'w-8', heightCls: 'h-8', className: 'rounded-lg' })
+          ) : (
+            <div className="flex items-center justify-center w-8 h-8 bg-primary/10 rounded-lg">
+              <FaCertificate className="text-lg text-primary" />
+            </div>
+          )}
+          <h5 className="card-title text-lg">
             {loading ? (
-              skeleton({ widthCls: 'w-32', heightCls: 'h-8' })
+              skeleton({ widthCls: 'w-32', heightCls: 'h-6' })
             ) : (
-              <span className="text-base-content opacity-70">
-                Certification
-              </span>
+              <span className="text-base-content">Certifications</span>
             )}
           </h5>
         </div>
         <div className="text-base-content">
-          <ol className="relative border-l border-base-300 border-opacity-30 my-2 mx-4">
+          <ol className="relative border-l-2 border-base-300/50 my-2 mx-2">
             {loading ? (
               renderSkeleton()
             ) : (

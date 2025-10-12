@@ -1,27 +1,44 @@
 import React, { Fragment } from 'react';
 import { SanitizedExperience } from '../../interfaces/sanitized-config';
 import { skeleton } from '../../utils';
+import { MdWork } from 'react-icons/md';
 
 const ListItem = ({
   time,
   position,
   company,
   companyLink,
+  companyLogo,
 }: {
   time: React.ReactNode;
   position?: React.ReactNode;
   company?: React.ReactNode;
   companyLink?: string;
+  companyLogo?: string;
 }) => (
-  <li className="mb-5 ml-4">
+  <li className="mb-6 ml-4 last:mb-0 group">
     <div
-      className="absolute w-2 h-2 bg-base-300 rounded-full border border-base-300 mt-1.5"
-      style={{ left: '-4.5px' }}
+      className="absolute w-3 h-3 bg-primary rounded-full border-2 border-base-100 mt-1.5 group-hover:scale-125 transition-transform duration-300"
+      style={{ left: '-6.5px' }}
     ></div>
-    <div className="my-0.5 text-xs">{time}</div>
-    <h3 className="font-semibold">{position}</h3>
-    <div className="mb-4 font-normal">
-      <a href={companyLink} target="_blank" rel="noreferrer">
+    <div className="my-0.5 text-xs text-base-content/60 font-medium uppercase tracking-wider">{time}</div>
+    <h3 className="font-semibold text-base text-base-content mb-2 group-hover:text-primary transition-colors duration-300">{position}</h3>
+    <div className="mb-2 font-normal text-sm flex items-center gap-2">
+      {companyLogo && (
+        <div className="w-10 h-10 rounded-lg bg-base-200 p-1.5 flex items-center justify-center group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-300">
+          <img
+            src={companyLogo}
+            alt={`${company} logo`}
+            className="w-full h-full object-contain"
+          />
+        </div>
+      )}
+      <a 
+        href={companyLink} 
+        target="_blank" 
+        rel="noreferrer"
+        className="text-base-content/80 hover:text-primary transition-colors duration-300 font-medium"
+      >
         {company}
       </a>
     </div>
@@ -58,19 +75,26 @@ const ExperienceCard = ({
     return array;
   };
   return (
-    <div className="card shadow-lg card-sm bg-base-100">
+    <div className="card shadow-lg bg-base-100 border border-base-300 hover:border-primary/30 transition-all duration-300">
       <div className="card-body">
-        <div className="mx-3">
-          <h5 className="card-title">
+        <div className="flex items-center gap-3 mb-3">
+          {loading ? (
+            skeleton({ widthCls: 'w-8', heightCls: 'h-8', className: 'rounded-lg' })
+          ) : (
+            <div className="flex items-center justify-center w-8 h-8 bg-primary/10 rounded-lg">
+              <MdWork className="text-lg text-primary" />
+            </div>
+          )}
+          <h5 className="card-title text-lg">
             {loading ? (
-              skeleton({ widthCls: 'w-32', heightCls: 'h-8' })
+              skeleton({ widthCls: 'w-32', heightCls: 'h-6' })
             ) : (
-              <span className="text-base-content opacity-70">Experience</span>
+              <span className="text-base-content">Experience</span>
             )}
           </h5>
         </div>
         <div className="text-base-content">
-          <ol className="relative border-l border-base-300 border-opacity-30 my-2 mx-4">
+          <ol className="relative border-l-2 border-base-300/50 my-2 mx-2">
             {loading ? (
               renderSkeleton()
             ) : (
@@ -84,6 +108,11 @@ const ExperienceCard = ({
                     companyLink={
                       experience.companyLink
                         ? experience.companyLink
+                        : undefined
+                    }
+                    companyLogo={
+                      experience.companyLogo
+                        ? experience.companyLogo
                         : undefined
                     }
                   />

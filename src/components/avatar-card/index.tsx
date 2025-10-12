@@ -8,6 +8,7 @@ interface AvatarCardProps {
   loading: boolean;
   avatarRing: boolean;
   resumeFileUrl?: string;
+  customBio?: string;
 }
 
 /**
@@ -16,6 +17,7 @@ interface AvatarCardProps {
  * @param loading - A boolean indicating if the profile is loading.
  * @param avatarRing - A boolean indicating if the avatar should have a ring.
  * @param resumeFileUrl - The URL of the resume file.
+ * @param customBio - Optional custom bio text to override GitHub bio.
  * @returns JSX element representing the AvatarCard.
  */
 const AvatarCard: React.FC<AvatarCardProps> = ({
@@ -23,9 +25,10 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
   loading,
   avatarRing,
   resumeFileUrl,
+  customBio,
 }): React.JSX.Element => {
   return (
-    <div className="card shadow-lg card-sm bg-base-100">
+    <div className="card shadow-lg bg-base-100 border border-base-300 hover:border-primary/30 transition-all duration-300">
       <div className="grid place-items-center py-8">
         {loading || !profile ? (
           <div className="avatar opacity-90">
@@ -38,12 +41,12 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             </div>
           </div>
         ) : (
-          <div className="avatar opacity-90">
+          <div className="avatar opacity-90 group">
             <div
-              className={`mb-8 rounded-full w-32 h-32 ${
+              className={`mb-8 rounded-full w-32 h-32 transition-all duration-300 ${
                 avatarRing
-                  ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2'
-                  : ''
+                  ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2 group-hover:ring-4 group-hover:ring-offset-3'
+                  : 'group-hover:scale-105'
               }`}
             >
               {
@@ -61,19 +64,17 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
           </div>
         )}
         <div className="text-center mx-auto px-8">
-          <h5 className="font-bold text-2xl">
+          <h5 className="font-bold text-2xl mb-3">
             {loading || !profile ? (
               skeleton({ widthCls: 'w-48', heightCls: 'h-8' })
             ) : (
-              <span className="text-base-content opacity-70">
-                {profile.name}
-              </span>
+              <span className="text-base-content">{profile.name}</span>
             )}
           </h5>
-          <div className="mt-3 text-base-content font-mono">
+          <div className="mt-3 text-base-content/70 font-mono text-sm leading-relaxed">
             {loading || !profile
               ? skeleton({ widthCls: 'w-48', heightCls: 'h-5' })
-              : profile.bio}
+              : customBio || profile.bio}
           </div>
         </div>
         {resumeFileUrl &&
@@ -85,13 +86,16 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             <a
               href={resumeFileUrl}
               target="_blank"
-              className="btn btn-outline btn-sm text-xs mt-6 opacity-50"
+              className="btn btn-primary btn-sm text-xs mt-6 gap-2 hover:scale-105 transition-transform duration-300"
               rel="noreferrer noopener"
               onClick={(e) => {
                 e.preventDefault();
                 window.open(resumeFileUrl, '_blank', 'noopener,noreferrer');
               }}
             >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
               View Resume
             </a>
           ))}
