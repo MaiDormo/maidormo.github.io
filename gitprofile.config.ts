@@ -35,7 +35,7 @@ const CONFIG = {
     imageURL: '', // optional: social preview image URL
   },
   // Custom bio to display on the avatar card (optional, overrides GitHub bio)
-  customBio: 'Software engineer passionate about building scalable systems, optimizing performance, and exploring cutting-edge technologies. Currently pursuing M.S. in Computer Science at University of Trento.',
+  customBio: 'Software Engineer, currently pursuing M.S. in Computer Science at University of Trento.',
   social: {
     linkedin: 'elia-gatti',
     // x: '', (intentionally left empty)
