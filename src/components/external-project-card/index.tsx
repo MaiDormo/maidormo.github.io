@@ -1,14 +1,12 @@
 import { Fragment } from 'react';
-import LazyImage from '../lazy-image';
 import { MdOpenInNew } from 'react-icons/md';
-import { ga, skeleton } from '../../utils';
+import { skeleton } from '../../utils';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
 
 const ExternalProjectCard = ({
   externalProjects,
   header,
   loading,
-  googleAnalyticId,
 }: {
   externalProjects: SanitizedExternalProject[];
   header: string;
@@ -69,27 +67,22 @@ const ExternalProjectCard = ({
 
   const renderExternalProjects = () => {
     return externalProjects.map((item, index) => (
-      <a
-        className="card shadow-lg bg-base-100 cursor-pointer border border-base-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+      <div
+        className={`card shadow-lg bg-base-100 cursor-pointer border border-base-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group${item.featured ? ' ring-2 ring-primary/40' : ''}`}
         key={index}
-        href={item.link}
-        onClick={(e) => {
-          e.preventDefault();
-
-          try {
-            if (googleAnalyticId) {
-              ga.event('Click External Project', {
-                post: item.title,
-              });
-            }
-          } catch (error) {
-            console.error(error);
-          }
-
-          window?.open(item.link, '_blank');
-        }}
       >
         <div className="p-6 h-full w-full">
+          {/* Screenshot/GIF */}
+          {item.imageUrl && (
+            <div className="mb-3 flex justify-center">
+              <img
+                src={item.imageUrl}
+                alt={`${item.title} screenshot`}
+                className="w-full h-40 object-cover rounded-lg border border-base-300 shadow-sm"
+                loading="lazy"
+              />
+            </div>
+          )}
           <div className="flex items-center flex-col">
             <div className="w-full">
               <div className="px-2">
@@ -97,33 +90,66 @@ const ExternalProjectCard = ({
                   <div className="flex items-center justify-between mb-3">
                     <h2 className="font-semibold text-base-content group-hover:text-primary transition-colors duration-300 flex-1 text-left">
                       {item.title}
+                      {item.featured && (
+                        <span className="ml-2 px-2 py-0.5 rounded bg-primary/10 text-primary text-xs font-semibold">Featured</span>
+                      )}
                     </h2>
                     <MdOpenInNew className="text-lg text-base-content/40 group-hover:text-primary group-hover:rotate-45 transition-all duration-300 flex-shrink-0 ml-2" />
                   </div>
-                  {item.imageUrl && (
-                    <div className="avatar opacity-90 mb-4">
-                      <div className="w-24 h-24 mask mask-squircle ring-2 ring-base-300 group-hover:ring-primary/30 transition-all duration-300">
-                        <LazyImage
-                          src={item.imageUrl}
-                          alt={'thumbnail'}
-                          placeholder={skeleton({
-                            widthCls: 'w-full',
-                            heightCls: 'h-full',
-                            shape: '',
-                          })}
-                        />
-                      </div>
-                    </div>
-                  )}
-                  <p className="text-base-content/70 text-sm leading-relaxed text-left">
+                  <p className="text-base-content/70 text-sm leading-relaxed text-left mb-2">
                     {item.description}
                   </p>
+                  {/* Tech stack */}
+                  {item.techStack && item.techStack.length > 0 && (
+                    <div className="mb-2 flex flex-wrap gap-2 justify-center">
+                      {item.techStack.map((tech, i) => (
+                        <span key={i} className="badge badge-xs bg-primary/10 text-primary font-medium px-2 py-1 rounded">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {/* Highlights */}
+                  {item.highlights && item.highlights.length > 0 && (
+                    <ul className="mb-2 list-disc pl-5 text-xs text-base-content/80 text-left">
+                      {item.highlights.map((hl, i) => (
+                        <li key={i}>{hl}</li>
+                      ))}
+                    </ul>
+                  )}
+                  {/* Demo/Code buttons */}
+                  <div className="flex gap-2 mb-2 justify-center">
+                    {item.demoUrl && (
+                      <a
+                        href={item.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-xs btn-primary"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <MdOpenInNew className="text-base" />
+                        Live Demo
+                      </a>
+                    )}
+                    {item.codeUrl && (
+                      <a
+                        href={item.codeUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-xs btn-outline"
+                        onClick={e => e.stopPropagation()}
+                      >
+                        <MdOpenInNew className="text-base" />
+                        View Code
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </a>
+      </div>
     ));
   };
 

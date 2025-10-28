@@ -7,26 +7,104 @@ const CONFIG = {
   base: '/',
   projects: {
     github: {
-      display: true,
-      header: 'Github Projects',
-      mode: 'automatic',
+      display: false,
+      header: '',
+      mode: 'manual',
       automatic: {
-        sortBy: 'stars',
-        limit: 12,
+        sortBy: '',
+        limit: 0,
         exclude: {
           forks: false,
-          projects: ['MaiDormo/MaiDormo', 'MaiDormo/TraderVisualizationEgui', 'MaiDormo/distributed-system', 'MaiDormo/MaiDormo.github.io', 'MaiDormo/Lab_SDE'], // add repo strings here to hide specific repos, e.g. ['MaiDormo/private-repo']
+          projects: [],
         },
       },
-      // To manually list projects, set mode: 'manual' and uncomment below:
-      // manual: {
-      //   projects: ['MaiDormo/project-1', 'MaiDormo/project-2'],
-      // },
+      manual: {
+        projects: [],
+      },
     },
     external: {
       header: 'My Projects',
-      // Add external projects here if you want them shown
-      // projects: [{ title: 'Project', description: '...', imageUrl: '...', link: '...' }],
+        projects: [
+          {
+            title: 'Crosstrack Italia',
+            description: 'Cross-platform Flutter app for motocross track discovery and management. Features map visualization (OpenStreetMaps), user authentication, and track management.',
+            imageUrl: '',
+            techStack: ['Flutter', 'Dart', 'Firebase', 'Riverpod', 'Freezed', 'OpenStreetMaps'],
+            highlights: [
+              'Map visualization with OpenStreetMaps',
+              'User authentication and track management',
+              'Firebase backend (Firestore, Auth)',
+              'Responsive state management with Riverpod 2.0 and Freezed',
+            ],
+            demoUrl: '',
+            codeUrl: 'https://github.com/MaiDormo/crosstrack_italia',
+            featured: true,
+          },
+          {
+            title: 'MPEG-DASH Performance Analysis (Bachelor’s Thesis)',
+            description: 'Analyzed MPEG-DASH protocol performance under simulated (Mininet SDN) and real-world (AWS) network conditions. Custom Node.js/dash.js client-server for streaming and metrics.',
+            imageUrl: '',
+            techStack: ['Node.js', 'dash.js', 'Mininet', 'AWS', 'Python', 'Pandas', 'NumPy', 'Bash', 'FFmpeg'],
+            highlights: [
+              'Simulated and real-world network analysis',
+              'Custom client-server for streaming and metrics',
+              'Data analysis with Python (Pandas, NumPy)',
+              'Multimedia asset preparation with Bash/FFmpeg',
+            ],
+            demoUrl: '',
+            codeUrl: 'https://github.com/MaiDormo/thesis',
+          },
+          {
+            title: 'P2P Key-Value Storage System',
+            description: 'Distributed P2P Key-Value storage system in Java 21 using Akka. Sequential Consistency and high availability via Quorum Consensus protocol.',
+            imageUrl: '',
+            techStack: ['Java 21', 'Akka', 'Quorum Consensus'],
+            highlights: [
+              'Sequential Consistency and high availability',
+              'Quorum Consensus protocol',
+              'Configurable replication across nodes',
+            ],
+            demoUrl: '',
+            codeUrl: 'https://github.com/MaiDormo/distributed-storage-system',
+          },
+          {
+            title: 'MovieMatch (Microservices Project)',
+            description: 'Scalable web app for movie search and recommendations. 15-service microservices architecture (Python/FastAPI), Docker Compose deployment.',
+            imageUrl: './service_architecture.png',
+            techStack: ['Python', 'FastAPI', 'Docker Compose', 'AI'],
+            highlights: [
+              'AI-generated quizzes',
+              'Streaming availability integration',
+              'Unified JSON API structure',
+            ],
+            demoUrl: '',
+            codeUrl: 'https://github.com/MaiDormo/movie-match',
+          },
+          {
+            title: 'GPU Computing: Sparse Matrix-Vector Multiplication (SpMV)',
+            description: 'Optimized SpMV kernels (C/CUDA) for parallel computing on CPU (AMD EPYC) and GPU (NVIDIA A30). Hybrid Adaptive CUDA kernel for dynamic strategy switching.',
+            imageUrl: '',
+            techStack: ['C', 'CUDA', 'NVIDIA A30', 'AMD EPYC'],
+            highlights: [
+              'Hybrid Adaptive CUDA kernel',
+              'Benchmarked Execution Time, Memory Bandwidth, GFLOPS',
+            ],
+            demoUrl: '',
+            codeUrl: 'https://github.com/MaiDormo/GPU-Computing-2025-256137',
+          },
+          {
+            title: 'HPC Project: Parallel MST Implementation',
+            description: 'Hybrid parallel Minimum Spanning Tree (MST) algorithm using MPI and OpenMP. Analyzed Speedup, Efficiency, and Scalability on clusters up to 32 nodes.',
+            imageUrl: '',
+            techStack: ['C', 'MPI', 'OpenMP'],
+            highlights: [
+              'Hybrid MPI/OpenMP parallelization',
+              'Scalability analysis up to 32 nodes',
+            ],
+            demoUrl: '',
+            codeUrl: 'https://github.com/MaiDormo/parallel_mst',
+          },
+        ],
     },
   },
   seo: {
@@ -38,78 +116,26 @@ const CONFIG = {
   customBio: 'Software Engineer, currently pursuing M.S. in Computer Science at University of Trento.',
   social: {
     linkedin: 'elia-gatti',
-    // x: '', (intentionally left empty)
+    github: 'MaiDormo',
     email: 'elia.gatti01@gmail.com',
     // add other handles if desired
   },
   resume: {
     fileUrl: '/elia-gatti-cv.pdf', // Put a resume PDF at this path or use a remote URL
+    buttonText: 'View Resume',
+    showInNavbar: true,
   },
-  skills: [
-    {
-      category: 'Programming Languages',
-      badges: [
-        'https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white',
-        'https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white',
-        'https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54',
-      ],
-    },
-    {
-      category: 'Development Tools & Scripting',
-      badges: [
-        'https://img.shields.io/badge/bash-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white',
-        'https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white',
-        'https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white',
-      ],
-    },
-    {
-      category: 'Mobile Development',
-      badges: [
-        'https://img.shields.io/badge/dart-%230175C2.svg?style=for-the-badge&logo=dart&logoColor=white',
-        'https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white',
-      ],
-    },
-    {
-      category: 'HPC and GPU Programming',
-      badges: [
-        'https://img.shields.io/badge/Cuda-%2376B900.svg?style=for-the-badge&logo=nvidia&logoColor=white',
-        'https://img.shields.io/badge/MPI-%23316192.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggOHoiLz48L3N2Zz4=&logoColor=white',
-        'https://img.shields.io/badge/OpenMP-%23316192.svg?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggOHoiLz48L3N2Zz4=&logoColor=white',
-      ],
-    },
-    {
-      category: 'Web Technologies',
-      badges: [
-        'https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white',
-        'https://img.shields.io/badge/jinja-%23B41717.svg?style=for-the-badge&logo=jinja&logoColor=white',
-      ],
-    },
-    {
-      category: 'Databases',
-      badges: [
-        'https://img.shields.io/badge/mysql-%234479A1.svg?style=for-the-badge&logo=mysql&logoColor=white',
-        'https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white',
-        'https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase',
-      ],
-    },
-    {
-      category: 'Operating Systems',
-      badges: [
-        'https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black',
-        'https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white',
-      ],
-    },
-  ],
   experiences: [
     {
-      company: 'Dedagroup S.P.A',
-      position: 'Software Engineer Intern',
+      company: 'Dedagroup',
+      position: 'Software Developer',
       from: 'May 2024',
       to: 'September 2024',
       companyLink: 'https://www.deda.com/home',
       companyLogo: 'https://cdn.brandfetch.io/idr0YfdnV9/w/400/h/400/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX&t=1760140861558',
+      description: `Developed and maintained backend (Java, Spring) and frontend (HTMX) features for 'TEN', a web-based treasury services application.\nManaged the application's deployment to a new Linux server environment, migrating from a legacy Windows setup.`,
+      technologies: ['Java', 'Spring Framework', 'HTMX', 'SQL', 'Shell scripting'],
     },
-    // add more experience objects as needed
   ],
   certifications: [
     // add certifications here

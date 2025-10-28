@@ -19,11 +19,16 @@ export interface SanitizedGitHubProjects {
   };
 }
 
+
 export interface SanitizedExternalProject {
   title: string;
   description?: string;
   imageUrl?: string;
-  link: string;
+  techStack?: string[];
+  highlights?: string[];
+  demoUrl?: string;
+  codeUrl?: string;
+  featured?: boolean;
 }
 
 export interface SanitizedExternalProjects {
@@ -42,8 +47,12 @@ export interface SanitizedSEO {
   imageURL?: string;
 }
 
+
 export interface SanitizedSocial {
   linkedin?: string;
+  github?: string;
+  twitter?: string;
+  website?: string;
   x?: string;
   mastodon?: string;
   researchGate?: string;
@@ -58,15 +67,17 @@ export interface SanitizedSocial {
   medium?: string;
   dev?: string;
   stackoverflow?: string;
-  website?: string;
   telegram?: string;
   phone?: string;
   email?: string;
   discord?: string;
 }
 
+
 export interface SanitizedResume {
   fileUrl?: string;
+  buttonText?: string;
+  showInNavbar?: boolean;
 }
 
 export interface SanitizedExperience {
@@ -76,6 +87,8 @@ export interface SanitizedExperience {
   to: string;
   companyLink?: string;
   companyLogo?: string;
+  description?: string;
+  technologies?: string[];
 }
 
 export interface SanitizedCertification {

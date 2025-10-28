@@ -75,12 +75,11 @@ const GithubProjectCard = ({
   const renderProjects = () => {
     return githubProjects.map((item, index) => (
       <a
-        className="card shadow-lg bg-base-100 cursor-pointer border border-base-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+        className={`card shadow-lg bg-base-100 cursor-pointer border border-base-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group${item.featured ? ' ring-2 ring-primary/40' : ''}`}
         href={item.html_url}
         key={index}
         onClick={(e) => {
           e.preventDefault();
-
           try {
             if (googleAnalyticsId) {
               ga.event('Click project', { project: item.name });
@@ -88,43 +87,110 @@ const GithubProjectCard = ({
           } catch (error) {
             console.error(error);
           }
-
           window?.open(item.html_url, '_blank');
         }}
       >
         <div className="flex justify-between flex-col p-6 h-full w-full">
+          {/* Screenshot/GIF */}
+          {item.imageUrl && (
+            <div className="mb-3">
+              <img
+                src={item.imageUrl}
+                alt={`${item.name} screenshot`}
+                className="w-full h-40 object-cover rounded-lg border border-base-300 shadow-sm"
+                loading="lazy"
+              />
+            </div>
+          )}
           <div>
             <div className="flex items-center justify-between gap-2 mb-3">
               <div className="card-title text-lg tracking-wide flex text-base-content group-hover:text-primary transition-colors duration-300 items-center gap-2">
                 <AiOutlineGithub className="text-xl flex-shrink-0" />
                 <span className="truncate">{item.name}</span>
+                {item.featured && (
+                  <span className="ml-2 px-2 py-0.5 rounded bg-primary/10 text-primary text-xs font-semibold">Featured</span>
+                )}
               </div>
               <MdInsertLink className="text-xl text-base-content/40 group-hover:text-primary group-hover:rotate-45 transition-all duration-300 flex-shrink-0" />
             </div>
-            <p className="mb-4 text-base-content/70 text-sm line-clamp-3 leading-relaxed">
+            <p className="mb-2 text-base-content/70 text-sm line-clamp-3 leading-relaxed">
               {item.description || 'No description available'}
             </p>
-          </div>
-          <div className="flex justify-between items-center text-sm text-base-content/60 pt-4 border-t border-base-300">
-            <div className="flex gap-4">
-              <span className="flex items-center gap-1 hover:text-warning transition-colors">
-                <AiOutlineStar className="text-base" />
-                <span className="font-medium">{item.stargazers_count}</span>
-              </span>
-              <span className="flex items-center gap-1 hover:text-info transition-colors">
-                <AiOutlineFork className="text-base" />
-                <span className="font-medium">{item.forks_count}</span>
-              </span>
+            {/* Tech stack/topics */}
+            {(item.techStack?.length || item.topics?.length) && (
+              <div className="mb-2 flex flex-wrap gap-2">
+                {(item.techStack || item.topics || []).map((tech, i) => (
+                  <span key={i} className="badge badge-xs bg-primary/10 text-primary font-medium px-2 py-1 rounded">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+            {/* Highlights */}
+            {item.highlights && item.highlights.length > 0 && (
+              <ul className="mb-2 list-disc pl-5 text-xs text-base-content/80">
+                {item.highlights.map((hl, i) => (
+                  <li key={i}>{hl}</li>
+                ))}
+              </ul>
+            )}
+            {/* Demo/Code buttons */}
+            <div className="flex gap-2 mb-2">
+              {item.demo_url && (
+                <a
+                  href={item.demo_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-xs btn-primary"
+                  onClick={e => e.stopPropagation()}
+                >
+                  <MdInsertLink className="text-base" />
+                  Live Demo
+                </a>
+              )}
+              {item.codeUrl && (
+                <a
+                  href={item.codeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-xs btn-outline"
+                  onClick={e => e.stopPropagation()}
+                >
+                  <AiOutlineGithub className="text-base" />
+                  View Code
+                </a>
+              )}
             </div>
-            {item.language && (
-              <div>
-                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-base-200 group-hover:bg-base-300 transition-colors">
-                  <div
-                    className="w-2.5 h-2.5 rounded-full"
-                    style={{ backgroundColor: getLanguageColor(item.language) }}
-                  />
-                  <span className="text-xs font-medium">{item.language}</span>
+          </div>
+          <div className="flex flex-col gap-2 pt-4 border-t border-base-300">
+            <div className="flex justify-between items-center text-sm text-base-content/60">
+              <div className="flex gap-4">
+                <span className="flex items-center gap-1 hover:text-warning transition-colors">
+                  <AiOutlineStar className="text-base" />
+                  <span className="font-medium">{item.stargazers_count.toLocaleString()}</span>
                 </span>
+                <span className="flex items-center gap-1 hover:text-info transition-colors">
+                  <AiOutlineFork className="text-base" />
+                  <span className="font-medium">{item.forks_count.toLocaleString()}</span>
+                </span>
+              </div>
+              {item.language && (
+                <div>
+                  <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-base-200 group-hover:bg-base-300 transition-colors">
+                    <div
+                      className="w-2.5 h-2.5 rounded-full"
+                      style={{ backgroundColor: getLanguageColor(item.language) }}
+                    />
+                    <span className="text-xs font-medium">{item.language}</span>
+                  </span>
+                </div>
+              )}
+            </div>
+            {/* Last updated */}
+            {item.updated_at && (
+              <div className="text-xs text-base-content/50 flex items-center gap-1">
+                <span>Last updated:</span>
+                <span>{new Date(item.updated_at).toLocaleDateString()}</span>
               </div>
             )}
           </div>

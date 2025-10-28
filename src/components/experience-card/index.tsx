@@ -9,12 +9,16 @@ const ListItem = ({
   company,
   companyLink,
   companyLogo,
+  description,
+  technologies,
 }: {
   time: React.ReactNode;
   position?: React.ReactNode;
   company?: React.ReactNode;
   companyLink?: string;
   companyLogo?: string;
+  description?: string;
+  technologies?: string[];
 }) => (
   <li className="mb-6 ml-4 last:mb-0 group">
     <div
@@ -42,6 +46,14 @@ const ListItem = ({
         {company}
       </a>
     </div>
+    {description && (
+      <div className="mb-2 text-sm text-base-content/70 whitespace-pre-line">{description}</div>
+    )}
+    {technologies && technologies.length > 0 && (
+      <div className="mb-2 text-xs text-base-content/60">
+        <span className="font-semibold">Technologies:</span> {technologies.join(', ')}
+      </div>
+    )}
   </li>
 );
 
@@ -105,16 +117,10 @@ const ExperienceCard = ({
                     time={`${experience.from} - ${experience.to}`}
                     position={experience.position}
                     company={experience.company}
-                    companyLink={
-                      experience.companyLink
-                        ? experience.companyLink
-                        : undefined
-                    }
-                    companyLogo={
-                      experience.companyLogo
-                        ? experience.companyLogo
-                        : undefined
-                    }
+                    companyLink={experience.companyLink}
+                    companyLogo={experience.companyLogo}
+                    description={experience.description}
+                    technologies={experience.technologies}
                   />
                 ))}
               </Fragment>
