@@ -55,10 +55,23 @@ const CONFIG = {
             codeUrl: 'https://github.com/MaiDormo/thesis',
           },
           {
+            title: 'DWT-SVD Digital Watermarking Tool',
+            description: 'Implemented a DWT-SVD watermarking tool, to compete for a CTM challenge inside the University of Trento.',
+            imageUrl: './embedding_bg.png',
+            techStack: ['Python' , 'OpenCV' , 'Matplotlib'],
+            highlights: [
+              'Winner of "Capture the Mark" university competition',
+              'Novel algorithm embedding singular values in high-entropy DWT blocks',
+              'Automated a parallel attack suite with binary search and ROC-optimized detection',
+            ],
+            demoUrl: '',
+            codeUrl: 'https://github.com/MaiDormo/DWT-SVD-watermarking'
+          },
+          {
             title: 'P2P Key-Value Storage System',
             description: 'Distributed P2P Key-Value storage system in Java 21 using Akka. Sequential Consistency and high availability via Quorum Consensus protocol.',
             imageUrl: '',
-            techStack: ['Java 21', 'Akka', 'Quorum Consensus'],
+            techStack: ['Java 21', 'Akka'],
             highlights: [
               'Sequential Consistency and high availability',
               'Quorum Consensus protocol',
@@ -134,7 +147,7 @@ const CONFIG = {
       companyLink: 'https://www.deda.com/home',
       companyLogo: 'https://cdn.brandfetch.io/idr0YfdnV9/w/400/h/400/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX&t=1760140861558',
       description: `Developed and maintained backend (Java, Spring) and frontend (HTMX) features for 'TEN', a web-based treasury services application.\nManaged the application's deployment to a new Linux server environment, migrating from a legacy Windows setup.`,
-      technologies: ['Java', 'Spring Framework', 'HTMX', 'SQL', 'Shell scripting'],
+      technologies: ['Java', 'HTMX', 'SQL', 'Shell scripting'],
     },
   ],
   certifications: [
