@@ -1,37 +1,48 @@
 @import 'tailwindcss';
 @plugin "daisyui" {
   themes:
-    'light', 'dark', 'cupcake', 'bumblebee', 'emerald', 'corporate',
-    'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden',
-    'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black',
-    'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade',
-    'night', 'coffee', 'winter', 'dim', 'nord', 'sunset', 'caramellatte',
-    'abyss', 'silk', 'procyon';
+    'light', 'dark', 'procyon';
 }
 
 @plugin "daisyui/theme" {
   name: 'procyon';
-  color-scheme: light;
+  color-scheme: dark;
 
-  --color-base-100: #e3e3ed;
-  --color-base-200: #d1d1db;
-  --color-base-300: #bfbfc9;
-  --color-base-content: #2a2730;
-  --color-primary: #fc055b;
-  --color-primary-content: #ffffff;
-  --color-secondary: #219aaf;
-  --color-secondary-content: #ffffff;
-  --color-accent: #e8d03a;
-  --color-accent-content: #2a2730;
-  --color-neutral: #2a2730;
+  /* ELEGANT DARK MONOCHROME PALETTE 
+     -------------------------------
+     Base: Deepest Black to Charcoal
+     Content: Off-White
+     Primary: Pure White (High Contrast)
+  */
+
+  --color-base-100: #050505;      /* Almost Pitch Black */
+  --color-base-200: #121212;      /* Very Dark Gray */
+  --color-base-300: #1c1c1c;      /* Dark Gray */
+  --color-base-content: #e4e4e7;  /* Light Gray Text (zinc-200) */
+
+  --color-primary: #ffffff;       /* Pure White */
+  --color-primary-content: #000000;
+
+  --color-secondary: #a1a1aa;     /* Medium Light Gray */
+  --color-secondary-content: #000000;
+
+  --color-accent: #52525b;        /* Zinc-600 */
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #27272a;       /* Zinc-800 */
   --color-neutral-content: #ffffff;
-  --color-info: #219aaf;
-  --color-info-content: #ffffff;
-  --color-success: #16a34a;
-  --color-success-content: #ffffff;
-  --color-warning: #e8d03a;
-  --color-warning-content: #2a2730;
-  --color-error: #dc2626;
+
+  /* SEMANTIC COLORS IN DARK GRAYSCALE */
+  --color-info: #a1a1aa;          
+  --color-info-content: #000000;
+  
+  --color-success: #ffffff;       /* Success is bold white */
+  --color-success-content: #000000;
+  
+  --color-warning: #52525b;       /* Warning is subtle gray */
+  --color-warning-content: #ffffff;
+  
+  --color-error: #27272a;         /* Error is dark gray */
   --color-error-content: #ffffff;
 
   /* border radius */
@@ -47,7 +58,7 @@
   --border: 1px;
 
   /* effects */
-  --depth: 1;
+  --depth: 0;
   --noise: 0;
 }
 
@@ -55,88 +66,182 @@
   scrollbar-width: thin;
 }
 
+/* Elegant Dark Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: #050505; 
 }
-
-@media screen and (min-width: 966px) {
-  ::-webkit-scrollbar,
-  .scroller {
-    width: 8px;
-    height: 8px;
-    background-color: #f1f1f1;
-  }
-}
-
 ::-webkit-scrollbar-thumb {
-  background-color: #888;
+  background-color: #3f3f46;
   border-radius: 10px;
 }
+::-webkit-scrollbar-thumb:hover {
+  background-color: #71717a;
+}
 
+/* GLOBAL TYPOGRAPHY & RESET 
+*/
 body {
-  margin: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #050505;
+  color: #e4e4e7;
+}
+
+a {
+  color: #e4e4e7;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+a:hover, a:focus {
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #27272a;
+  margin: 2rem 0;
+}
+
+/* ELEGANT DARK CARD STYLE 
+   Deep gray with subtle lighter border
+*/
+.card {
+  background: #121212;
+  border-radius: 1.25rem;
+  border: 1px solid #27272a; /* Subtle border for separation */
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+}
+
+.card:hover, .card:focus-within {
+  border-color: #52525b; /* Lighter border on hover */
+  background: #18181b;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
+}
+
+.card-title {
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+/* BUTTON STYLE 
+   High Contrast: White Button on Dark Background
+*/
+button, .btn {
+  font-family: 'Montserrat', sans-serif;
+  background: #ffffff; /* Pure White */
+  color: #050505;      /* Deep Black Text */
+  border: 1px solid #ffffff;
+  border-radius: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+}
+
+button:hover, .btn:hover, button:focus, .btn:focus {
+  background: #050505;
+  color: #ffffff; /* Invert to White text */
+  border-color: #ffffff;
+  outline: none;
+  box-shadow: 0 0 15px rgba(255,255,255,0.15); /* Glow effect */
+}
+
+/* Secondary Button Style (Ghost) */
+.btn-secondary {
+  background: transparent;
+  color: #e4e4e7;
+  border: 1px solid #3f3f46;
+}
+.btn-secondary:hover {
+  background: #27272a;
+  border-color: #e4e4e7;
+  color: #ffffff;
+}
+
+/* INPUTS 
+*/
+input, textarea, select {
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 0.5rem;
+  border: 1px solid #27272a;
+  padding: 0.5rem 1rem;
+  background: #09090b; /* Slightly lighter than body */
+  color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #ffffff;
+  background: #121212;
+  outline: none;
+  box-shadow: 0 0 0 1px #52525b;
+}
+
+input::placeholder {
+  color: #52525b;
+}
+
+/* BADGES & HIGHLIGHTS 
+*/
+.badge, .highlight, .accent {
+  background: #27272a;
+  color: #e4e4e7;
+  border: 1px solid #3f3f46;
+  border-radius: 0.5rem;
+  padding: 0.2em 0.7em;
+  font-size: 0.85em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* UTILITIES 
+*/
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff;
+  letter-spacing: -0.01em;
 }
 
 code {
-  font-family:
-    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  background: #1c1c1c;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid #27272a;
+  border-radius: 0.25rem;
+  color: #e4e4e7;
 }
 
 svg {
   vertical-align: unset;
+  fill: currentColor;
 }
 
-.z-hover {
-  transition: all ease-in-out 0.3s !important;
-}
-
-.z-hover:hover,
-.z-hover:focus,
-.z-hover:active {
-  transition: transform 0.3s !important;
-  -ms-transform: scale(1.01) !important;
-  -webkit-transform: scale(1.01) !important;
-  transform: scale(1.01) !important;
-}
-
-.pb-0-important {
-  padding-bottom: 0 !important;
-}
-
+/* Animations */
 .fade-in {
   opacity: 1;
   animation-name: fadeIn;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
-  animation-duration: 1s;
+  animation-duration: 0.6s;
 }
 
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-@-webkit-keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Line clamp utility */
 .line-clamp-3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -150,14 +255,3 @@ svg {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
-/* Enhanced card hover effects */
-.card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Smooth translate for hover effects */
-.hover\:-translate-y-1:hover {
-  transform: translateY(-0.25rem);
-}
-

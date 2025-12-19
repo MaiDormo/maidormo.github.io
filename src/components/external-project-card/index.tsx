@@ -17,8 +17,11 @@ const ExternalProjectCard = ({
     const array = [];
     for (let index = 0; index < externalProjects.length; index++) {
       array.push(
-        <div className="card shadow-lg bg-base-100 border border-base-300" key={index}>
-          <div className="p-6 h-full w-full">
+        <div
+          className="card shadow-lg bg-base-100 border border-base-300 break-inside-avoid mb-6 w-full inline-block"
+          key={index}
+        >
+          <div className="p-6 w-full">
             <div className="flex items-center flex-col">
               <div className="w-full">
                 <div className="flex items-start px-2">
@@ -30,7 +33,7 @@ const ExternalProjectCard = ({
                         className: 'mb-3 mx-auto',
                       })}
                     </h2>
-                    <div className="avatar w-full h-full mb-4">
+                    <div className="avatar w-full mb-4">
                       <div className="w-24 h-24 mask mask-squircle mx-auto">
                         {skeleton({
                           widthCls: 'w-full',
@@ -68,17 +71,19 @@ const ExternalProjectCard = ({
   const renderExternalProjects = () => {
     return externalProjects.map((item, index) => (
       <div
-        className={`card shadow-lg bg-base-100 cursor-pointer border border-base-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group${item.featured ? ' ring-2 ring-primary/40' : ''}`}
+        className={`card shadow-lg bg-base-100 cursor-pointer border border-base-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group break-inside-avoid mb-6 w-full inline-block align-top ${
+          item.featured ? ' ring-2 ring-primary/40' : ''
+        }`}
         key={index}
       >
-        <div className="p-6 h-full w-full">
+        <div className="p-6 w-full">
           {/* Screenshot/GIF */}
           {item.imageUrl && (
             <div className="mb-3 flex justify-center">
               <img
                 src={item.imageUrl}
                 alt={`${item.title} screenshot`}
-                className="w-full h-40 object-cover rounded-lg border border-base-300 shadow-sm"
+                className="w-full h-auto max-h-60 object-cover rounded-lg border border-base-300 shadow-sm"
                 loading="lazy"
               />
             </div>
@@ -87,45 +92,56 @@ const ExternalProjectCard = ({
             <div className="w-full">
               <div className="px-2">
                 <div className="text-center w-full">
+                  
+                  {/* Title Header */}
                   <div className="flex items-center justify-between mb-3">
                     <h2 className="font-semibold text-base-content group-hover:text-primary transition-colors duration-300 flex-1 text-left">
                       {item.title}
                       {item.featured && (
-                        <span className="ml-2 px-2 py-0.5 rounded bg-primary/10 text-primary text-xs font-semibold">Featured</span>
+                        <span className="ml-2 px-2 py-0.5 rounded bg-primary/10 text-primary text-xs font-semibold">
+                          Featured
+                        </span>
                       )}
                     </h2>
-                    <MdOpenInNew className="text-lg text-base-content/40 group-hover:text-primary group-hover:rotate-45 transition-all duration-300 flex-shrink-0 ml-2" />
+                    {/* Icon removed from here */}
                   </div>
-                  <p className="text-base-content/70 text-sm leading-relaxed text-left mb-2">
+
+                  <p className="text-base-content/70 text-sm leading-relaxed text-left mb-4">
                     {item.description}
                   </p>
+                  
                   {/* Tech stack */}
                   {item.techStack && item.techStack.length > 0 && (
-                    <div className="mb-2 flex flex-wrap gap-2 justify-center">
+                    <div className="mb-4 flex flex-wrap gap-2 justify-start">
                       {item.techStack.map((tech, i) => (
-                        <span key={i} className="badge badge-xs bg-primary/10 text-primary font-medium px-2 py-1 rounded">
+                        <span
+                          key={i}
+                          className="badge badge-xs bg-primary/10 text-primary font-medium px-2 py-1 rounded"
+                        >
                           {tech}
                         </span>
                       ))}
                     </div>
                   )}
+
                   {/* Highlights */}
                   {item.highlights && item.highlights.length > 0 && (
-                    <ul className="mb-2 list-disc pl-5 text-xs text-base-content/80 text-left">
+                    <ul className="mb-4 list-disc pl-5 text-xs text-base-content/80 text-left">
                       {item.highlights.map((hl, i) => (
                         <li key={i}>{hl}</li>
                       ))}
                     </ul>
                   )}
+
                   {/* Demo/Code buttons */}
-                  <div className="flex gap-2 mb-2 justify-center">
+                  <div className="flex gap-2 justify-start">
                     {item.demoUrl && (
                       <a
                         href={item.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-xs btn-primary"
-                        onClick={e => e.stopPropagation()}
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <MdOpenInNew className="text-base" />
                         Live Demo
@@ -137,7 +153,7 @@ const ExternalProjectCard = ({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-xs btn-outline"
-                        onClick={e => e.stopPropagation()}
+                        onClick={(e) => e.stopPropagation()}
                       >
                         <MdOpenInNew className="text-base" />
                         View Code
@@ -180,14 +196,19 @@ const ExternalProjectCard = ({
                   <div className="text-base-content/60 text-sm mt-1">
                     {loading
                       ? skeleton({ widthCls: 'w-32', heightCls: 'h-4' })
-                      : `${externalProjects.length} ${externalProjects.length === 1 ? 'project' : 'projects'}`}
+                      : `${externalProjects.length} ${
+                          externalProjects.length === 1 ? 'project' : 'projects'
+                        }`}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+            
+            {/* MOSAIC/MASONRY LAYOUT CONTAINER */}
+            <div className="columns-1 md:columns-2 gap-6">
               {loading ? renderSkeleton() : renderExternalProjects()}
             </div>
+            
           </div>
         </div>
       </div>

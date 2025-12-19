@@ -13,19 +13,13 @@ import { getInitialTheme, getSanitizedConfig, setupHotjar } from '../utils';
 import { SanitizedConfig } from '../interfaces/sanitized-config';
 import ErrorPage from './error-page';
 import { DEFAULT_THEMES } from '../constants/default-themes';
-import ThemeChanger from './theme-changer';
 import { BG_COLOR } from '../constants';
 import { Profile } from '../interfaces/profile';
 import DetailsCard from './details-card';
 import ExperienceCard from './experience-card';
 import EducationCard from './education-card';
-import CertificationCard from './certification-card';
 import { GithubProject } from '../interfaces/github-project';
-import GithubProjectCard from './github-project-card';
 import ExternalProjectCard from './external-project-card';
-import BlogCard from './blog-card';
-import Footer from './footer';
-import PublicationCard from './publication-card';
 
 /**
  * Renders the GitProfile component.
@@ -41,7 +35,6 @@ const GitProfile = ({ config }: { config: Config }) => {
   const [error, setError] = useState<CustomError | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [githubProjects, setGithubProjects] = useState<GithubProject[]>([]);
 
   const getGithubProjects = useCallback(
     async (publicRepoCount: number): Promise<GithubProject[]> => {
@@ -114,7 +107,7 @@ const GitProfile = ({ config }: { config: Config }) => {
         return;
       }
 
-      setGithubProjects(await getGithubProjects(data.public_repos));
+      // setGithubProjects(await getGithubProjects(data.public_repos));
     } catch (error) {
       handleError(error as AxiosError | Error);
     } finally {
@@ -189,14 +182,14 @@ const GitProfile = ({ config }: { config: Config }) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 rounded-box">
               <div className="col-span-1">
                 <div className="grid grid-cols-1 gap-6">
-                  {!sanitizedConfig.themeConfig.disableSwitch && (
+                  {/* {!sanitizedConfig.themeConfig.disableSwitch && (
                     <ThemeChanger
                       theme={theme}
                       setTheme={setTheme}
                       loading={loading}
                       themeConfig={sanitizedConfig.themeConfig}
                     />
-                  )}
+                  )} */}
                   <DetailsCard
                     profile={profile}
                     loading={loading}
@@ -212,12 +205,12 @@ const GitProfile = ({ config }: { config: Config }) => {
                       experiences={sanitizedConfig.experiences}
                     />
                   )}
-                  {sanitizedConfig.certifications.length !== 0 && (
+                  {/* {sanitizedConfig.certifications.length !== 0 && (
                     <CertificationCard
                       loading={loading}
                       certifications={sanitizedConfig.certifications}
                     />
-                  )}
+                  )} */}
                   {sanitizedConfig.educations.length !== 0 && (
                     <EducationCard
                       loading={loading}
@@ -228,7 +221,7 @@ const GitProfile = ({ config }: { config: Config }) => {
               </div>
               <div className="lg:col-span-2 col-span-1">
                 <div className="grid grid-cols-1 gap-6">
-                  {sanitizedConfig.projects.github.display && (
+                  {/* {sanitizedConfig.projects.github.display && (
                     <GithubProjectCard
                       header={sanitizedConfig.projects.github.header}
                       limit={sanitizedConfig.projects.github.automatic.limit}
@@ -242,7 +235,7 @@ const GitProfile = ({ config }: { config: Config }) => {
                       loading={loading}
                       publications={sanitizedConfig.publications}
                     />
-                  )}
+                  )} */}
                   {sanitizedConfig.projects.external.projects.length !== 0 && (
                     <ExternalProjectCard
                       loading={loading}
@@ -253,26 +246,10 @@ const GitProfile = ({ config }: { config: Config }) => {
                       googleAnalyticId={sanitizedConfig.googleAnalytics.id}
                     />
                   )}
-                  {sanitizedConfig.blog.display && (
-                    <BlogCard
-                      loading={loading}
-                      googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                      blog={sanitizedConfig.blog}
-                    />
-                  )}
                 </div>
               </div>
             </div>
           </div>
-          {sanitizedConfig.footer && (
-            <footer
-              className={`p-4 footer ${BG_COLOR} text-base-content footer-center`}
-            >
-              <div className="card card-sm bg-base-100 shadow-sm">
-                <Footer content={sanitizedConfig.footer} loading={loading} />
-              </div>
-            </footer>
-          )}
         </>
       )}
     </div>

@@ -182,8 +182,8 @@ const DetailsCard = ({ profile, loading, social, github, avatarRing = true, resu
   }
 
   return (
-    <div className="card shadow-lg bg-base-100 border border-base-300 hover:border-primary/30 transition-all duration-300">
-      <div className="card-body p-4">
+    <div className="card bg-white border border-base-200 hover:border-primary/30 transition-all duration-200" style={{ fontFamily: 'Montserrat, sans-serif', boxShadow: '0 2px 8px rgba(44,62,80,0.03)' }}>
+      <div className="card-body p-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
         <div className="grid place-items-center py-8">
           {loading || !profile ? (
             <div className="avatar opacity-90">
