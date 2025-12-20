@@ -27,7 +27,7 @@ const CONFIG = {
       // Cleaned up to match the minimalist interface (Title + Description only)
       projects: [
         {
-          title: 'Crosstrack Italia',
+          title: 'CROSSTRACK ITALIA',
           description: 'Cross-platform Flutter app for motocross track discovery and management. Features map visualization (OpenStreetMaps), user authentication, and track management.',
           codeUrl: 'https://github.com/MaiDormo/crosstrack_italia',
           featured: true,
