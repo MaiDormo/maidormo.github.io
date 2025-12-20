@@ -98,7 +98,7 @@ const ListItem: React.FC<{
  * @return {JSX.Element} The details card component.
  */
 const DetailsCard = ({ profile, loading, social, github, avatarRing = true, resumeFileUrl, customBio }: Props) => {
-  const renderSkeleton = () => {
+  const renderSkeleton = (): React.ReactNode[] => {
     const array = [];
     for (let index = 0; index < 4; index++) {
       array.push(
@@ -112,8 +112,8 @@ const DetailsCard = ({ profile, loading, social, github, avatarRing = true, resu
   };
 
   // Collect all icon/link pairs
-  const iconLinks = [];
-  // Location icon removed
+  const iconLinks: Array<{ icon: React.ReactNode; link?: string }> = [];
+  
   if (profile?.company && isCompanyMention(profile.company.trim())) {
     iconLinks.push({ icon: <FaBuilding />, link: companyLink(profile.company.trim()) });
   }

@@ -1,4 +1,4 @@
-import { useState, Fragment, useEffect } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 
 /**
  * LazyImage component.
@@ -14,10 +14,11 @@ const LazyImage: React.FC<{
   placeholder: React.ReactElement;
   src: string;
   alt: string;
+  // additional img props
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: any;
+  rest?: React.ImgHTMLAttributes<HTMLImageElement>;
 }> = ({ placeholder, src, alt, ...rest }): React.ReactElement => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const imageToLoad = new Image();
@@ -28,11 +29,7 @@ const LazyImage: React.FC<{
     };
   }, [src]);
 
-  return (
-    <Fragment>
-      {loading ? placeholder : <img src={src} alt={alt} {...rest} />}
-    </Fragment>
-  );
+  return <Fragment>{loading ? placeholder : <img src={src} alt={alt} {...(rest as any)} />}</Fragment>;
 };
 
 export default LazyImage;

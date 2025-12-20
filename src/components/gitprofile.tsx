@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { formatDistance } from 'date-fns';
 import {
@@ -18,7 +18,6 @@ import { Profile } from '../interfaces/profile';
 import DetailsCard from './details-card';
 import ExperienceCard from './experience-card';
 import EducationCard from './education-card';
-import { GithubProject } from '../interfaces/github-project';
 import ExternalProjectCard from './external-project-card';
 
 /**
@@ -27,73 +26,31 @@ import ExternalProjectCard from './external-project-card';
  * @param {Object} config - the configuration object
  * @return {JSX.Element} the rendered GitProfile component
  */
-const GitProfile = ({ config }: { config: Config }) => {
-  const [sanitizedConfig] = useState<SanitizedConfig | Record<string, never>>(
-    getSanitizedConfig(config),
+const GitProfile: React.FC<{ config: Config }> = ({ config }) => {
+  // Compute the sanitized configuration once and memoize it for readability.
+  // This replaces the previous pattern of using `useState` to hold a static value.
+  const sanitizedConfig = useMemo<SanitizedConfig | Record<string, never>>(
+    () => getSanitizedConfig(config),
+    [config],
   );
   const [theme, setTheme] = useState<string>(DEFAULT_THEMES[0]);
   const [error, setError] = useState<CustomError | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [profile, setProfile] = useState<Profile | null>(null);
 
-  const getGithubProjects = useCallback(
-    async (publicRepoCount: number): Promise<GithubProject[]> => {
-      if (sanitizedConfig.projects.github.mode === 'automatic') {
-        if (publicRepoCount === 0) {
-          return [];
-        }
-
-        const excludeRepo =
-          sanitizedConfig.projects.github.automatic.exclude.projects
-            .map((project) => `+-repo:${project}`)
-            .join('');
-
-        const query = `user:${sanitizedConfig.github.username}+fork:${!sanitizedConfig.projects.github.automatic.exclude.forks}${excludeRepo}`;
-        const url = `https://api.github.com/search/repositories?q=${query}&sort=${sanitizedConfig.projects.github.automatic.sortBy}&per_page=${sanitizedConfig.projects.github.automatic.limit}&type=Repositories`;
-
-        const repoResponse = await axios.get(url, {
-          headers: { 'Content-Type': 'application/vnd.github.v3+json' },
-        });
-        const repoData = repoResponse.data;
-
-        return repoData.items;
-      } else {
-        if (sanitizedConfig.projects.github.manual.projects.length === 0) {
-          return [];
-        }
-        const repos = sanitizedConfig.projects.github.manual.projects
-          .map((project) => `+repo:${project}`)
-          .join('');
-
-        const url = `https://api.github.com/search/repositories?q=${repos}+fork:true&type=Repositories`;
-
-        const repoResponse = await axios.get(url, {
-          headers: { 'Content-Type': 'application/vnd.github.v3+json' },
-        });
-        const repoData = repoResponse.data;
-
-        return repoData.items;
-      }
-    },
-    [
-      sanitizedConfig.github.username,
-      sanitizedConfig.projects.github.mode,
-      sanitizedConfig.projects.github.manual.projects,
-      sanitizedConfig.projects.github.automatic.sortBy,
-      sanitizedConfig.projects.github.automatic.limit,
-      sanitizedConfig.projects.github.automatic.exclude.forks,
-      sanitizedConfig.projects.github.automatic.exclude.projects,
-    ],
-  );
-
   const loadData = useCallback(async () => {
-    try {
-      setLoading(true);
-
+    // Fetch user profile from GitHub and set local state.
+    const fetchUserProfile = async () => {
       const response = await axios.get(
         `https://api.github.com/users/${sanitizedConfig.github.username}`,
       );
-      const data = response.data;
+      return response.data;
+    };
+
+    try {
+      setLoading(true);
+
+      const data = await fetchUserProfile();
 
       setProfile({
         avatar: data.avatar_url,
@@ -106,8 +63,6 @@ const GitProfile = ({ config }: { config: Config }) => {
       if (!sanitizedConfig.projects.github.display) {
         return;
       }
-
-      // setGithubProjects(await getGithubProjects(data.public_repos));
     } catch (error) {
       handleError(error as AxiosError | Error);
     } finally {
@@ -116,7 +71,6 @@ const GitProfile = ({ config }: { config: Config }) => {
   }, [
     sanitizedConfig.github.username,
     sanitizedConfig.projects.github.display,
-    getGithubProjects,
   ]);
 
   useEffect(() => {
@@ -135,36 +89,51 @@ const GitProfile = ({ config }: { config: Config }) => {
   }, [theme]);
 
   const handleError = (error: AxiosError | Error): void => {
+    // Centralized error handling with clearer steps and small helpers.
     console.error('Error:', error);
 
-    if (error instanceof AxiosError) {
+    const unknownError = () => setError(GENERIC_ERROR);
+
+    // Attempt to extract rate-limit reset as a human-friendly string.
+    const getResetString = (): string | null => {
       try {
-        const reset = formatDistance(
-          new Date(error.response?.headers?.['x-ratelimit-reset'] * 1000),
+        const resetHeader =
+          error instanceof AxiosError
+            ? error.response?.headers?.['x-ratelimit-reset']
+            : undefined;
+        if (!resetHeader) return null;
+        return formatDistance(
+          new Date(Number(resetHeader) * 1000),
           new Date(),
           { addSuffix: true },
         );
+      } catch {
+        return null;
+      }
+    };
 
-        if (typeof error.response?.status === 'number') {
-          switch (error.response.status) {
-            case 403:
-              setError(setTooManyRequestError(reset));
-              break;
-            case 404:
-              setError(INVALID_GITHUB_USERNAME_ERROR);
-              break;
-            default:
-              setError(GENERIC_ERROR);
-              break;
-          }
-        } else {
-          setError(GENERIC_ERROR);
-        }
-      } catch (innerError) {
-        setError(GENERIC_ERROR);
+    const setErrorByStatus = (status?: number) => {
+      switch (status) {
+        case 403:
+          setError(setTooManyRequestError(getResetString() || ''));
+          break;
+        case 404:
+          setError(INVALID_GITHUB_USERNAME_ERROR);
+          break;
+        default:
+          unknownError();
+          break;
+      }
+    };
+
+    if (error instanceof AxiosError) {
+      try {
+        setErrorByStatus(error.response?.status);
+      } catch {
+        unknownError();
       }
     } else {
-      setError(GENERIC_ERROR);
+      unknownError();
     }
   };
 
@@ -182,14 +151,7 @@ const GitProfile = ({ config }: { config: Config }) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 rounded-box">
               <div className="col-span-1">
                 <div className="grid grid-cols-1 gap-6">
-                  {/* {!sanitizedConfig.themeConfig.disableSwitch && (
-                    <ThemeChanger
-                      theme={theme}
-                      setTheme={setTheme}
-                      loading={loading}
-                      themeConfig={sanitizedConfig.themeConfig}
-                    />
-                  )} */}
+                  
                   <DetailsCard
                     profile={profile}
                     loading={loading}
@@ -205,12 +167,7 @@ const GitProfile = ({ config }: { config: Config }) => {
                       experiences={sanitizedConfig.experiences}
                     />
                   )}
-                  {/* {sanitizedConfig.certifications.length !== 0 && (
-                    <CertificationCard
-                      loading={loading}
-                      certifications={sanitizedConfig.certifications}
-                    />
-                  )} */}
+                  
                   {sanitizedConfig.educations.length !== 0 && (
                     <EducationCard
                       loading={loading}
@@ -221,21 +178,7 @@ const GitProfile = ({ config }: { config: Config }) => {
               </div>
               <div className="lg:col-span-2 col-span-1">
                 <div className="grid grid-cols-1 gap-6">
-                  {/* {sanitizedConfig.projects.github.display && (
-                    <GithubProjectCard
-                      header={sanitizedConfig.projects.github.header}
-                      limit={sanitizedConfig.projects.github.automatic.limit}
-                      githubProjects={githubProjects}
-                      loading={loading}
-                      googleAnalyticsId={sanitizedConfig.googleAnalytics.id}
-                    />
-                  )}
-                  {sanitizedConfig.publications.length !== 0 && (
-                    <PublicationCard
-                      loading={loading}
-                      publications={sanitizedConfig.publications}
-                    />
-                  )} */}
+                  
                   {sanitizedConfig.projects.external.projects.length !== 0 && (
                     <ExternalProjectCard
                       loading={loading}
@@ -243,7 +186,7 @@ const GitProfile = ({ config }: { config: Config }) => {
                       externalProjects={
                         sanitizedConfig.projects.external.projects
                       }
-                      googleAnalyticId={sanitizedConfig.googleAnalytics.id}
+                    
                     />
                   )}
                 </div>

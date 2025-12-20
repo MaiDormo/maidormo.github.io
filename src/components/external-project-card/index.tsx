@@ -11,7 +11,6 @@ const ExternalProjectCard = ({
   externalProjects: SanitizedExternalProject[];
   header: string;
   loading: boolean;
-  googleAnalyticId?: string;
 }) => {
   const renderSkeleton = () => {
     const array = [];
@@ -77,7 +76,7 @@ const ExternalProjectCard = ({
         key={index}
       >
         <div className="p-6 w-full">
-          {/* Screenshot/GIF */}
+          
           {item.imageUrl && (
             <div className="mb-3 flex justify-center">
               <img
@@ -93,7 +92,7 @@ const ExternalProjectCard = ({
               <div className="px-2">
                 <div className="text-center w-full">
                   
-                  {/* Title Header */}
+                  
                   <div className="flex items-center justify-between mb-3">
                     <h2 className="font-semibold text-base-content group-hover:text-primary transition-colors duration-300 flex-1 text-left">
                       {item.title}
@@ -103,14 +102,14 @@ const ExternalProjectCard = ({
                         </span>
                       )}
                     </h2>
-                    {/* Icon removed from here */}
+                    
                   </div>
 
                   <p className="text-base-content/70 text-sm leading-relaxed text-left mb-4">
                     {item.description}
                   </p>
                   
-                  {/* Tech stack */}
+                  
                   {item.techStack && item.techStack.length > 0 && (
                     <div className="mb-4 flex flex-wrap gap-2 justify-start">
                       {item.techStack.map((tech, i) => (
@@ -124,7 +123,7 @@ const ExternalProjectCard = ({
                     </div>
                   )}
 
-                  {/* Highlights */}
+                  
                   {item.highlights && item.highlights.length > 0 && (
                     <ul className="mb-4 list-disc pl-5 text-xs text-base-content/80 text-left">
                       {item.highlights.map((hl, i) => (
@@ -133,7 +132,7 @@ const ExternalProjectCard = ({
                     </ul>
                   )}
 
-                  {/* Demo/Code buttons */}
+                  
                   <div className="flex gap-2 justify-start">
                     {item.demoUrl && (
                       <a
@@ -204,7 +203,7 @@ const ExternalProjectCard = ({
               </div>
             </div>
             
-            {/* MOSAIC/MASONRY LAYOUT CONTAINER */}
+            
             <div className="columns-1 md:columns-2 gap-6">
               {loading ? renderSkeleton() : renderExternalProjects()}
             </div>

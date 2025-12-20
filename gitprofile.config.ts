@@ -4,7 +4,6 @@ const CONFIG = {
   github: {
     username: 'MaiDormo',
   },
-  base: '/',
   projects: {
     github: {
       display: false,
@@ -67,6 +66,7 @@ const CONFIG = {
       ],
     },
   },
+  base: '/',
   seo: {
     title: 'Elia Gatti — Software Engineer',
     description: 'Software engineer specializing in backend development, distributed systems, and HPC.',
@@ -117,17 +117,11 @@ const CONFIG = {
       description: 'Focused on Software Engineering, Algorithms, and System Programming.',
     },
   ],
-  blog: {
-    source: 'dev',
-    username: '', 
-    limit: 2,
-  },
-  githubStats: {
-    display: true,
-    excludeLanguages: ['HTML', 'CSS', 'TypeScript', 'Rust', 'JavaScript', 'Jupyter Notebook'],
-  },
-  googleAnalytics: { id: '' },
+  
   hotjar: { id: '', snippetVersion: 6 },
+  googleAnalytics: { id: '' },
+  enablePWA: true,
+  footer: `Made with <a class="text-primary" href="https://github.com/arifszn/gitprofile" target="_blank" rel="noreferrer">GitProfile</a>`,
   themeConfig: {
     defaultTheme: 'procyon', // Forces your custom CSS theme
     disableSwitch: true,     // Prevents users from changing the look
@@ -135,8 +129,7 @@ const CONFIG = {
     displayAvatarRing: true,
     themes: ['procyon', 'light', 'dark'],
   },
-  footer: `Made with <a class="text-primary" href="https://github.com/arifszn/gitprofile" target="_blank" rel="noreferrer">GitProfile</a>`,
-  enablePWA: true,
+  
 };
 
 export default CONFIG;
