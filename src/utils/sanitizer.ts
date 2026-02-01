@@ -1,10 +1,6 @@
 import { DEFAULT_THEMES } from '../constants/default-themes';
-import { LOCAL_STORAGE_KEY_NAME } from '../constants';
-import colors from '../data/colors.json';
 import {
   SanitizedConfig,
-  SanitizedHotjar,
-  SanitizedThemeConfig,
 } from '../interfaces/sanitized-config';
 
 export const getSanitizedConfig = (
