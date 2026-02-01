@@ -9,7 +9,9 @@ import {
   setTooManyRequestError,
 } from '../constants/errors';
 import '../assets/index.css';
-import { getInitialTheme, getSanitizedConfig, setupHotjar } from '../utils';
+import { getInitialTheme } from '../utils/theme';
+import { setupHotjar } from '../utils/analytics';
+import { getSanitizedConfig } from '../utils/sanitizer';
 import { SanitizedConfig } from '../interfaces/sanitized-config';
 import ErrorPage from './error-page';
 import { DEFAULT_THEMES } from '../constants/default-themes';
@@ -151,7 +153,6 @@ const GitProfile: React.FC<{ config: Config }> = ({ config }) => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 rounded-box">
               <div className="col-span-1">
                 <div className="grid grid-cols-1 gap-6">
-                  
                   <DetailsCard
                     profile={profile}
                     loading={loading}
@@ -167,7 +168,7 @@ const GitProfile: React.FC<{ config: Config }> = ({ config }) => {
                       experiences={sanitizedConfig.experiences}
                     />
                   )}
-                  
+
                   {sanitizedConfig.educations.length !== 0 && (
                     <EducationCard
                       loading={loading}
@@ -178,7 +179,6 @@ const GitProfile: React.FC<{ config: Config }> = ({ config }) => {
               </div>
               <div className="lg:col-span-2 col-span-1">
                 <div className="grid grid-cols-1 gap-6">
-                  
                   {sanitizedConfig.projects.external.projects.length !== 0 && (
                     <ExternalProjectCard
                       loading={loading}
@@ -186,7 +186,6 @@ const GitProfile: React.FC<{ config: Config }> = ({ config }) => {
                       externalProjects={
                         sanitizedConfig.projects.external.projects
                       }
-                    
                     />
                   )}
                 </div>

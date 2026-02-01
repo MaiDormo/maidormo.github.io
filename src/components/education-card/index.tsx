@@ -1,6 +1,6 @@
 import React from 'react';
 import { SanitizedEducation } from '../../interfaces/sanitized-config';
-import { skeleton } from '../../utils';
+import { skeleton } from '../../utils/helpers';
 import { FaGraduationCap } from 'react-icons/fa';
 
 const ListItem = ({
@@ -25,8 +25,12 @@ const ListItem = ({
       className="absolute w-3 h-3 bg-primary rounded-full border-2 border-base-100 mt-1.5 group-hover:scale-125 transition-transform duration-300"
       style={{ left: '-6.5px' }}
     ></div>
-    <div className="my-0.5 text-xs text-base-content/60 font-medium uppercase tracking-wider">{time}</div>
-    <h3 className="font-semibold text-base text-base-content mb-2 group-hover:text-primary transition-colors duration-300">{degree}</h3>
+    <div className="my-0.5 text-xs text-base-content/60 font-medium uppercase tracking-wider">
+      {time}
+    </div>
+    <h3 className="font-semibold text-base text-base-content mb-2 group-hover:text-primary transition-colors duration-300">
+      {degree}
+    </h3>
     <div className="mb-2 font-normal text-sm flex items-center gap-2">
       {institutionLogo && (
         <div className="w-10 h-10 rounded-lg bg-base-200 p-1.5 flex items-center justify-center group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-300">
@@ -38,9 +42,9 @@ const ListItem = ({
         </div>
       )}
       {institutionLink ? (
-        <a 
-          href={institutionLink} 
-          target="_blank" 
+        <a
+          href={institutionLink}
+          target="_blank"
           rel="noreferrer"
           className="text-base-content/80 hover:text-primary transition-colors duration-300 font-medium"
         >
@@ -52,7 +56,8 @@ const ListItem = ({
     </div>
     {score && (
       <div className="mb-2 text-sm text-base-content/70 bg-base-200/50 rounded-lg px-3 py-1.5 inline-block">
-        <span className="font-semibold text-base-content">Final Score:</span> {score}
+        <span className="font-semibold text-base-content">Final Score:</span>{' '}
+        {score}
       </div>
     )}
     {description && (
@@ -98,7 +103,11 @@ const EducationCard = ({
       <div className="card-body">
         <div className="flex items-center gap-3 mb-3">
           {loading ? (
-            skeleton({ widthCls: 'w-8', heightCls: 'h-8', className: 'rounded-lg' })
+            skeleton({
+              widthCls: 'w-8',
+              heightCls: 'h-8',
+              className: 'rounded-lg',
+            })
           ) : (
             <div className="flex items-center justify-center w-8 h-8 bg-primary/10 rounded-lg">
               <FaGraduationCap className="text-lg text-primary" />

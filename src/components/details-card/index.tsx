@@ -26,7 +26,7 @@ import {
   SanitizedGithub,
   SanitizedSocial,
 } from '../../interfaces/sanitized-config';
-import { skeleton } from '../../utils';
+import { skeleton } from '../../utils/helpers';
 
 type Props = {
   profile: Profile | null;
@@ -71,14 +71,24 @@ const ListItem: React.FC<{
           target="_blank"
           rel="noreferrer"
           className="text-3xl md:text-4xl text-base-content/70 hover:text-primary transition-colors duration-300"
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '2.5rem' }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minWidth: '2.5rem',
+          }}
         >
           {icon}
         </a>
       ) : (
         <span
           className="text-3xl md:text-4xl text-base-content/70"
-          style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: '2.5rem' }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minWidth: '2.5rem',
+          }}
         >
           {icon}
         </span>
@@ -86,7 +96,6 @@ const ListItem: React.FC<{
     </div>
   );
 };
-
 
 /**
  * Renders the details card component.
@@ -97,7 +106,15 @@ const ListItem: React.FC<{
  * @param {Object} github - The GitHub object.
  * @return {JSX.Element} The details card component.
  */
-const DetailsCard = ({ profile, loading, social, github, avatarRing = true, resumeFileUrl, customBio }: Props) => {
+const DetailsCard = ({
+  profile,
+  loading,
+  social,
+  github,
+  avatarRing = true,
+  resumeFileUrl,
+  customBio,
+}: Props) => {
   const renderSkeleton = (): React.ReactNode[] => {
     const array = [];
     for (let index = 0; index < 4; index++) {
@@ -113,63 +130,116 @@ const DetailsCard = ({ profile, loading, social, github, avatarRing = true, resu
 
   // Collect all icon/link pairs
   const iconLinks: Array<{ icon: React.ReactNode; link?: string }> = [];
-  
+
   if (profile?.company && isCompanyMention(profile.company.trim())) {
-    iconLinks.push({ icon: <FaBuilding />, link: companyLink(profile.company.trim()) });
+    iconLinks.push({
+      icon: <FaBuilding />,
+      link: companyLink(profile.company.trim()),
+    });
   }
   if (github?.username) {
-    iconLinks.push({ icon: <AiFillGithub />, link: `https://github.com/${github.username}` });
+    iconLinks.push({
+      icon: <AiFillGithub />,
+      link: `https://github.com/${github.username}`,
+    });
   }
   if (social?.researchGate) {
-    iconLinks.push({ icon: <SiResearchgate />, link: `https://www.researchgate.net/profile/${social.researchGate}` });
+    iconLinks.push({
+      icon: <SiResearchgate />,
+      link: `https://www.researchgate.net/profile/${social.researchGate}`,
+    });
   }
   if (social?.x) {
     iconLinks.push({ icon: <SiX />, link: `https://x.com/${social.x}` });
   }
   if (social?.mastodon) {
-    iconLinks.push({ icon: <FaMastodon />, link: getFormattedMastodonValue(social.mastodon, true) });
+    iconLinks.push({
+      icon: <FaMastodon />,
+      link: getFormattedMastodonValue(social.mastodon, true),
+    });
   }
   if (social?.linkedin) {
-    iconLinks.push({ icon: <FaLinkedin />, link: `https://www.linkedin.com/in/${social.linkedin}` });
+    iconLinks.push({
+      icon: <FaLinkedin />,
+      link: `https://www.linkedin.com/in/${social.linkedin}`,
+    });
   }
   if (social?.dribbble) {
-    iconLinks.push({ icon: <CgDribbble />, link: `https://dribbble.com/${social.dribbble}` });
+    iconLinks.push({
+      icon: <CgDribbble />,
+      link: `https://dribbble.com/${social.dribbble}`,
+    });
   }
   if (social?.behance) {
-    iconLinks.push({ icon: <FaBehanceSquare />, link: `https://www.behance.net/${social.behance}` });
+    iconLinks.push({
+      icon: <FaBehanceSquare />,
+      link: `https://www.behance.net/${social.behance}`,
+    });
   }
   if (social?.facebook) {
-    iconLinks.push({ icon: <FaFacebook />, link: `https://www.facebook.com/${social.facebook}` });
+    iconLinks.push({
+      icon: <FaFacebook />,
+      link: `https://www.facebook.com/${social.facebook}`,
+    });
   }
   if (social?.instagram) {
-    iconLinks.push({ icon: <AiFillInstagram />, link: `https://www.instagram.com/${social.instagram}` });
+    iconLinks.push({
+      icon: <AiFillInstagram />,
+      link: `https://www.instagram.com/${social.instagram}`,
+    });
   }
   if (social?.reddit) {
-    iconLinks.push({ icon: <FaReddit />, link: `https://www.reddit.com/user/${social.reddit}` });
+    iconLinks.push({
+      icon: <FaReddit />,
+      link: `https://www.reddit.com/user/${social.reddit}`,
+    });
   }
   if (social?.threads) {
-    iconLinks.push({ icon: <FaSquareThreads />, link: `https://www.threads.net/@${social.threads.replace('@', '')}` });
+    iconLinks.push({
+      icon: <FaSquareThreads />,
+      link: `https://www.threads.net/@${social.threads.replace('@', '')}`,
+    });
   }
   if (social?.youtube) {
-    iconLinks.push({ icon: <FaYoutube />, link: `https://www.youtube.com/@${social.youtube}` });
+    iconLinks.push({
+      icon: <FaYoutube />,
+      link: `https://www.youtube.com/@${social.youtube}`,
+    });
   }
   if (social?.udemy) {
-    iconLinks.push({ icon: <SiUdemy />, link: `https://www.udemy.com/user/${social.udemy}` });
+    iconLinks.push({
+      icon: <SiUdemy />,
+      link: `https://www.udemy.com/user/${social.udemy}`,
+    });
   }
   if (social?.medium) {
-    iconLinks.push({ icon: <AiFillMediumSquare />, link: `https://medium.com/@${social.medium}` });
+    iconLinks.push({
+      icon: <AiFillMediumSquare />,
+      link: `https://medium.com/@${social.medium}`,
+    });
   }
   if (social?.dev) {
     iconLinks.push({ icon: <FaDev />, link: `https://dev.to/${social.dev}` });
   }
   if (social?.stackoverflow) {
-    iconLinks.push({ icon: <FaStackOverflow />, link: `https://stackoverflow.com/users/${social.stackoverflow}` });
+    iconLinks.push({
+      icon: <FaStackOverflow />,
+      link: `https://stackoverflow.com/users/${social.stackoverflow}`,
+    });
   }
   if (social?.website) {
-    iconLinks.push({ icon: <FaGlobe />, link: !social.website.startsWith('http') ? `http://${social.website}` : social.website });
+    iconLinks.push({
+      icon: <FaGlobe />,
+      link: !social.website.startsWith('http')
+        ? `http://${social.website}`
+        : social.website,
+    });
   }
   if (social?.telegram) {
-    iconLinks.push({ icon: <FaTelegram />, link: `https://t.me/${social.telegram}` });
+    iconLinks.push({
+      icon: <FaTelegram />,
+      link: `https://t.me/${social.telegram}`,
+    });
   }
   if (social?.phone) {
     iconLinks.push({ icon: <RiPhoneFill />, link: `tel:${social.phone}` });
@@ -178,17 +248,33 @@ const DetailsCard = ({ profile, loading, social, github, avatarRing = true, resu
     iconLinks.push({ icon: <RiMailFill />, link: `mailto:${social.email}` });
   }
   if (social?.discord) {
-    iconLinks.push({ icon: <RiDiscordFill />, link: `https://discord.com/app` });
+    iconLinks.push({
+      icon: <RiDiscordFill />,
+      link: `https://discord.com/app`,
+    });
   }
 
   return (
-    <div className="card bg-white border border-base-200 hover:border-primary/30 transition-all duration-200" style={{ fontFamily: 'Montserrat, sans-serif', boxShadow: '0 2px 8px rgba(44,62,80,0.03)' }}>
-      <div className="card-body p-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+    <div
+      className="card bg-white border border-base-200 hover:border-primary/30 transition-all duration-200"
+      style={{
+        fontFamily: 'Montserrat, sans-serif',
+        boxShadow: '0 2px 8px rgba(44,62,80,0.03)',
+      }}
+    >
+      <div
+        className="card-body p-5"
+        style={{ fontFamily: 'Montserrat, sans-serif' }}
+      >
         <div className="grid place-items-center py-8">
           {loading || !profile ? (
             <div className="avatar opacity-90">
               <div className="mb-8 rounded-full w-32 h-32">
-                {skeleton({ widthCls: 'w-full', heightCls: 'h-full', shape: '' })}
+                {skeleton({
+                  widthCls: 'w-full',
+                  heightCls: 'h-full',
+                  shape: '',
+                })}
               </div>
             </div>
           ) : (
@@ -222,11 +308,14 @@ const DetailsCard = ({ profile, loading, social, github, avatarRing = true, resu
             <div className="mt-3 text-base-content/70 font-mono text-sm leading-relaxed">
               {loading || !profile
                 ? skeleton({ widthCls: 'w-48', heightCls: 'h-5' })
-                : (typeof customBio !== 'undefined' && customBio) ? customBio : profile.bio}
+                : typeof customBio !== 'undefined' && customBio
+                  ? customBio
+                  : profile.bio}
             </div>
           </div>
-          {typeof resumeFileUrl !== 'undefined' && resumeFileUrl && (
-            loading ? (
+          {typeof resumeFileUrl !== 'undefined' &&
+            resumeFileUrl &&
+            (loading ? (
               <div className="mt-6">
                 {skeleton({ widthCls: 'w-40', heightCls: 'h-8' })}
               </div>
@@ -241,22 +330,30 @@ const DetailsCard = ({ profile, loading, social, github, avatarRing = true, resu
                   window.open(resumeFileUrl, '_blank', 'noopener,noreferrer');
                 }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
                 </svg>
                 View Resume
               </a>
-            )
-          )}
+            ))}
         </div>
         <div className="flex flex-row flex-wrap gap-2 justify-center items-center mt-4">
-          {loading || !profile ? (
-            renderSkeleton()
-          ) : (
-            iconLinks.map((item, idx) => (
-              <ListItem key={idx} icon={item.icon} link={item.link} />
-            ))
-          )}
+          {loading || !profile
+            ? renderSkeleton()
+            : iconLinks.map((item, idx) => (
+                <ListItem key={idx} icon={item.icon} link={item.link} />
+              ))}
         </div>
       </div>
     </div>

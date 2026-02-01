@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { MdOpenInNew } from 'react-icons/md';
-import { skeleton } from '../../utils';
+import { skeleton } from '../../utils/helpers';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
 
 const ExternalProjectCard = ({
@@ -76,7 +76,6 @@ const ExternalProjectCard = ({
         key={index}
       >
         <div className="p-6 w-full">
-          
           {item.imageUrl && (
             <div className="mb-3 flex justify-center">
               <img
@@ -91,8 +90,6 @@ const ExternalProjectCard = ({
             <div className="w-full">
               <div className="px-2">
                 <div className="text-center w-full">
-                  
-                  
                   <div className="flex items-center justify-between mb-3">
                     <h2 className="font-semibold text-base-content group-hover:text-primary transition-colors duration-300 flex-1 text-left">
                       {item.title}
@@ -102,14 +99,12 @@ const ExternalProjectCard = ({
                         </span>
                       )}
                     </h2>
-                    
                   </div>
 
                   <p className="text-base-content/70 text-sm leading-relaxed text-left mb-4">
                     {item.description}
                   </p>
-                  
-                  
+
                   {item.techStack && item.techStack.length > 0 && (
                     <div className="mb-4 flex flex-wrap gap-2 justify-start">
                       {item.techStack.map((tech, i) => (
@@ -123,7 +118,6 @@ const ExternalProjectCard = ({
                     </div>
                   )}
 
-                  
                   {item.highlights && item.highlights.length > 0 && (
                     <ul className="mb-4 list-disc pl-5 text-xs text-base-content/80 text-left">
                       {item.highlights.map((hl, i) => (
@@ -132,7 +126,6 @@ const ExternalProjectCard = ({
                     </ul>
                   )}
 
-                  
                   <div className="flex gap-2 justify-start">
                     {item.demoUrl && (
                       <a
@@ -202,12 +195,10 @@ const ExternalProjectCard = ({
                 </div>
               </div>
             </div>
-            
-            
+
             <div className="columns-1 md:columns-2 gap-6">
               {loading ? renderSkeleton() : renderExternalProjects()}
             </div>
-            
           </div>
         </div>
       </div>
