@@ -21,6 +21,9 @@ import DetailsCard from './details-card';
 import ExperienceCard from './experience-card';
 import EducationCard from './education-card';
 import ExternalProjectCard from './external-project-card';
+import SkillCard from './skill-card';
+import CertificationCard from './certification-card';
+import Footer from './footer';
 
 /**
  * Renders the GitProfile component.
@@ -175,14 +178,25 @@ const GitProfile: React.FC<{ config: Config }> = ({ config }) => {
                       educations={sanitizedConfig.educations}
                     />
                   )}
+
+                  {sanitizedConfig.certifications.length !== 0 && (
+                    <CertificationCard
+                      loading={loading}
+                      certifications={sanitizedConfig.certifications}
+                    />
+                  )}
                 </div>
               </div>
               <div className="lg:col-span-2 col-span-1">
                 <div className="grid grid-cols-1 gap-6">
+                  <SkillCard
+                    loading={loading}
+                    skills={sanitizedConfig.skills}
+                  />
+
                   {sanitizedConfig.projects.external.projects.length !== 0 && (
                     <ExternalProjectCard
                       loading={loading}
-                      header={sanitizedConfig.projects.external.header}
                       externalProjects={
                         sanitizedConfig.projects.external.projects
                       }
@@ -190,6 +204,7 @@ const GitProfile: React.FC<{ config: Config }> = ({ config }) => {
                   )}
                 </div>
               </div>
+              <Footer content={sanitizedConfig.footer} />
             </div>
           </div>
         </>

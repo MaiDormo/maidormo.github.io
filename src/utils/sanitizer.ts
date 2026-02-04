@@ -1,7 +1,5 @@
 import { DEFAULT_THEMES } from '../constants/default-themes';
-import {
-  SanitizedConfig,
-} from '../interfaces/sanitized-config';
+import { SanitizedConfig } from '../interfaces/sanitized-config';
 
 export const getSanitizedConfig = (
   config: Config,
@@ -32,6 +30,7 @@ export const getSanitizedConfig = (
         },
         external: {
           header: config?.projects?.external?.header || 'My Projects',
+          subheader: config?.projects?.external?.subheader,
           projects: config?.projects?.external?.projects || [],
         },
       },
@@ -62,11 +61,19 @@ export const getSanitizedConfig = (
         telegram: config?.social?.telegram,
         researchGate: config?.social?.researchGate,
         discord: config?.social?.discord,
+        strava: config?.social?.strava,
       },
       resume: {
         fileUrl: config?.resume?.fileUrl || '',
       },
       skills: config?.skills || [],
+      systemStatus: {
+        display: config?.systemStatus?.display || false,
+        status: config?.systemStatus?.status || 'online',
+        uptime: config?.systemStatus?.uptime || '',
+        region: config?.systemStatus?.region || '',
+        log: config?.systemStatus?.log || [],
+      },
       experiences:
         config?.experiences?.filter(
           (experience) =>

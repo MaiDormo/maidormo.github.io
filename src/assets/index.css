@@ -1,7 +1,6 @@
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes:
-    'light', 'dark', 'procyon';
+  themes: 'light', 'dark', 'procyon';
 }
 
 @plugin "daisyui/theme" {
@@ -10,39 +9,39 @@
 
   /* ELEGANT DARK MONOCHROME PALETTE 
      -------------------------------
-     Base: Deepest Black to Charcoal
-     Content: Off-White
+     Base: True Black to Deep Carbon
+     Content: Neutral Gray
      Primary: Pure White (High Contrast)
   */
 
-  --color-base-100: #050505;      /* Almost Pitch Black */
-  --color-base-200: #121212;      /* Very Dark Gray */
-  --color-base-300: #1c1c1c;      /* Dark Gray */
-  --color-base-content: #e4e4e7;  /* Light Gray Text (zinc-200) */
+  --color-base-100: #020202; /* True Black */
+  --color-base-200: #0a0a0a; /* Almost Black (Cards) */
+  --color-base-300: #1c1c1c; /* Dark Carbon (Borders) */
+  --color-base-content: #d4d4d4; /* Neutral Gray Text */
 
-  --color-primary: #ffffff;       /* Pure White */
+  --color-primary: #ededed; /* Off-White */
   --color-primary-content: #000000;
 
-  --color-secondary: #a1a1aa;     /* Medium Light Gray */
+  --color-secondary: #737373; /* Darker Gray */
   --color-secondary-content: #000000;
 
-  --color-accent: #52525b;        /* Zinc-600 */
+  --color-accent: #262626; /* Deep Carbon */
   --color-accent-content: #ffffff;
 
-  --color-neutral: #27272a;       /* Zinc-800 */
+  --color-neutral: #171717; /* Neutral */
   --color-neutral-content: #ffffff;
 
-  /* SEMANTIC COLORS IN DARK GRAYSCALE */
-  --color-info: #a1a1aa;          
+  /* SEMANTIC COLORS */
+  --color-info: #737373;
   --color-info-content: #000000;
-  
-  --color-success: #ffffff;       /* Success is bold white */
+
+  --color-success: #ffffff;
   --color-success-content: #000000;
-  
-  --color-warning: #52525b;       /* Warning is subtle gray */
+
+  --color-warning: #525252;
   --color-warning-content: #ffffff;
-  
-  --color-error: #27272a;         /* Error is dark gray */
+
+  --color-error: #262626;
   --color-error-content: #ffffff;
 
   /* border radius */
@@ -62,6 +61,12 @@
   --noise: 0;
 }
 
+:root {
+  --accent-signal: #e3ff6a;
+  --accent-cold: #7fd3ff;
+  --grid-line: rgba(255, 255, 255, 0.05);
+}
+
 * {
   scrollbar-width: thin;
 }
@@ -72,31 +77,38 @@
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505; 
+  background: #09090b;
 }
 ::-webkit-scrollbar-thumb {
   background-color: #3f3f46;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #71717a;
+  background-color: #52525b;
 }
 
 /* GLOBAL TYPOGRAPHY & RESET 
 */
 body {
-  background-color: #050505;
-  color: #e4e4e7;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #020202;
+  color: #d4d4d4;
+  background-image:
+    linear-gradient(to right, #0f0f0f 1px, transparent 1px),
+    linear-gradient(to bottom, #0f0f0f 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
 }
 
 a {
-  color: #e4e4e7;
+  color: #d4d4d4;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: all 0.2s ease;
   font-weight: 500;
 }
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: #ffffff;
   border-bottom: 1px solid #ffffff;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
@@ -111,25 +123,17 @@ hr {
 /* ELEGANT DARK CARD STYLE 
    Deep gray with subtle lighter border
 */
-.card {
-  background: #121212;
-  border-radius: 1.25rem;
-  border: 1px solid #27272a; /* Subtle border for separation */
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-}
 
-.card:hover, .card:focus-within {
-  border-color: #52525b; /* Lighter border on hover */
-  background: #18181b;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7);
+.card:hover,
+.card:focus-within {
+  border-color: #3f3f46; /* Zinc 700 */
+  background: #0a0a0a; /* Zinc 950 */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   transform: translateY(-2px);
 }
 
 .card-title {
-  color: #ffffff;
+  color: #ededed;
   letter-spacing: -0.01em;
   font-weight: 600;
 }
@@ -137,90 +141,144 @@ hr {
 /* BUTTON STYLE 
    High Contrast: White Button on Dark Background
 */
-button, .btn {
-  font-family: 'Montserrat', sans-serif;
-  background: #ffffff; /* Pure White */
-  color: #050505;      /* Deep Black Text */
-  border: 1px solid #ffffff;
-  border-radius: 0.75rem;
+button,
+.btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: #ededed; /* Off White */
+  color: #000000; /* Deep Black Text */
+  border: 1px solid #ededed;
+  border-radius: 0.5rem; /* Sharper corners */
   padding: 0.5rem 1.25rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 10px rgba(255,255,255,0.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
 }
 
-button:hover, .btn:hover, button:focus, .btn:focus {
+.btn-accent {
+  background: var(--accent-signal);
+  border-color: var(--accent-signal);
+  color: #050505;
+}
+
+.btn-accent:hover,
+.btn-accent:focus {
   background: #050505;
-  color: #ffffff; /* Invert to White text */
-  border-color: #ffffff;
+  color: var(--accent-signal);
+  border-color: var(--accent-signal);
+}
+
+button:hover,
+.btn:hover,
+button:focus,
+.btn:focus {
+  background: #000000;
+  color: #ededed; /* Invert to White text */
+  border-color: #ededed;
   outline: none;
-  box-shadow: 0 0 15px rgba(255,255,255,0.15); /* Glow effect */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 /* Secondary Button Style (Ghost) */
 .btn-secondary {
   background: transparent;
-  color: #e4e4e7;
-  border: 1px solid #3f3f46;
+  color: #d4d4d4;
+  border: 1px solid #262626;
 }
 .btn-secondary:hover {
-  background: #27272a;
-  border-color: #e4e4e7;
-  color: #ffffff;
+  background: #0a0a0a;
+  border-color: #ededed;
+  color: #ededed;
 }
 
 /* INPUTS 
 */
-input, textarea, select {
-  font-family: 'Montserrat', sans-serif;
+input,
+textarea,
+select {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   border-radius: 0.5rem;
-  border: 1px solid #27272a;
+  border: 1px solid #1c1c1c;
   padding: 0.5rem 1rem;
-  background: #09090b; /* Slightly lighter than body */
-  color: #ffffff;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  background: #0a0a0a; /* Zinc 900 */
+  color: #ededed;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
 }
 
-input:focus, textarea:focus, select:focus {
-  border-color: #ffffff;
-  background: #121212;
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #ededed;
+  background: #0a0a0a; /* Zinc 800 */
   outline: none;
-  box-shadow: 0 0 0 1px #52525b;
+  box-shadow: 0 0 0 1px #404040;
 }
 
 input::placeholder {
-  color: #52525b;
+  color: #525252;
 }
 
 /* BADGES & HIGHLIGHTS 
 */
-.badge, .highlight, .accent {
-  background: #27272a;
-  color: #e4e4e7;
-  border: 1px solid #3f3f46;
-  border-radius: 0.5rem;
+.badge,
+.highlight,
+.accent {
+  background: #0a0a0a;
+  color: #d4d4d4;
+  border: 1px solid #262626;
+  border-radius: 0.35rem; /* Sharper */
   padding: 0.2em 0.7em;
-  font-size: 0.85em;
+  font-size: 0.8em;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
 
+.badge-accent {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ededed;
+  border: 1px solid #404040;
+}
+
+.metric-dot {
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+}
+
+.section-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  color: #525252;
+  font-weight: 600;
+}
+
 /* UTILITIES 
 */
-h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;
-  letter-spacing: -0.01em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ededed;
+  letter-spacing: -0.02em;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-  background: #1c1c1c;
+  font-family: 'JetBrains Mono', monospace;
+  background: #0a0a0a;
   padding: 0.2rem 0.4rem;
-  border: 1px solid #27272a;
+  border: 1px solid #262626;
   border-radius: 0.25rem;
-  color: #e4e4e7;
+  color: #d4d4d4;
 }
 
 svg {
@@ -238,8 +296,14 @@ svg {
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(8px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .line-clamp-3 {

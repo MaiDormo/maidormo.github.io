@@ -1,15 +1,14 @@
 import { Fragment } from 'react';
 import { MdOpenInNew } from 'react-icons/md';
+import { FaFolder } from 'react-icons/fa';
 import { skeleton } from '../../utils/helpers';
 import { SanitizedExternalProject } from '../../interfaces/sanitized-config';
 
 const ExternalProjectCard = ({
   externalProjects,
-  header,
   loading,
 }: {
   externalProjects: SanitizedExternalProject[];
-  header: string;
   loading: boolean;
 }) => {
   const renderSkeleton = () => {
@@ -126,6 +125,32 @@ const ExternalProjectCard = ({
                     </ul>
                   )}
 
+                  {item.metrics && item.metrics.length > 0 && (
+                    <div className="mb-4 flex flex-wrap gap-2 justify-start">
+                      {item.metrics.map((metric, i) => (
+                        <span
+                          key={i}
+                          className="badge badge-xs badge-accent px-2 py-1 rounded inline-flex items-center gap-1"
+                        >
+                          <span
+                            className="metric-dot"
+                            aria-hidden="true"
+                          ></span>
+                          {metric}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {item.decision && (
+                    <div className="mb-4 text-xs text-base-content/70 text-left">
+                      <span className="font-semibold text-base-content/80">
+                        Decision:
+                      </span>
+                      {item.decision}
+                    </div>
+                  )}
+
                   <div className="flex gap-2 justify-start">
                     {item.demoUrl && (
                       <a
@@ -165,37 +190,22 @@ const ExternalProjectCard = ({
     <Fragment>
       <div className="col-span-1 lg:col-span-2">
         <div className="card bg-base-200 shadow-xl border border-base-300">
-          <div className="card-body p-6 sm:p-8">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-              <div className="flex items-center gap-3">
-                {loading ? (
-                  skeleton({
-                    widthCls: 'w-12',
-                    heightCls: 'h-12',
-                    className: 'rounded-xl',
-                  })
-                ) : (
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl border border-primary/20">
-                    <MdOpenInNew className="text-2xl text-primary" />
-                  </div>
-                )}
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-xl sm:text-2xl font-bold text-base-content">
-                    {loading
-                      ? skeleton({ widthCls: 'w-40', heightCls: 'h-8' })
-                      : header}
-                  </h3>
-                  <div className="text-base-content/60 text-sm mt-1">
-                    {loading
-                      ? skeleton({ widthCls: 'w-32', heightCls: 'h-4' })
-                      : `${externalProjects.length} ${
-                          externalProjects.length === 1 ? 'project' : 'projects'
-                        }`}
-                  </div>
-                </div>
+          {/* Main OS Window Header */}
+          <div className="bg-base-300/50 px-6 py-3 border-b border-base-300 flex items-center justify-between rounded-t-2xl">
+            <div className="flex items-center gap-4">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/80 border border-red-600/20"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/80 border border-yellow-600/20"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/80 border border-green-600/20"></div>
+              </div>
+              <div className="text-xs font-mono text-base-content/40 flex items-center gap-2 overflow-hidden">
+                <FaFolder size={12} className="flex-shrink-0" />
+                <span className="tracking-wide truncate">~/projects</span>
               </div>
             </div>
+          </div>
 
+          <div className="card-body p-6 sm:p-8">
             <div className="columns-1 md:columns-2 gap-6">
               {loading ? renderSkeleton() : renderExternalProjects()}
             </div>

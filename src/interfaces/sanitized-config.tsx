@@ -19,13 +19,14 @@ export interface SanitizedGitHubProjects {
   };
 }
 
-
 export interface SanitizedExternalProject {
   title: string;
   description?: string;
   imageUrl?: string;
   techStack?: string[];
   highlights?: string[];
+  metrics?: string[];
+  decision?: string;
   demoUrl?: string;
   codeUrl?: string;
   featured?: boolean;
@@ -33,6 +34,7 @@ export interface SanitizedExternalProject {
 
 export interface SanitizedExternalProjects {
   header: string;
+  subheader?: string;
   projects: SanitizedExternalProject[];
 }
 
@@ -46,7 +48,6 @@ export interface SanitizedSEO {
   description?: string;
   imageURL?: string;
 }
-
 
 export interface SanitizedSocial {
   linkedin?: string;
@@ -71,8 +72,8 @@ export interface SanitizedSocial {
   phone?: string;
   email?: string;
   discord?: string;
+  strava?: string;
 }
-
 
 export interface SanitizedResume {
   fileUrl?: string;
@@ -152,6 +153,14 @@ export interface SanitizedSkillCategory {
   badges: Array<string>;
 }
 
+export interface SanitizedSystemStatus {
+  display: boolean;
+  status: 'online' | 'offline' | 'maintenance';
+  uptime: string;
+  region: string;
+  log?: string[];
+}
+
 export interface SanitizedConfig {
   github: SanitizedGithub;
   projects: SanitizedProjects;
@@ -160,6 +169,7 @@ export interface SanitizedConfig {
   social: SanitizedSocial;
   resume: SanitizedResume;
   skills: Array<string> | Array<SanitizedSkillCategory>;
+  systemStatus: SanitizedSystemStatus;
   experiences: Array<SanitizedExperience>;
   educations: Array<SanitizedEducation>;
   certifications: Array<SanitizedCertification>;

@@ -17,6 +17,7 @@ import {
   FaStackOverflow,
   FaTelegram,
   FaYoutube,
+  FaStrava,
 } from 'react-icons/fa';
 import { FaSquareThreads } from 'react-icons/fa6';
 import { RiDiscordFill, RiMailFill, RiPhoneFill } from 'react-icons/ri';
@@ -253,19 +254,16 @@ const DetailsCard = ({
       link: `https://discord.com/app`,
     });
   }
+  if (social?.strava) {
+    iconLinks.push({
+      icon: <FaStrava />,
+      link: `https://www.strava.com/athletes/${social.strava}`,
+    });
+  }
 
   return (
-    <div
-      className="card bg-white border border-base-200 hover:border-primary/30 transition-all duration-200"
-      style={{
-        fontFamily: 'Montserrat, sans-serif',
-        boxShadow: '0 2px 8px rgba(44,62,80,0.03)',
-      }}
-    >
-      <div
-        className="card-body p-5"
-        style={{ fontFamily: 'Montserrat, sans-serif' }}
-      >
+    <div className="card bg-base-200 border border-base-300 hover:border-primary/30 transition-all duration-200">
+      <div className="card-body p-5">
         <div className="grid place-items-center py-8">
           {loading || !profile ? (
             <div className="avatar opacity-90">

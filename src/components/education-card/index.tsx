@@ -33,7 +33,7 @@ const ListItem = ({
     </h3>
     <div className="mb-2 font-normal text-sm flex items-center gap-2">
       {institutionLogo && (
-        <div className="w-10 h-10 rounded-lg bg-base-200 p-1.5 flex items-center justify-center group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-300">
+        <div className="w-10 h-10 rounded-lg bg-base-300 p-1.5 flex items-center justify-center group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-300">
           <img
             src={institutionLogo}
             alt={`${institution} logo`}
@@ -99,28 +99,22 @@ const EducationCard = ({
   };
 
   return (
-    <div className="card shadow-lg bg-base-100 border border-base-300 hover:border-primary/30 transition-all duration-300">
-      <div className="card-body">
-        <div className="flex items-center gap-3 mb-3">
-          {loading ? (
-            skeleton({
-              widthCls: 'w-8',
-              heightCls: 'h-8',
-              className: 'rounded-lg',
-            })
-          ) : (
-            <div className="flex items-center justify-center w-8 h-8 bg-primary/10 rounded-lg">
-              <FaGraduationCap className="text-lg text-primary" />
-            </div>
-          )}
-          <h5 className="card-title text-lg">
-            {loading ? (
-              skeleton({ widthCls: 'w-32', heightCls: 'h-6' })
-            ) : (
-              <span className="text-base-content">Education</span>
-            )}
-          </h5>
+    <div className="card shadow-lg bg-base-200 border border-base-300 hover:border-primary/30 transition-all duration-300">
+      {/* Window Header */}
+      <div className="bg-base-300/50 px-6 py-3 border-b border-base-300 flex items-center justify-between rounded-t-2xl">
+        <div className="flex items-center gap-4">
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500/80 border border-red-600/20"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80 border border-yellow-600/20"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500/80 border border-green-600/20"></div>
+          </div>
+          <div className="text-xs font-mono text-base-content/40 flex items-center gap-2">
+            <FaGraduationCap size={12} />
+            <span className="tracking-wide truncate">~/education</span>
+          </div>
         </div>
+      </div>
+      <div className="card-body">
         <div className="text-base-content">
           <ol className="relative border-l-2 border-base-300/50 my-2 mx-2">
             {loading ? (

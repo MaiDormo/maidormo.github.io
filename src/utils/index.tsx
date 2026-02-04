@@ -88,6 +88,13 @@ export const getSanitizedConfig = (
         fileUrl: config?.resume?.fileUrl || '',
       },
       skills: config?.skills || [],
+      systemStatus: {
+        display: config?.systemStatus?.display ?? true,
+        status: config?.systemStatus?.status || 'online',
+        uptime: config?.systemStatus?.uptime || '99.9%',
+        region: config?.systemStatus?.region || 'US-East',
+        log: config?.systemStatus?.log || [],
+      },
       experiences:
         config?.experiences?.filter(
           (experience) =>

@@ -9,9 +9,9 @@ import { CustomError } from '../../constants/errors';
 const ErrorPage: React.FC<CustomError> = (props) => {
   return (
     <div className="min-w-screen min-h-screen bg-base-200 flex items-center p-5 lg:p-20 overflow-hidden relative">
-      <div className="flex-1 min-h-full min-w-full rounded-3xl bg-base-100 shadow-xl p-10 lg:p-20 text-gray-800 relative md:flex items-center text-center md:text-left">
+      <div className="flex-1 min-h-full min-w-full rounded-3xl bg-base-100 shadow-xl p-10 lg:p-20 text-base-content relative md:flex items-center text-center md:text-left">
         <div className="w-full">
-          <div className="mb-10 md:mb-20 mt-10 md:mt-20 text-gray-600 font-light">
+          <div className="mb-10 md:mb-20 mt-10 md:mt-20 text-base-content/70 font-light">
             <h1 className="font-black uppercase text-3xl lg:text-5xl text-primary mb-10">
               {`${props.status}`}
             </h1>

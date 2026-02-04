@@ -73,13 +73,24 @@ interface ExternalProjects {
   header?: string;
 
   /**
+   * Subheader
+   */
+  subheader?: string;
+
+  /**
    * Project list
    */
   projects?: {
     title: string;
     description?: string;
     imageUrl?: string;
-    link: string;
+    techStack?: string[];
+    highlights?: string[];
+    metrics?: string[];
+    decision?: string;
+    demoUrl?: string;
+    codeUrl?: string;
+    featured?: boolean;
   }[];
 }
 
@@ -206,6 +217,11 @@ interface Social {
    * Discord username
    */
   discord?: string;
+
+  /**
+   * Strava
+   */
+  strava?: string;
 }
 
 interface Resume {
@@ -345,7 +361,18 @@ interface Config {
   /**
    * Skill list
    */
-  skills?: Array<string>;
+  skills?: Array<string> | Array<{ category: string; badges: Array<string> }>;
+
+  /**
+   * System Status
+   */
+  systemStatus?: {
+    display: boolean;
+    status: 'online' | 'offline' | 'maintenance';
+    uptime: string;
+    region: string;
+    log?: string[];
+  };
 
   /**
    * Experience list
