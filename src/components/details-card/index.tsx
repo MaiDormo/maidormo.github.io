@@ -1,3 +1,4 @@
+import { useState } from 'react';
 // ...existing code...
 import {
   AiFillGithub,
@@ -116,6 +117,16 @@ const DetailsCard = ({
   resumeFileUrl,
   customBio,
 }: Props) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+
   const renderSkeleton = (): React.ReactNode[] => {
     const array = [];
     for (let index = 0; index < 4; index++) {
@@ -276,22 +287,56 @@ const DetailsCard = ({
               </div>
             </div>
           ) : (
-            <div className="avatar opacity-90 group">
+            <div
+              className="w-32 h-32 mx-auto mb-8"
+              style={{ perspective: '1000px' }}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               <div
-                className={`mb-8 rounded-full w-32 h-32 transition-all duration-300 ${
-                  (typeof avatarRing !== 'undefined' ? avatarRing : true)
-                    ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2 group-hover:ring-4 group-hover:ring-offset-3'
-                    : 'group-hover:scale-105'
-                }`}
+                className="relative w-full h-full transition-transform duration-700"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transform: isHovered ? 'rotateX(180deg)' : 'rotateX(0deg)',
+                }}
               >
-                <img
-                  src={profile.avatar}
-                  alt={profile.name}
-                  className="w-full h-full rounded-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src = '/fallback.png';
+                {/* Front Face */}
+                <div
+                  className={`absolute inset-0 rounded-full overflow-hidden ${
+                    (typeof avatarRing !== 'undefined' ? avatarRing : true)
+                      ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2'
+                      : ''
+                  }`}
+                  style={{ backfaceVisibility: 'hidden' }}
+                >
+                  <img
+                    src={profile.avatar}
+                    alt={profile.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = '/fallback.png';
+                    }}
+                  />
+                </div>
+
+                {/* Back Face */}
+                <div
+                  className={`absolute inset-0 rounded-full overflow-hidden ${
+                    (typeof avatarRing !== 'undefined' ? avatarRing : true)
+                      ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2'
+                      : ''
+                  }`}
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    transform: 'rotateX(180deg)',
                   }}
-                />
+                >
+                  <img
+                    src="/other_profile_image.jpg"
+                    alt={profile.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           )}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FALLBACK_IMAGE } from '../../constants';
 import { Profile } from '../../interfaces/profile';
 import { skeleton } from '../../utils/helpers';
@@ -27,6 +28,8 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
   resumeFileUrl,
   customBio,
 }): React.JSX.Element => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className="card shadow-lg bg-base-100 border border-base-300 hover:border-primary/30 transition-all duration-300">
       <div className="grid place-items-center py-8">
@@ -41,25 +44,58 @@ const AvatarCard: React.FC<AvatarCardProps> = ({
             </div>
           </div>
         ) : (
-          <div className="avatar opacity-90 group">
+          <div
+            className="w-32 h-32 mx-auto mb-8"
+            style={{ perspective: '1000px' }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             <div
-              className={`mb-8 rounded-full w-32 h-32 transition-all duration-300 ${
-                avatarRing
-                  ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2 group-hover:ring-4 group-hover:ring-offset-3'
-                  : 'group-hover:scale-105'
-              }`}
+              className="relative w-full h-full transition-transform duration-700"
+              style={{
+                transformStyle: 'preserve-3d',
+                transform: isHovered ? 'rotateX(180deg)' : 'rotateX(0deg)',
+              }}
             >
-              {
+              {/* Front Face */}
+              <div
+                className={`absolute inset-0 rounded-full overflow-hidden ${
+                  avatarRing
+                    ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2'
+                    : ''
+                }`}
+                style={{ backfaceVisibility: 'hidden' }}
+              >
                 <LazyImage
                   src={profile.avatar ? profile.avatar : FALLBACK_IMAGE}
                   alt={profile.name}
+                  rest={{ className: 'w-full h-full object-cover' }}
                   placeholder={skeleton({
                     widthCls: 'w-full',
                     heightCls: 'h-full',
                     shape: '',
                   })}
                 />
-              }
+              </div>
+
+              {/* Back Face */}
+              <div
+                className={`absolute inset-0 rounded-full overflow-hidden ${
+                  avatarRing
+                    ? 'ring-3 ring-primary ring-offset-base-100 ring-offset-2'
+                    : ''
+                }`}
+                style={{
+                  backfaceVisibility: 'hidden',
+                  transform: 'rotateX(180deg)',
+                }}
+              >
+                <img
+                  src="/other_profile_image.jpg"
+                  alt={profile.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         )}
