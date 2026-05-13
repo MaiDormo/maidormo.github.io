@@ -9,6 +9,7 @@ const App = () => {
         
         {/* Hero Section */}
         <header className="mb-20 animate-fade-in-up">
+          <span className="font-mono text-zinc-500 text-sm mb-3 block">elia@local:~$ ./whoami</span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight">
             Elia Gatti
           </h1>
@@ -32,7 +33,7 @@ const App = () => {
               href={`https://linkedin.com/in/${CONFIG.social.linkedin}`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2 border border-zinc-700 text-white font-semibold rounded-md hover:border-zinc-500 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-[#0A66C2] text-white font-semibold rounded-md hover:bg-[#004182] transition-colors"
             >
               <FaLinkedin size={18} /> LinkedIn
             </a>
@@ -41,7 +42,7 @@ const App = () => {
                 href={`https://www.strava.com/athletes/${CONFIG.social.strava}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 px-4 py-2 border border-[#fc4c02] text-[#fc4c02] font-semibold rounded-md hover:bg-[#fc4c02] hover:text-white transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-[#fc4c02] border border-[#fc4c02] text-white font-semibold rounded-md hover:bg-[#e34402] hover:border-[#e34402] transition-colors"
               >
                 <FaStrava size={18} /> Strava
               </a>
@@ -115,12 +116,15 @@ const App = () => {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.techStack.map((tech: string) => (
-                      <span key={tech} className="px-2 py-1 bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-mono rounded">
-                        {tech}
+                  <div className="mt-auto font-mono text-xs text-zinc-500">
+                    <span className="text-zinc-400">[</span>
+                    {project.techStack.map((tech: string, i: number) => (
+                      <span key={tech}>
+                        <span className="text-zinc-300">"{tech}"</span>
+                        {i < project.techStack.length - 1 && <span className="text-zinc-600 mr-2">,</span>}
                       </span>
                     ))}
+                    <span className="text-zinc-400">]</span>
                   </div>
                 </div>
               </div>
@@ -182,13 +186,22 @@ const App = () => {
         </section>
 
         {/* Footer */}
-        <footer className="pt-8 border-t border-zinc-800 text-sm text-zinc-600 flex justify-between items-center">
+        <footer className="pt-8 border-t border-zinc-800 text-xs text-zinc-600 flex flex-col md:flex-row justify-between items-center gap-4">
           <p>© {new Date().getFullYear()} Elia Gatti. All rights reserved.</p>
           <div className="flex gap-4">
             {CONFIG.systemStatus.display && (
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                <span className="font-mono text-xs">System Online</span>
+              <div className="flex items-center gap-3 font-mono">
+                <span className="hidden md:inline text-zinc-500">
+                  [REGION: {CONFIG.systemStatus.region}]
+                </span>
+                <span className="hidden md:inline text-zinc-500">
+                  [UPTIME: {CONFIG.systemStatus.uptime}]
+                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-zinc-400">[STATUS: NOMINAL]</span>
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                </div>
+                <span className="animate-pulse text-zinc-400 ml-1">█</span>
               </div>
             )}
           </div>
