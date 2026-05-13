@@ -24,9 +24,9 @@ const App = () => {
               href={`https://github.com/${CONFIG.social.github}`}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 px-4 py-2 bg-white text-black font-semibold rounded-md hover:bg-zinc-200 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-white !text-black font-semibold rounded-md hover:bg-zinc-200 transition-colors"
             >
-              <FaGithub /> GitHub
+              <FaGithub size={18} /> GitHub
             </a>
             <a 
               href={`https://linkedin.com/in/${CONFIG.social.linkedin}`}
@@ -34,7 +34,7 @@ const App = () => {
               rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2 border border-zinc-700 text-white font-semibold rounded-md hover:border-zinc-500 transition-colors"
             >
-              <FaLinkedin /> LinkedIn
+              <FaLinkedin size={18} /> LinkedIn
             </a>
             <a 
               href={CONFIG.resume.fileUrl}
@@ -42,13 +42,13 @@ const App = () => {
               rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2 border border-zinc-700 text-white font-semibold rounded-md hover:border-zinc-500 transition-colors"
             >
-              <FaFilePdf /> CV / Resume
+              <FaFilePdf size={18} /> CV / Resume
             </a>
             <a 
               href={`mailto:${CONFIG.social.email}`}
               className="flex items-center gap-2 px-4 py-2 border border-zinc-700 text-white font-semibold rounded-md hover:border-zinc-500 transition-colors"
             >
-              <FaEnvelope /> Email
+              <FaEnvelope size={18} /> Email
             </a>
           </div>
         </header>
