@@ -1,347 +1,60 @@
 @import 'tailwindcss';
-@plugin "daisyui" {
-  themes: 'light', 'dark', 'procyon';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --color-base-100: #000000;
+  --color-base-content: #a1a1aa;
+  --color-primary: #ffffff;
 }
 
-@plugin "daisyui/theme" {
-  name: 'procyon';
-  color-scheme: dark;
-
-  /* ELEGANT DARK MONOCHROME PALETTE 
-     -------------------------------
-     Base: True Black to Deep Carbon
-     Content: Neutral Gray
-     Primary: Pure White (High Contrast)
-  */
-
-  --color-base-100: #020202; /* True Black */
-  --color-base-200: #0a0a0a; /* Almost Black (Cards) */
-  --color-base-300: #1c1c1c; /* Dark Carbon (Borders) */
-  --color-base-content: #d4d4d4; /* Neutral Gray Text */
-
-  --color-primary: #ededed; /* Off-White */
-  --color-primary-content: #000000;
-
-  --color-secondary: #737373; /* Darker Gray */
-  --color-secondary-content: #000000;
-
-  --color-accent: #262626; /* Deep Carbon */
-  --color-accent-content: #ffffff;
-
-  --color-neutral: #171717; /* Neutral */
-  --color-neutral-content: #ffffff;
-
-  /* SEMANTIC COLORS */
-  --color-info: #737373;
-  --color-info-content: #000000;
-
-  --color-success: #ffffff;
-  --color-success-content: #000000;
-
-  --color-warning: #525252;
-  --color-warning-content: #ffffff;
-
-  --color-error: #262626;
-  --color-error-content: #ffffff;
-
-  /* border radius */
-  --radius-selector: 3rem;
-  --radius-field: 3rem;
-  --radius-box: 3rem;
-
-  /* base sizes */
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-
-  /* border size */
-  --border: 1px;
-
-  /* effects */
-  --depth: 0;
-  --noise: 0;
-}
-
-:root {
-  --accent-signal: #e3ff6a;
-  --accent-cold: #7fd3ff;
-  --grid-line: rgba(255, 255, 255, 0.05);
-}
-
-* {
-  scrollbar-width: thin;
-}
-
-/* Elegant Dark Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #09090b;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #3f3f46;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background-color: #52525b;
-}
-
-/* GLOBAL TYPOGRAPHY & RESET 
-*/
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #020202;
-  color: #d4d4d4;
-  background-image:
-    linear-gradient(to right, #0f0f0f 1px, transparent 1px),
-    linear-gradient(to bottom, #0f0f0f 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-position: center top;
+  font-family: var(--font-sans);
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
 
-a {
-  color: #d4d4d4;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: all 0.2s ease;
-  font-weight: 500;
-}
-a:hover,
-a:focus {
-  color: #ffffff;
-  border-bottom: 1px solid #ffffff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-}
-
-hr {
-  border: none;
-  border-top: 1px solid #27272a;
-  margin: 2rem 0;
-}
-
-/* ELEGANT DARK CARD STYLE 
-   Deep gray with subtle lighter border
-*/
-
-.card:hover,
-.card:focus-within {
-  border-color: #3f3f46; /* Zinc 700 */
-  background: #0a0a0a; /* Zinc 950 */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  transform: translateY(-2px);
-}
-
-.card-title {
-  color: #ededed;
-  letter-spacing: -0.01em;
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-primary);
   font-weight: 600;
-}
-
-/* BUTTON STYLE 
-   High Contrast: White Button on Dark Background
-*/
-button,
-.btn {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background: #ededed; /* Off White */
-  color: #000000; /* Deep Black Text */
-  border: 1px solid #ededed;
-  border-radius: 0.5rem; /* Sharper corners */
-  padding: 0.5rem 1.25rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
-}
-
-.btn-accent {
-  background: var(--accent-signal);
-  border-color: var(--accent-signal);
-  color: #050505;
-}
-
-.btn-accent:hover,
-.btn-accent:focus {
-  background: #050505;
-  color: var(--accent-signal);
-  border-color: var(--accent-signal);
-}
-
-button:hover,
-.btn:hover,
-button:focus,
-.btn:focus {
-  background: #000000;
-  color: #ededed; /* Invert to White text */
-  border-color: #ededed;
-  outline: none;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-/* Secondary Button Style (Ghost) */
-.btn-secondary {
-  background: transparent;
-  color: #d4d4d4;
-  border: 1px solid #262626;
-}
-.btn-secondary:hover {
-  background: #0a0a0a;
-  border-color: #ededed;
-  color: #ededed;
-}
-
-/* INPUTS 
-*/
-input,
-textarea,
-select {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  border-radius: 0.5rem;
-  border: 1px solid #1c1c1c;
-  padding: 0.5rem 1rem;
-  background: #0a0a0a; /* Zinc 900 */
-  color: #ededed;
-  transition:
-    border-color 0.2s,
-    box-shadow 0.2s,
-    background 0.2s;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: #ededed;
-  background: #0a0a0a; /* Zinc 800 */
-  outline: none;
-  box-shadow: 0 0 0 1px #404040;
-}
-
-input::placeholder {
-  color: #525252;
-}
-
-/* BADGES & HIGHLIGHTS 
-*/
-.badge,
-.highlight,
-.accent {
-  background: #0a0a0a;
-  color: #d4d4d4;
-  border: 1px solid #262626;
-  border-radius: 0.35rem; /* Sharper */
-  padding: 0.2em 0.7em;
-  font-size: 0.8em;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-
-.badge-accent {
-  background: rgba(255, 255, 255, 0.05);
-  color: #ededed;
-  border: 1px solid #404040;
-}
-
-.metric-dot {
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 9999px;
-  background: #ffffff;
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
-}
-
-.section-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.7rem;
-  color: #525252;
-  font-weight: 600;
-}
-
-/* UTILITIES 
-*/
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #ededed;
   letter-spacing: -0.02em;
 }
 
-code {
-  font-family: 'JetBrains Mono', monospace;
-  background: #0a0a0a;
-  padding: 0.2rem 0.4rem;
-  border: 1px solid #262626;
-  border-radius: 0.25rem;
-  color: #d4d4d4;
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-svg {
-  vertical-align: unset;
-  fill: currentColor;
+a:hover {
+  opacity: 0.7;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: #333;
+  color: #fff;
 }
 
 /* Animations */
-.fade-in {
-  opacity: 1;
-  animation-name: fadeIn;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-in;
-  animation-duration: 0.6s;
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
-@keyframes fadeIn {
-  0% {
+@keyframes fadeInUp {
+  from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(15px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* 3D Flip Animation Classes */
-.flip-container {
-  perspective: 1000px;
-}
-.flipper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Nice springy effect */
-}
-.flip-container:hover .flipper {
-  transform: rotateX(180deg);
-}
-.flip-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 9999px;
-  overflow: hidden;
-}
-.flip-back {
-  transform: rotateX(180deg);
 }
