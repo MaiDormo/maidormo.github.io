@@ -77,13 +77,13 @@ const CONFIG = {
         {
           title: 'MovieMatch Microservices',
           description:
-            'Scalable web app for movie recommendations. 15-service architecture (FastAPI) with AI-generated quizzes and Docker deployment.',
+            'Microservice architecture for movie recommendations. Features an API Gateway pattern routing to specialized services (Core TMDB adapter, Recommendation engine, Enrichment).',
           imageUrl: './service_architecture.png',
-          techStack: ['FastAPI', 'Docker', 'Postgres'],
-          highlights: ['Service isolation', 'Async ingestion pipeline'],
-          metrics: ['15 services', 'Containerized'],
+          techStack: ['Python', 'FastAPI', 'PostgreSQL', 'Docker'],
+          highlights: ['API Gateway Pattern', 'Service Isolation'],
+          metrics: ['4 Backend Services', 'External API Integration'],
           decision:
-            'Split quiz, recs, and auth into independent services to scale independently.',
+            'Separated the stateless TMDB adapter (Core) from the stateful logic (Recommendations) to decouple data storage and isolate external rate limits.',
           codeUrl: 'https://github.com/MaiDormo/movie-match',
           //demoUrl: 'https://moviematch.io',
         },
