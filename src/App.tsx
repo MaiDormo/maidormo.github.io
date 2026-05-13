@@ -1,6 +1,6 @@
 // @ts-ignore
 import CONFIG from '../gitprofile.config';
-import { FaGithub, FaLinkedin, FaFilePdf, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaStrava, FaFilePdf, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
 
 const App = () => {
   return (
@@ -36,6 +36,16 @@ const App = () => {
             >
               <FaLinkedin size={18} /> LinkedIn
             </a>
+            {CONFIG.social.strava && (
+              <a 
+                href={`https://www.strava.com/athletes/${CONFIG.social.strava}`}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 px-4 py-2 border border-zinc-700 text-white font-semibold rounded-md hover:border-zinc-500 hover:text-[#fc4c02] transition-colors"
+              >
+                <FaStrava size={18} /> Strava
+              </a>
+            )}
             <a 
               href={CONFIG.resume.fileUrl}
               target="_blank"
