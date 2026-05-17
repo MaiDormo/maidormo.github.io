@@ -3,7 +3,7 @@
 @theme {
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
+
   --color-base-100: #000000;
   --color-base-content: #a1a1aa;
   --color-primary: #ffffff;
@@ -18,7 +18,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--color-primary);
   font-weight: 600;
   letter-spacing: -0.02em;
