@@ -1,12 +1,12 @@
 import CONFIG from '../gitprofile.config';
 import {
-  FaGithub,
-  FaLinkedin,
-  FaStrava,
-  FaFilePdf,
-  FaEnvelope,
-  FaExternalLinkAlt,
-} from 'react-icons/fa';
+  GithubIcon,
+  LinkedinIcon,
+  StravaIcon,
+  FilePdfIcon,
+  EnvelopeIcon,
+  ExternalLinkIcon,
+} from './icon';
 
 interface Project {
   title: string;
@@ -74,7 +74,7 @@ const App = () => {
               rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2 bg-white !text-black font-semibold rounded-md hover:bg-zinc-200 transition-colors"
             >
-              <FaGithub size={18} /> GitHub
+              <GithubIcon size={18} /> GitHub
             </a>
             <a
               href={`https://linkedin.com/in/${social.linkedin}`}
@@ -82,7 +82,7 @@ const App = () => {
               rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2 bg-[#0A66C2] text-white font-semibold rounded-md hover:bg-[#004182] transition-colors"
             >
-              <FaLinkedin size={18} /> LinkedIn
+              <LinkedinIcon size={18} /> LinkedIn
             </a>
             {social.strava && (
               <a
@@ -91,7 +91,7 @@ const App = () => {
                 rel="noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-[#fc4c02] border border-[#fc4c02] text-white font-semibold rounded-md hover:bg-[#e34402] hover:border-[#e34402] transition-colors"
               >
-                <FaStrava size={18} /> Strava
+                <StravaIcon size={18} /> Strava
               </a>
             )}
             <a
@@ -100,13 +100,13 @@ const App = () => {
               rel="noreferrer"
               className="flex items-center gap-2 px-4 py-2 border border-zinc-700 text-white font-semibold rounded-md hover:border-zinc-500 transition-colors"
             >
-              <FaFilePdf size={18} /> CV / Resume
+              <FilePdfIcon size={18} /> CV / Resume
             </a>
             <a
               href={`mailto:${social.email}`}
               className="flex items-center gap-2 px-4 py-2 border border-zinc-700 text-white font-semibold rounded-md hover:border-zinc-500 transition-colors"
             >
-              <FaEnvelope size={18} /> Email
+              <EnvelopeIcon size={18} /> Email
             </a>
           </div>
         </header>
@@ -125,6 +125,10 @@ const App = () => {
                     <img
                       src={project.imageUrl}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
+                      width={800}
+                      height={450}
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                     />
                   </div>
@@ -146,7 +150,7 @@ const App = () => {
                           className="hover:text-white transition-colors"
                           title="Live Demo"
                         >
-                          <FaExternalLinkAlt size={18} />
+                          <ExternalLinkIcon size={18} />
                         </a>
                       )}
                       {project.codeUrl && (
@@ -157,7 +161,7 @@ const App = () => {
                           className="hover:text-white transition-colors"
                           title="Source Code"
                         >
-                          <FaGithub size={20} />
+                          <GithubIcon size={20} />
                         </a>
                       )}
                     </div>
