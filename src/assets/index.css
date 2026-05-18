@@ -7,6 +7,26 @@
   --color-base-100: #000000;
   --color-base-content: #a1a1aa;
   --color-primary: #ffffff;
+  
+  --color-accent-hack: #10b981; /* emerald-500 */
+  
+  --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-blink: blink 1s step-end infinite;
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
 }
 
 body {
@@ -16,14 +36,22 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Subtle grid overlay for hacker feel */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+h1, h2, h3, h4, h5, h6 {
   color: var(--color-primary);
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -32,34 +60,26 @@ h6 {
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-a:hover {
-  opacity: 0.7;
-}
-
-.mono {
-  font-family: var(--font-mono);
+  transition: all 0.2s ease;
 }
 
 ::selection {
-  background: #333;
-  color: #fff;
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
 }
 
-/* Animations */
-.animate-fade-in-up {
-  animation: fadeInUp 0.8s ease-out forwards;
+.hack-panel {
+  background: #050505;
+  border: 1px solid #1a1a1a;
+  transition: all 0.2s ease;
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hack-panel:hover {
+  border-color: #333;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hack-badge {
+  background: #0a0a0a;
+  border: 1px solid #27272a;
 }
