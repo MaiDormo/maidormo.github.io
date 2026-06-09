@@ -83,17 +83,6 @@ const CONFIG = {
           codeUrl: 'https://github.com/MaiDormo/thesis',
         },
         {
-          title: 'DWT-SVD Digital Watermarking Tool',
-          description:
-            'Winner of university CTM challenge. Implemented a robust watermarking algorithm embedding singular values in high-entropy DWT blocks.',
-          imageUrl: './embedding_bg.png',
-          techStack: ['Python', 'Signal Processing'],
-          highlights: ['Robust to compression', 'High-entropy block selection'],
-          metrics: ['Contest winner', 'High PSNR'],
-          decision: 'Embedded in high-entropy bands to maximize invisibility.',
-          codeUrl: 'https://github.com/MaiDormo/DWT-SVD-watermarking',
-        },
-        {
           title: 'CROSSTRACK ITALIA',
           description:
             'Cross-platform Flutter app for motocross track discovery and management. Features map visualization (OpenStreetMaps), user authentication, and track management.',
@@ -163,6 +152,50 @@ const CONFIG = {
     },
   ],
   certifications: [],
+  hackathons: [
+    {
+      event: 'CTM Challenge',
+      organizer: 'University of Trento',
+      date: '2025',
+      location: 'Trento, Italy 🇮🇹',
+      team: [],
+      title: 'DWT-SVD Digital Watermarking Tool',
+      description:
+        'Winner of the university CTM challenge. Implemented a robust watermarking algorithm that embeds singular values in high-entropy DWT blocks — surviving compression while remaining invisible to the naked eye.',
+      techStack: ['Python', 'Signal Processing'],
+      highlights: [
+        'Robust to compression attacks',
+        'High-entropy block selection for invisibility',
+        'First place in university competition',
+      ],
+      decision:
+        'Embedded in high-entropy DWT bands to maximize invisibility while maintaining robustness.',
+      codeUrl: 'https://github.com/MaiDormo/DWT-SVD-watermarking',
+    },
+    {
+      event: 'EuroTech-Hong Kong Hackathon',
+      organizer: 'EuroTech Federation',
+      date: 'June 2026',
+      location: 'Munich, Germany 🇩🇪',
+      team: [
+        'Tanmay Narang',
+        'Sun Eléonore Hyeyoung',
+        'Mar Minguez',
+        'Elia Gatti',
+      ],
+      title: 'Guardian',
+      description:
+        'Privacy-first, on-device AI for families navigating cross-border elderly care. With 1.68 million Hongkongers over 65 retiring across the border to Shenzhen or Guangzhou while their children stay in HK for work, existing monitoring fails — cameras parents refuse, wearables they won\'t wear, and cloud infrastructure that breaks under cross-border data laws.',
+      techStack: ['mmWave Radar', 'Gemma 4 (On-Device LLM)', 'Agentic AI'],
+      highlights: [
+        'No cameras, no wearables, nothing to charge or configure',
+        'On-device LLM bypasses cross-border cloud restrictions',
+        'Behavioral drift tracking + immediate crisis alerts',
+      ],
+      decision:
+        'Ceiling-mounted mmWave radar + on-device Gemma 4 LLM for zero-config, zero-leakage eldercare that works across any border.',
+    },
+  ],
   systemStatus: {
     display: true,
     status: 'online',
