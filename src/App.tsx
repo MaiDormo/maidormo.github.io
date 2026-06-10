@@ -128,7 +128,29 @@ const App = () => {
           </div>
         </header>
 
+        <nav className="sticky top-0 z-50 mb-12 py-3 border-b border-zinc-800 bg-black/60 backdrop-blur-md font-mono text-sm flex flex-wrap gap-6">
+          <a
+            href="#projects"
+            className="text-zinc-500 hover:text-emerald-400 transition-colors"
+          >
+            <span className="text-emerald-500">~/</span> projects
+          </a>
+          <a
+            href="#hackathons"
+            className="text-zinc-500 hover:text-emerald-400 transition-colors"
+          >
+            <span className="text-emerald-500">~/</span> hackathons
+          </a>
+          <a
+            href="#background"
+            className="text-zinc-500 hover:text-emerald-400 transition-colors"
+          >
+            <span className="text-emerald-500">~/</span> background
+          </a>
+        </nav>
+
         <section
+          id="projects"
           className="mb-32 animate-fade-in-up"
           style={{ animationDelay: '0.1s' }}
         >
@@ -221,6 +243,7 @@ const App = () => {
 
         {(hackathons ?? []).length > 0 && (
           <section
+            id="hackathons"
             className="mb-32 animate-fade-in-up"
             style={{ animationDelay: '0.15s' }}
           >
@@ -310,6 +333,7 @@ const App = () => {
         )}
 
         <section
+          id="background"
           className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-32 animate-fade-in-up"
           style={{ animationDelay: '0.2s' }}
         >
