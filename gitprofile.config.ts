@@ -82,20 +82,7 @@ const CONFIG = {
             'Used Mininet to isolate transport behavior before cloud tests.',
           codeUrl: 'https://github.com/MaiDormo/thesis',
         },
-        {
-          title: 'CROSSTRACK ITALIA',
-          description:
-            'Cross-platform Flutter app for motocross track discovery and management. Features map visualization (OpenStreetMaps), user authentication, and track management.',
-          techStack: ['Flutter', 'Firebase', 'OpenStreetMap'],
-          highlights: [
-            'Offline-friendly map caching',
-            'Role-based track management',
-          ],
-          metrics: ['Mobile + web', 'Map-first UX'],
-          decision: 'Optimized for offline discovery with lightweight sync.',
-          codeUrl: 'https://github.com/MaiDormo/crosstrack_italia',
-          demoUrl: 'https://maidormo.github.io/crosstrack_italia/',
-        },
+
       ],
     },
   },
