@@ -20,8 +20,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <meta property="title" content="<%- metaTitle %>" />
+    <meta name="title" content="<%- metaTitle %>" />
     <meta name="description" content="<%- metaDescription %>" />
+    <link rel="canonical" href="https://maidormo.github.io/" />
 
     <meta itemprop="name" content="<%- metaTitle %>" />
     <meta itemprop="description" content="<%- metaDescription %>" />
@@ -37,6 +38,19 @@
     <meta name="twitter:description" content="<%- metaDescription %>" />
     <meta name="twitter:image" content="<%- metaImageURL %>" />
     <%- googleAnalyticsScript %>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Elia Gatti",
+        "jobTitle": "Software Engineer",
+        "url": "https://maidormo.github.io",
+        "sameAs": [
+          "https://github.com/MaiDormo",
+          "https://linkedin.com/in/elia-gatti"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

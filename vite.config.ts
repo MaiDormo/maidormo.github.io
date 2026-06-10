@@ -37,9 +37,10 @@ export default defineConfig({
             },
             includeAssets: ['logo.png'],
             manifest: {
-              name: 'Portfolio',
-              short_name: 'Portfolio',
-              description: 'Personal Portfolio',
+              name: 'Elia Gatti — Software Engineer',
+              short_name: 'Elia Gatti',
+              description:
+                'Software engineer specializing in backend development, distributed systems, and HPC.',
               icons: [
                 {
                   src: 'logo.png',

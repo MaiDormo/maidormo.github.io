@@ -19,9 +19,9 @@ export const Hackathons = ({ hackathons }: HackathonsProps) => {
       </h2>
 
       <div className="flex flex-col gap-10">
-        {hackathons.map((hack, idx) => (
+        {hackathons.map((hack) => (
           <div
-            key={idx}
+            key={hack.title}
             className="hack-panel p-6 md:p-8 rounded-none md:rounded-lg relative overflow-hidden"
           >
             <div className="flex flex-col gap-2 mb-6 pb-4 border-b border-zinc-800/60">

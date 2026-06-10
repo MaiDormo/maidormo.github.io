@@ -30,11 +30,6 @@ const CONFIG = {
     status: 'online',
     uptime: '99.99%',
     region: 'EU-West (Trento)',
-    log: [
-      'System initialized...',
-      'All services operational.',
-      'Ready for distributed challenges.',
-    ],
   },
 
   projects: [

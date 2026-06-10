@@ -18,8 +18,8 @@ export const Background = ({ experiences, educations }: BackgroundProps) => {
           <div className="h-px bg-zinc-800 flex-1 border-b border-dashed border-zinc-700"></div>
         </h2>
         <div className="flex flex-col gap-10 border-l border-zinc-800 pl-6 ml-2">
-          {experiences.map((exp, idx) => (
-            <div key={idx} className="relative group">
+          {experiences.map((exp) => (
+            <div key={exp.company} className="relative group">
               <span className="absolute -left-[29px] top-1.5 w-2 h-2 bg-zinc-800 group-hover:bg-emerald-500 transition-colors"></span>
               <div className="flex flex-col mb-2 gap-1">
                 <h3 className="text-white font-bold text-lg">{exp.position}</h3>
@@ -49,8 +49,8 @@ export const Background = ({ experiences, educations }: BackgroundProps) => {
           <div className="h-px bg-zinc-800 flex-1 border-b border-dashed border-zinc-700"></div>
         </h2>
         <div className="flex flex-col gap-10 border-l border-zinc-800 pl-6 ml-2">
-          {educations.map((edu, idx) => (
-            <div key={idx} className="relative group">
+          {educations.map((edu) => (
+            <div key={edu.degree} className="relative group">
               <span className="absolute -left-[29px] top-1.5 w-2 h-2 bg-zinc-800 group-hover:bg-emerald-500 transition-colors"></span>
               <div className="flex flex-col mb-2 gap-1">
                 <h3 className="text-white font-bold text-lg">{edu.degree}</h3>

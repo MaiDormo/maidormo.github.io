@@ -20,9 +20,9 @@ export const Projects = ({ projects }: ProjectsProps) => {
       </h2>
 
       <div className="flex flex-col gap-10">
-        {projects.map((project, idx) => (
+        {projects.map((project) => (
           <div
-            key={idx}
+            key={project.title}
             className="group flex flex-col md:flex-row items-center gap-8 hack-panel p-6 md:p-8 rounded-none md:rounded-lg relative overflow-hidden"
           >
             {project.imageUrl && (

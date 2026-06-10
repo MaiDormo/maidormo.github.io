@@ -57,7 +57,7 @@ export interface SystemStatus {
   status: string;
   uptime: string;
   region: string;
-  log: string[];
+  log?: string[];
 }
 
 export interface Resume {

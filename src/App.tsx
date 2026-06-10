@@ -1,4 +1,5 @@
 import CONFIG from '../gitprofile.config';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Header } from './components/sections/Header';
 import { Nav } from './components/sections/Nav';
 import { Projects } from './components/sections/Projects';
@@ -24,9 +25,15 @@ const App = () => {
         <Header customBio={customBio} social={social} resume={resume} />
         <Nav />
         <main>
-          <Projects projects={projects} />
-          <Hackathons hackathons={hackathons} />
-          <Background experiences={experiences} educations={educations} />
+          <ErrorBoundary>
+            <Projects projects={projects} />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <Hackathons hackathons={hackathons} />
+          </ErrorBoundary>
+          <ErrorBoundary>
+            <Background experiences={experiences} educations={educations} />
+          </ErrorBoundary>
         </main>
         <Footer systemStatus={systemStatus} />
       </div>
