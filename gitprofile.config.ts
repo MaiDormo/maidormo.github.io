@@ -1,90 +1,6 @@
 // gitprofile.config.ts
 
 const CONFIG = {
-  github: {
-    username: 'MaiDormo',
-  },
-  projects: {
-    github: {
-      display: false,
-      header: '',
-      mode: 'manual',
-      automatic: {
-        sortBy: '',
-        limit: 0,
-        exclude: {
-          forks: false,
-          projects: [],
-        },
-      },
-      manual: {
-        projects: [],
-      },
-    },
-    external: {
-      header: 'Projects',
-      subheader:
-        'Architecture-first projects with constraints, scale, and tradeoffs.',
-      projects: [
-        {
-          title: 'GPU Computing: Sparse Matrix-Vector',
-          description:
-            'Optimized SpMV kernels (C/CUDA) for parallel computing on AMD EPYC and NVIDIA A30. Hybrid Adaptive CUDA kernel for strategy switching.',
-          techStack: ['CUDA', 'C', 'OpenMP'],
-          highlights: ['Adaptive kernel selection', 'Vectorized memory access'],
-          metrics: ['NVIDIA A30', 'Hybrid kernels'],
-          decision: 'Switched kernels based on sparsity pattern at runtime.',
-          codeUrl: 'https://github.com/MaiDormo/GPU-Computing-2025-256137',
-        },
-        {
-          title: 'HPC: Parallel MST Implementation',
-          description:
-            'Hybrid parallel Minimum Spanning Tree algorithm using MPI and OpenMP. Analyzed scalability on clusters up to 32 nodes.',
-          techStack: ['MPI', 'OpenMP', 'C'],
-          highlights: ['Hybrid parallelism', 'Scalability profiling'],
-          metrics: ['32-node cluster', 'Hybrid MPI/OMP'],
-          decision:
-            'Hybrid parallelism reduced communication overhead for dense graphs.',
-          codeUrl: 'https://github.com/MaiDormo/parallel_mst',
-        },
-        {
-          title: 'P2P Key-Value Storage System',
-          description:
-            'Distributed storage system in Java 21/Akka. Features Sequential Consistency, high availability, and Quorum Consensus protocol.',
-          techStack: ['Java 21', 'Akka'],
-          highlights: ['Sequential consistency', 'Fault-tolerant quorum reads'],
-          metrics: ['P2P nodes', 'Quorum consensus'],
-          decision:
-            'Quorum reads/writes balance availability with consistency.',
-          codeUrl: 'https://github.com/MaiDormo/distributed-storage-system',
-        },
-        {
-          title: 'MovieMatch Microservices',
-          description:
-            'Microservice architecture for movie recommendations. Features an API Gateway pattern routing to specialized services (Core TMDB adapter, Recommendation engine, Enrichment).',
-          imageUrl: './service_architecture.png',
-          techStack: ['Python', 'FastAPI', 'PostgreSQL', 'Docker'],
-          highlights: ['API Gateway Pattern', 'Service Isolation'],
-          metrics: ['4 Backend Services', 'External API Integration'],
-          decision:
-            'Separated the stateless TMDB adapter (Core) from the stateful logic (Recommendations) to decouple data storage and isolate external rate limits.',
-          codeUrl: 'https://github.com/MaiDormo/movie-match',
-          //demoUrl: 'https://moviematch.io',
-        },
-        {
-          title: 'MPEG-DASH Performance Analysis',
-          description:
-            'Bachelor’s Thesis analyzing protocol performance under simulated (Mininet SDN) and real-world (AWS) conditions using custom Node.js clients.',
-          techStack: ['Node.js', 'Mininet', 'AWS'],
-          highlights: ['Reproducible testbed scripts', 'Client metrics export'],
-          metrics: ['SDN + cloud', 'Controlled latency'],
-          decision:
-            'Used Mininet to isolate transport behavior before cloud tests.',
-          codeUrl: 'https://github.com/MaiDormo/thesis',
-        },
-      ],
-    },
-  },
   base: '/',
   seo: {
     title: 'Elia Gatti — Software Engineer',
@@ -92,6 +8,9 @@ const CONFIG = {
       'Software engineer specializing in backend development, distributed systems, and HPC.',
     imageURL: '',
   },
+  googleAnalytics: { id: '' },
+  enablePWA: true,
+
   customBio:
     'Software Engineer, currently pursuing M.S. in Computer Science at University of Trento.',
   social: {
@@ -106,38 +25,75 @@ const CONFIG = {
     buttonText: 'View Resume',
     showInNavbar: true,
   },
-  skills: [
+  systemStatus: {
+    display: true,
+    status: 'online',
+    uptime: '99.99%',
+    region: 'EU-West (Trento)',
+    log: [
+      'System initialized...',
+      'All services operational.',
+      'Ready for distributed challenges.',
+    ],
+  },
+
+  projects: [
     {
-      category: 'Languages',
-      badges: ['Java', 'Python', 'C', 'CUDA', 'Dart', 'SQL', 'Shell Scripting'],
+      title: 'GPU Computing: Sparse Matrix-Vector',
+      description:
+        'Optimized SpMV kernels (C/CUDA) for parallel computing on AMD EPYC and NVIDIA A30. Hybrid Adaptive CUDA kernel for strategy switching.',
+      techStack: ['CUDA', 'C', 'OpenMP'],
+      highlights: ['Adaptive kernel selection', 'Vectorized memory access'],
+      metrics: ['NVIDIA A30', 'Hybrid kernels'],
+      decision: 'Switched kernels based on sparsity pattern at runtime.',
+      codeUrl: 'https://github.com/MaiDormo/GPU-Computing-2025-256137',
     },
     {
-      category: 'Frameworks',
-      badges: ['Spring Boot', 'FastAPI', 'Flutter', 'Akka', 'Riverpod'],
+      title: 'HPC: Parallel MST Implementation',
+      description:
+        'Hybrid parallel Minimum Spanning Tree algorithm using MPI and OpenMP. Analyzed scalability on clusters up to 32 nodes.',
+      techStack: ['MPI', 'OpenMP', 'C'],
+      highlights: ['Hybrid parallelism', 'Scalability profiling'],
+      metrics: ['32-node cluster', 'Hybrid MPI/OMP'],
+      decision:
+        'Hybrid parallelism reduced communication overhead for dense graphs.',
+      codeUrl: 'https://github.com/MaiDormo/parallel_mst',
     },
     {
-      category: 'Infrastructure',
-      badges: [
-        'Docker',
-        'Git',
-        'Linux',
-        'Firebase',
-        'Mininet',
-        'PBS Schedulers',
-        'Kubernetes',
-      ],
+      title: 'P2P Key-Value Storage System',
+      description:
+        'Distributed storage system in Java 21/Akka. Features Sequential Consistency, high availability, and Quorum Consensus protocol.',
+      techStack: ['Java 21', 'Akka'],
+      highlights: ['Sequential consistency', 'Fault-tolerant quorum reads'],
+      metrics: ['P2P nodes', 'Quorum consensus'],
+      decision: 'Quorum reads/writes balance availability with consistency.',
+      codeUrl: 'https://github.com/MaiDormo/distributed-storage-system',
     },
     {
-      category: 'Concepts',
-      badges: [
-        'Microservices',
-        'Distributed Systems',
-        'HPC (MPI, OpenMP)',
-        'GPU Computing',
-      ],
+      title: 'MovieMatch Microservices',
+      description:
+        'Microservice architecture for movie recommendations. Features an API Gateway pattern routing to specialized services (Core TMDB adapter, Recommendation engine, Enrichment).',
+      imageUrl: './service_architecture.png',
+      techStack: ['Python', 'FastAPI', 'PostgreSQL', 'Docker'],
+      highlights: ['API Gateway Pattern', 'Service Isolation'],
+      metrics: ['4 Backend Services', 'External API Integration'],
+      decision:
+        'Separated the stateless TMDB adapter (Core) from the stateful logic (Recommendations) to decouple data storage and isolate external rate limits.',
+      codeUrl: 'https://github.com/MaiDormo/movie-match',
+    },
+    {
+      title: 'MPEG-DASH Performance Analysis',
+      description:
+        'Bachelor’s Thesis analyzing protocol performance under simulated (Mininet SDN) and real-world (AWS) conditions using custom Node.js clients.',
+      techStack: ['Node.js', 'Mininet', 'AWS'],
+      highlights: ['Reproducible testbed scripts', 'Client metrics export'],
+      metrics: ['SDN + cloud', 'Controlled latency'],
+      decision:
+        'Used Mininet to isolate transport behavior before cloud tests.',
+      codeUrl: 'https://github.com/MaiDormo/thesis',
     },
   ],
-  certifications: [],
+
   hackathons: [
     {
       event: 'CTM Challenge',
@@ -182,17 +138,7 @@ const CONFIG = {
         'Ceiling-mounted mmWave radar + on-device Gemma 4 LLM for zero-config, zero-leakage eldercare that works across any border.',
     },
   ],
-  systemStatus: {
-    display: true,
-    status: 'online',
-    uptime: '99.99%',
-    region: 'EU-West (Trento)',
-    log: [
-      'System initialized...',
-      'All services operational.',
-      'Ready for distributed challenges.',
-    ],
-  },
+
   experiences: [
     {
       company: 'Dedagroup',
@@ -207,6 +153,7 @@ const CONFIG = {
       technologies: ['Java', 'Spring', 'HTMX', 'Linux'],
     },
   ],
+
   educations: [
     {
       institution: 'University of Trento',
@@ -228,23 +175,10 @@ const CONFIG = {
       institutionLink: 'https://www.unitn.it',
       institutionLogo:
         'https://cdn.brandfetch.io/id0vp94LKa/w/1024/h/1024/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1727381497834',
-      // score: '101/110',
       description:
         'Focused on Software Engineering, Algorithms, and System Programming.',
     },
   ],
-
-  hotjar: { id: '', snippetVersion: 6 },
-  googleAnalytics: { id: '' },
-  enablePWA: true,
-  footer: `Made with <a class="text-primary" href="https://github.com/arifszn/gitprofile" target="_blank" rel="noreferrer">GitProfile</a>`,
-  themeConfig: {
-    defaultTheme: 'procyon', // Forces your custom CSS theme
-    disableSwitch: true, // Prevents users from changing the look
-    respectPrefersColorScheme: false,
-    displayAvatarRing: true,
-    themes: ['procyon', 'light', 'dark'],
-  },
 };
 
 export default CONFIG;
