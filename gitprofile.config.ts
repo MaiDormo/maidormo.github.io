@@ -82,7 +82,6 @@ const CONFIG = {
             'Used Mininet to isolate transport behavior before cloud tests.',
           codeUrl: 'https://github.com/MaiDormo/thesis',
         },
-
       ],
     },
   },
@@ -172,7 +171,7 @@ const CONFIG = {
       ],
       title: 'Guardian',
       description:
-        'Privacy-first, on-device AI for families navigating cross-border elderly care. With 1.68 million Hongkongers over 65 retiring across the border to Shenzhen or Guangzhou while their children stay in HK for work, existing monitoring fails — cameras parents refuse, wearables they won\'t wear, and cloud infrastructure that breaks under cross-border data laws.',
+        "Privacy-first, on-device AI for families navigating cross-border elderly care. With 1.68 million Hongkongers over 65 retiring across the border to Shenzhen or Guangzhou while their children stay in HK for work, existing monitoring fails — cameras parents refuse, wearables they won't wear, and cloud infrastructure that breaks under cross-border data laws.",
       techStack: ['mmWave Radar', 'Gemma 4 (On-Device LLM)', 'Agentic AI'],
       highlights: [
         'No cameras, no wearables, nothing to charge or configure',

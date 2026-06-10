@@ -7,9 +7,9 @@
   --color-base-100: #000000;
   --color-base-content: #a1a1aa;
   --color-primary: #ffffff;
-  
+
   --color-accent-hack: #10b981; /* emerald-500 */
-  
+
   --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-blink: blink 1s step-end infinite;
 
@@ -25,7 +25,9 @@
   }
 
   @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+      opacity: 0;
+    }
   }
 }
 
@@ -41,17 +43,26 @@ body {
 
 /* Subtle grid overlay for hacker feel */
 body::before {
-  content: "";
+  content: '';
   position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 32px 32px;
   pointer-events: none;
   z-index: -1;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--color-primary);
   font-weight: 600;
   letter-spacing: -0.02em;

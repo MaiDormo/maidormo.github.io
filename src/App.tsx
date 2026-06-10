@@ -75,7 +75,9 @@ const App = () => {
             Elia Gatti
           </h1>
           <p className="text-xl md:text-2xl text-zinc-300 font-medium mb-8">
-            Software Engineer <span className="text-zinc-600 font-light mx-2">|</span> HPC & Distributed Systems
+            Software Engineer{' '}
+            <span className="text-zinc-600 font-light mx-2">|</span> HPC &
+            Distributed Systems
           </p>
           <p className="text-base md:text-lg mb-10 max-w-2xl leading-relaxed text-zinc-400">
             {customBio} Specializing in backend development, systems
@@ -126,7 +128,10 @@ const App = () => {
           </div>
         </header>
 
-        <section className="mb-32 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <section
+          className="mb-32 animate-fade-in-up"
+          style={{ animationDelay: '0.1s' }}
+        >
           <h2 className="text-2xl font-bold text-white mb-12 flex items-center gap-6 font-mono">
             <span className="text-emerald-500">~/</span> projects
             <div className="h-px bg-zinc-800 flex-1 border-b border-dashed border-zinc-700"></div>
@@ -134,7 +139,10 @@ const App = () => {
 
           <div className="flex flex-col gap-10">
             {externalProjects.map((project: Project, idx: number) => (
-              <div key={idx} className="group flex flex-col md:flex-row items-center gap-8 hack-panel p-6 md:p-8 rounded-none md:rounded-lg relative overflow-hidden">
+              <div
+                key={idx}
+                className="group flex flex-col md:flex-row items-center gap-8 hack-panel p-6 md:p-8 rounded-none md:rounded-lg relative overflow-hidden"
+              >
                 {project.imageUrl && (
                   <div className="w-full md:w-2/5 shrink-0 overflow-hidden border border-zinc-800 bg-zinc-900/40 z-10 flex items-center justify-center p-1">
                     <img
@@ -147,7 +155,9 @@ const App = () => {
                   </div>
                 )}
 
-                <div className={`flex flex-col justify-center z-10 ${project.imageUrl ? 'md:w-3/5' : 'w-full'}`}>
+                <div
+                  className={`flex flex-col justify-center z-10 ${project.imageUrl ? 'md:w-3/5' : 'w-full'}`}
+                >
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">
                       {project.title}
@@ -195,7 +205,10 @@ const App = () => {
 
                   <div className="mt-auto flex flex-wrap gap-2 pt-2 font-mono text-xs">
                     {project.techStack.map((tech: string) => (
-                      <span key={tech} className="px-2 py-1 text-zinc-400 border border-zinc-800 bg-zinc-900/50">
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-zinc-400 border border-zinc-800 bg-zinc-900/50"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -207,7 +220,10 @@ const App = () => {
         </section>
 
         {(hackathons ?? []).length > 0 && (
-          <section className="mb-32 animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+          <section
+            className="mb-32 animate-fade-in-up"
+            style={{ animationDelay: '0.15s' }}
+          >
             <h2 className="text-2xl font-bold text-white mb-12 flex items-center gap-6 font-mono">
               <span className="text-emerald-500">~/</span> hackathons
               <div className="h-px bg-zinc-800 flex-1 border-b border-dashed border-zinc-700"></div>
@@ -215,7 +231,10 @@ const App = () => {
 
             <div className="flex flex-col gap-10">
               {(hackathons ?? []).map((hack: Hackathon, idx: number) => (
-                <div key={idx} className="hack-panel p-6 md:p-8 rounded-none md:rounded-lg relative overflow-hidden">
+                <div
+                  key={idx}
+                  className="hack-panel p-6 md:p-8 rounded-none md:rounded-lg relative overflow-hidden"
+                >
                   <div className="flex flex-col gap-2 mb-6 pb-4 border-b border-zinc-800/60">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="font-mono text-emerald-400 text-xs uppercase tracking-widest border border-emerald-500/20 px-3 py-1 bg-emerald-500/5">
@@ -250,8 +269,13 @@ const App = () => {
                         </strong>
                         <ul className="space-y-1.5">
                           {hack.highlights.map((h: string, i: number) => (
-                            <li key={i} className="text-sm text-zinc-400 flex items-start gap-2">
-                              <span className="text-emerald-500/70 mt-0.5 shrink-0">*</span>
+                            <li
+                              key={i}
+                              className="text-sm text-zinc-400 flex items-start gap-2"
+                            >
+                              <span className="text-emerald-500/70 mt-0.5 shrink-0">
+                                *
+                              </span>
                               {h}
                             </li>
                           ))}
@@ -264,15 +288,16 @@ const App = () => {
                         <strong className="text-zinc-500 font-mono text-xs uppercase tracking-wider block mb-2">
                           &gt; Architecture_Decision
                         </strong>
-                        <p className="text-zinc-300 text-sm">
-                          {hack.decision}
-                        </p>
+                        <p className="text-zinc-300 text-sm">{hack.decision}</p>
                       </div>
                     )}
 
                     <div className="mt-auto flex flex-wrap gap-2 pt-2 font-mono text-xs">
                       {hack.techStack.map((tech: string) => (
-                        <span key={tech} className="px-2 py-1 text-zinc-400 border border-zinc-800 bg-zinc-900/50">
+                        <span
+                          key={tech}
+                          className="px-2 py-1 text-zinc-400 border border-zinc-800 bg-zinc-900/50"
+                        >
                           {tech}
                         </span>
                       ))}
@@ -284,7 +309,10 @@ const App = () => {
           </section>
         )}
 
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-32 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <section
+          className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-32 animate-fade-in-up"
+          style={{ animationDelay: '0.2s' }}
+        >
           <div>
             <h2 className="text-xl font-bold text-white mb-10 flex items-center gap-4 font-mono">
               <span className="text-emerald-500">~/</span> experience
@@ -295,7 +323,9 @@ const App = () => {
                 <div key={idx} className="relative group">
                   <span className="absolute -left-[29px] top-1.5 w-2 h-2 bg-zinc-800 group-hover:bg-emerald-500 transition-colors"></span>
                   <div className="flex flex-col mb-2 gap-1">
-                    <h3 className="text-white font-bold text-lg">{exp.position}</h3>
+                    <h3 className="text-white font-bold text-lg">
+                      {exp.position}
+                    </h3>
                     <span className="text-zinc-500 text-sm font-mono">
                       [{exp.from} - {exp.to}]
                     </span>
@@ -326,7 +356,9 @@ const App = () => {
                 <div key={idx} className="relative group">
                   <span className="absolute -left-[29px] top-1.5 w-2 h-2 bg-zinc-800 group-hover:bg-emerald-500 transition-colors"></span>
                   <div className="flex flex-col mb-2 gap-1">
-                    <h3 className="text-white font-bold text-lg">{edu.degree}</h3>
+                    <h3 className="text-white font-bold text-lg">
+                      {edu.degree}
+                    </h3>
                     <span className="text-zinc-500 text-sm font-mono">
                       [{edu.from} - {edu.to}]
                     </span>
@@ -339,26 +371,38 @@ const App = () => {
                   >
                     @ {edu.institution}
                   </a>
-                  <p className="text-sm text-zinc-400 leading-relaxed">{edu.description}</p>
+                  <p className="text-sm text-zinc-400 leading-relaxed">
+                    {edu.description}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <footer className="pt-8 border-t border-dashed border-zinc-800 text-xs text-zinc-600 flex flex-col md:flex-row justify-between items-center gap-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <p className="font-mono text-zinc-500">© {new Date().getFullYear()} Elia Gatti. <span className="hidden md:inline">SYSTEM_READY</span></p>
+        <footer
+          className="pt-8 border-t border-dashed border-zinc-800 text-xs text-zinc-600 flex flex-col md:flex-row justify-between items-center gap-6 animate-fade-in-up"
+          style={{ animationDelay: '0.3s' }}
+        >
+          <p className="font-mono text-zinc-500">
+            © {new Date().getFullYear()} Elia Gatti.{' '}
+            <span className="hidden md:inline">SYSTEM_READY</span>
+          </p>
           <div className="flex gap-4">
             {systemStatus?.display && (
               <div className="flex items-center gap-4 font-mono hack-badge px-4 py-2">
                 <span className="hidden md:inline text-zinc-600">
-                  REG: <span className="text-zinc-400">{systemStatus.region}</span>
+                  REG:{' '}
+                  <span className="text-zinc-400">{systemStatus.region}</span>
                 </span>
                 <span className="hidden md:inline text-zinc-600">
-                  UP: <span className="text-zinc-400">{systemStatus.uptime}</span>
+                  UP:{' '}
+                  <span className="text-zinc-400">{systemStatus.uptime}</span>
                 </span>
                 <div className="flex items-center gap-2">
-                  <span className="text-emerald-500 font-bold tracking-wide">SYS_NOMINAL</span>
+                  <span className="text-emerald-500 font-bold tracking-wide">
+                    SYS_NOMINAL
+                  </span>
                   <span className="w-2 h-2 bg-emerald-500 animate-blink"></span>
                 </div>
               </div>
