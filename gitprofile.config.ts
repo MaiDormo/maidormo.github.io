@@ -131,6 +131,7 @@ const CONFIG = {
       ],
       decision:
         'Ceiling-mounted mmWave radar + on-device Gemma 4 LLM for zero-config, zero-leakage eldercare that works across any border.',
+      codeUrl: 'https://github.com/MaiDormo/Guardian',
     },
   ],
 
