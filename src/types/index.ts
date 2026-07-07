@@ -3,6 +3,8 @@ export interface Project {
   description?: string;
   imageUrl?: string;
   techStack: string[];
+  highlights?: string[];
+  metrics?: string[];
   decision?: string;
   demoUrl?: string;
   codeUrl?: string;
@@ -15,6 +17,7 @@ export interface Experience {
   companyLogo?: string;
   from: string;
   to: string;
+  location?: string;
   description?: string;
   technologies?: string[];
 }
@@ -54,10 +57,7 @@ export interface Social {
 
 export interface SystemStatus {
   display: boolean;
-  status: string;
-  uptime: string;
   region: string;
-  log?: string[];
 }
 
 export interface Resume {

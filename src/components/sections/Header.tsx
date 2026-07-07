@@ -16,8 +16,7 @@ interface HeaderProps {
 export const Header = ({ customBio, social, resume }: HeaderProps) => {
   return (
     <header className="mb-24 animate-fade-in-up">
-      <span className="font-mono text-emerald-500 text-sm mb-4 flex items-center gap-2">
-        <span className="w-2 h-3 bg-emerald-500 animate-blink"></span>
+      <span className="font-mono text-emerald-500 text-sm mb-4 block">
         elia@local:~$ ./whoami
       </span>
       <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-sm">
@@ -25,8 +24,7 @@ export const Header = ({ customBio, social, resume }: HeaderProps) => {
       </h1>
       <p className="text-xl md:text-2xl text-zinc-300 font-medium mb-8">
         Software Engineer{' '}
-        <span className="text-zinc-500 font-light mx-2">|</span> HPC &
-        Distributed Systems
+        <span className="text-zinc-500 font-light mx-2">|</span> GPU & HPC
       </p>
       <p className="text-base md:text-lg mb-10 max-w-2xl leading-relaxed text-zinc-400">
         {customBio} Specializing in backend development, systems programming,

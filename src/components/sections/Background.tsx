@@ -23,8 +23,14 @@ export const Background = ({ experiences, educations }: BackgroundProps) => {
               <span className="absolute -left-[29px] top-1.5 w-2 h-2 bg-zinc-800 group-hover:bg-emerald-500 transition-colors"></span>
               <div className="flex flex-col mb-2 gap-1">
                 <h3 className="text-white font-bold text-lg">{exp.position}</h3>
-                <span className="text-zinc-500 text-sm font-mono">
+                <span className="text-zinc-400 text-sm font-mono">
                   [{exp.from} - {exp.to}]
+                  {exp.location && (
+                    <>
+                      <span className="text-zinc-600"> | </span>
+                      {exp.location}
+                    </>
+                  )}
                 </span>
               </div>
               <a
@@ -54,7 +60,7 @@ export const Background = ({ experiences, educations }: BackgroundProps) => {
               <span className="absolute -left-[29px] top-1.5 w-2 h-2 bg-zinc-800 group-hover:bg-emerald-500 transition-colors"></span>
               <div className="flex flex-col mb-2 gap-1">
                 <h3 className="text-white font-bold text-lg">{edu.degree}</h3>
-                <span className="text-zinc-500 text-sm font-mono">
+                <span className="text-zinc-400 text-sm font-mono">
                   [{edu.from} - {edu.to}]
                 </span>
               </div>

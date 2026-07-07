@@ -5,14 +5,14 @@ const CONFIG = {
   seo: {
     title: 'Elia Gatti — Software Engineer',
     description:
-      'Software engineer specializing in backend development, distributed systems, and HPC.',
-    imageURL: '',
+      'Software engineer specializing in GPU computing, HPC, and backend development.',
+    imageURL: 'https://maidormo.github.io/og.png',
   },
   googleAnalytics: { id: '' },
   enablePWA: true,
 
   customBio:
-    'Software Engineer, currently pursuing M.S. in Computer Science at University of Trento.',
+    'Software Engineer, currently interning at Bitmovin and pursuing M.S. in Computer Science at University of Trento.',
   social: {
     linkedin: 'elia-gatti',
     github: 'MaiDormo',
@@ -27,9 +27,7 @@ const CONFIG = {
   },
   systemStatus: {
     display: true,
-    status: 'online',
-    uptime: '99.99%',
-    region: 'EU-West (Trento)',
+    region: 'EU-Central (Klagenfurt)',
   },
 
   projects: [
@@ -137,10 +135,24 @@ const CONFIG = {
 
   experiences: [
     {
+      company: 'Bitmovin',
+      position: 'Software Engineer Intern',
+      from: 'June 2026',
+      to: 'Present',
+      location: 'Klagenfurt, Austria 🇦🇹',
+      companyLink: 'https://bitmovin.com',
+      companyLogo:
+        'https://cdn.brandfetch.io/bitmovin.com/w/400/h/400/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX',
+      description:
+        'Software engineering internship at Bitmovin, a leader in video streaming infrastructure (encoding, playback, analytics).',
+      technologies: ['Video Streaming', 'Encoding'],
+    },
+    {
       company: 'Dedagroup',
       position: 'Software Developer',
       from: 'May 2024',
       to: 'September 2024',
+      location: 'Trento, Italy 🇮🇹',
       companyLink: 'https://www.deda.com',
       companyLogo:
         'https://cdn.brandfetch.io/idr0YfdnV9/w/400/h/400/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX&t=1760140861558',
@@ -161,7 +173,7 @@ const CONFIG = {
         'https://cdn.brandfetch.io/id0vp94LKa/w/1024/h/1024/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1727381497834',
       score: 'Expected 2026',
       description:
-        'Specializing in Distributed Systems and High-Performance Computing.',
+        'Specializing in GPU Programming and High-Performance Computing.',
     },
     {
       institution: 'University of Trento',
