@@ -72,17 +72,58 @@ export const Projects = ({ projects }: ProjectsProps) => {
                 </div>
               </div>
 
-              <p className="mb-6 text-zinc-400 leading-relaxed">
+              {project.metrics && project.metrics.length > 0 && (
+                <div className="flex flex-wrap gap-2 mb-4 font-mono text-xs">
+                  {project.metrics.map((metric) => (
+                    <span
+                      key={metric}
+                      className="px-2 py-0.5 text-emerald-400/90 border border-emerald-500/20 bg-emerald-500/5"
+                    >
+                      [{metric}]
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <p className="mb-6 text-zinc-400 leading-relaxed max-w-[65ch]">
                 {project.description}
               </p>
 
-              {project.decision && (
-                <div className="mb-6 bg-zinc-900/50 border-l-2 border-emerald-500/50 p-4">
-                  <strong className="text-zinc-500 font-mono text-xs uppercase tracking-wider block mb-2">
-                    &gt; Architecture_Decision
-                  </strong>
-                  <p className="text-zinc-300 text-sm">{project.decision}</p>
-                </div>
+              {(project.decision ||
+                (project.highlights && project.highlights.length > 0)) && (
+                <details className="group/notes mb-6 bg-zinc-900/50 border-l-2 border-emerald-500/50">
+                  <summary className="cursor-pointer list-none p-4 text-zinc-400 font-mono text-xs uppercase tracking-wider flex items-center gap-2 hover:text-emerald-400 transition-colors select-none">
+                    <span
+                      className="transition-transform group-open/notes:rotate-90"
+                      aria-hidden="true"
+                    >
+                      &#9656;
+                    </span>
+                    Architecture_Notes
+                  </summary>
+                  <div className="px-4 pb-4 flex flex-col gap-3">
+                    {project.decision && (
+                      <p className="text-zinc-300 text-sm max-w-[65ch]">
+                        {project.decision}
+                      </p>
+                    )}
+                    {project.highlights && project.highlights.length > 0 && (
+                      <ul className="space-y-1.5">
+                        {project.highlights.map((highlight) => (
+                          <li
+                            key={highlight}
+                            className="text-sm text-zinc-400 flex items-start gap-2"
+                          >
+                            <span className="text-emerald-500/70 mt-0.5 shrink-0">
+                              *
+                            </span>
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </details>
               )}
 
               <div className="mt-auto flex flex-wrap gap-2 pt-2 font-mono text-xs">
