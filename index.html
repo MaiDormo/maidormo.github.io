@@ -6,6 +6,10 @@
     <title><%- metaTitle %></title>
 
     <meta name="theme-color" content="#000000" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; manifest-src 'self'"
+    />
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" />
