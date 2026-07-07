@@ -46,26 +46,31 @@ export const Nav = () => {
   return (
     <nav
       aria-label="Section navigation"
-      className="sticky top-0 z-50 mb-12 py-3 border-b border-zinc-800 bg-black/60 backdrop-blur-md font-mono text-sm flex flex-wrap items-center gap-3"
+      className="sticky top-0 z-50 mb-12 border-b border-zinc-800 bg-black/70 backdrop-blur-md font-mono text-xs sm:text-sm"
     >
-      {SECTIONS.map((id) => {
-        const isActive = activeSection === id;
-        return (
-          <a
-            key={id}
-            href={`#${id}`}
-            aria-current={isActive ? 'true' : undefined}
-            className={`hack-badge px-3 py-1.5 transition-colors ${
-              isActive
-                ? 'text-emerald-400 border-emerald-500/50 bg-emerald-500/5'
-                : 'text-zinc-400 hover:text-emerald-400 hover:border-emerald-500/50'
-            }`}
-          >
-            <span className="text-emerald-500">~/</span>
-            {id}
-          </a>
-        );
-      })}
+      <div className="flex flex-wrap items-center gap-1.5 py-2.5">
+        <span className="hidden sm:inline px-2 py-1 text-emerald-400 shrink-0 select-none">
+          [maidormo]
+        </span>
+        {SECTIONS.map((id, index) => {
+          const isActive = activeSection === id;
+          return (
+            <a
+              key={id}
+              href={`#${id}`}
+              aria-current={isActive ? 'true' : undefined}
+              className={`px-2 py-1 shrink-0 transition-colors ${
+                isActive
+                  ? 'bg-emerald-500 text-black font-bold'
+                  : 'bg-zinc-900/60 text-zinc-400 hover:text-emerald-400 hover:bg-zinc-800'
+              }`}
+            >
+              {index}:{id}
+              {isActive ? '*' : ''}
+            </a>
+          );
+        })}
+      </div>
     </nav>
   );
 };

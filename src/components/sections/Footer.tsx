@@ -13,6 +13,8 @@ export const Footer = ({ systemStatus }: FooterProps) => {
       <p className="font-mono">© {new Date().getFullYear()} Elia Gatti</p>
       {systemStatus?.display && (
         <div className="flex items-center gap-4 font-mono hack-badge px-4 py-2">
+          <span className="text-emerald-400 select-none">[maidormo]</span>
+          <span className="hidden md:inline text-zinc-600">|</span>
           <span className="hidden md:inline">
             rev: <span className="text-zinc-300">{__COMMIT_HASH__}</span>
           </span>

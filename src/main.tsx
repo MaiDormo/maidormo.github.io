@@ -10,6 +10,17 @@ import '@fontsource/jetbrains-mono/600.css';
 import App from './App.tsx';
 import './assets/index.css';
 
+// Easter egg for fellow devs — intentional, not debug output
+console.log(
+  '%celia@local:~$ %c./greet-visitor',
+  'color:#10b981;font-family:monospace;font-size:12px;font-weight:bold',
+  'color:#a1a1aa;font-family:monospace;font-size:12px',
+);
+console.log(
+  '%cCurious? Source lives at https://github.com/MaiDormo/maidormo.github.io\nTry the prompt on the page — type `help` (or press /).',
+  'color:#71717a;font-family:monospace;font-size:12px',
+);
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />

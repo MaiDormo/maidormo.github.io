@@ -6,6 +6,7 @@ import {
   EnvelopeIcon,
 } from '../../icon';
 import { Config } from '../../types';
+import { Terminal } from '../ui/Terminal';
 
 interface HeaderProps {
   customBio: Config['customBio'];
@@ -16,9 +17,7 @@ interface HeaderProps {
 export const Header = ({ customBio, social, resume }: HeaderProps) => {
   return (
     <header className="mb-24 animate-fade-in-up">
-      <span className="font-mono text-emerald-500 text-sm mb-4 block">
-        elia@local:~$ ./whoami
-      </span>
+      <Terminal />
       <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-sm">
         Elia Gatti
       </h1>
