@@ -11,7 +11,6 @@
   --color-accent-hack: #10b981; /* emerald-500 */
 
   --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-blink: blink 1s step-end infinite;
 
   @keyframes fadeInUp {
     from {
@@ -23,16 +22,22 @@
       transform: translateY(0);
     }
   }
-
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: dark;
+  scrollbar-color: #27272a #000000;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-hack);
+  outline-offset: 2px;
+}
+
+/* Terminal authenticity: no code ligatures in mono text */
+.font-mono {
+  font-variant-ligatures: none;
 }
 
 body {
@@ -83,20 +88,27 @@ a {
   color: #10b981;
 }
 
-.hack-panel {
-  background: #050505;
-  border: 1px solid #1a1a1a;
-  transition: all 0.2s ease;
-}
+/* In the components layer so Tailwind utilities (e.g. hover:border-*) can override */
+@layer components {
+  .hack-panel {
+    background: #050505;
+    border: 1px solid #1a1a1a;
+    transition: all 0.2s ease;
+  }
 
-.hack-panel:hover {
-  border-color: #333;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
+  .hack-panel:hover,
+  .hack-panel:focus-within {
+    border-color: rgba(16, 185, 129, 0.25);
+    box-shadow:
+      0 4px 20px rgba(0, 0, 0, 0.5),
+      0 0 24px rgba(16, 185, 129, 0.05);
+  }
 
-.hack-badge {
-  background: #0a0a0a;
-  border: 1px solid #27272a;
+  .hack-badge {
+    background: #0a0a0a;
+    border: 1px solid #27272a;
+    transition: all 0.2s ease;
+  }
 }
 
 /* Respect user preferences for reduced motion */

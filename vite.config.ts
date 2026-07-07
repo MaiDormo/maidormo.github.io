@@ -1,8 +1,17 @@
+import { execSync } from 'node:child_process';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 import CONFIG from './gitprofile.config';
 import { createHtmlPlugin } from 'vite-plugin-html';
+
+const getCommitHash = (): string => {
+  try {
+    return execSync('git rev-parse --short HEAD').toString().trim();
+  } catch {
+    return 'unknown';
+  }
+};
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -40,7 +49,7 @@ export default defineConfig({
               name: 'Elia Gatti — Software Engineer',
               short_name: 'Elia Gatti',
               description:
-                'Software engineer specializing in backend development, distributed systems, and HPC.',
+                'Software engineer specializing in GPU computing, HPC, and backend development.',
               icons: [
                 {
                   src: 'logo.png',
@@ -55,5 +64,7 @@ export default defineConfig({
   ],
   define: {
     CONFIG: CONFIG,
+    __COMMIT_HASH__: JSON.stringify(getCommitHash()),
+    __BUILD_DATE__: JSON.stringify(new Date().toISOString().slice(0, 10)),
   },
 });
