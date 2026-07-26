@@ -25,11 +25,6 @@ const CONFIG = {
     buttonText: 'View Resume',
     showInNavbar: true,
   },
-  systemStatus: {
-    display: true,
-    region: 'EU-Central (Klagenfurt)',
-  },
-
   projects: [
     {
       title: 'GPU Computing: Sparse Matrix-Vector',
@@ -67,6 +62,8 @@ const CONFIG = {
       description:
         'Microservice architecture for movie recommendations. Features an API Gateway pattern routing to specialized services (Core TMDB adapter, Recommendation engine, Enrichment).',
       imageUrl: './service_architecture.png',
+      imageWidth: 1863,
+      imageHeight: 1284,
       techStack: ['Python', 'FastAPI', 'PostgreSQL', 'Docker'],
       highlights: ['API Gateway Pattern', 'Service Isolation'],
       metrics: ['4 Backend Services', 'External API Integration'],
@@ -141,8 +138,6 @@ const CONFIG = {
       to: 'Present',
       location: 'Klagenfurt, Austria 🇦🇹',
       companyLink: 'https://bitmovin.com',
-      companyLogo:
-        'https://cdn.brandfetch.io/bitmovin.com/w/400/h/400/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX',
       description:
         'Software engineering internship at Bitmovin, a leader in video streaming infrastructure (encoding, playback, analytics).',
       technologies: ['Video Streaming', 'Encoding'],
@@ -154,8 +149,6 @@ const CONFIG = {
       to: 'September 2024',
       location: 'Trento, Italy 🇮🇹',
       companyLink: 'https://www.deda.com',
-      companyLogo:
-        'https://cdn.brandfetch.io/idr0YfdnV9/w/400/h/400/theme/dark/icon.png?c=1bxid64Mup7aczewSAYMX&t=1760140861558',
       description:
         'Developed backend (Java/Spring) and frontend (HTMX) features for treasury services. Managed Linux server migration from legacy Windows infrastructure.',
       technologies: ['Java', 'Spring', 'HTMX', 'Linux'],
@@ -169,8 +162,6 @@ const CONFIG = {
       from: '2024',
       to: 'Present',
       institutionLink: 'https://www.unitn.it',
-      institutionLogo:
-        'https://cdn.brandfetch.io/id0vp94LKa/w/1024/h/1024/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1727381497834',
       score: 'Expected 2026',
       description:
         'Specializing in GPU Programming and High-Performance Computing.',
@@ -181,8 +172,6 @@ const CONFIG = {
       from: '2020',
       to: '2024',
       institutionLink: 'https://www.unitn.it',
-      institutionLogo:
-        'https://cdn.brandfetch.io/id0vp94LKa/w/1024/h/1024/theme/dark/logo.png?c=1bxid64Mup7aczewSAYMX&t=1727381497834',
       description:
         'Focused on Software Engineering, Algorithms, and System Programming.',
     },

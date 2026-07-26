@@ -1,98 +1,106 @@
 import { Hackathon } from '../../types';
+import { useReveal } from '../../hooks/useReveal';
 
 interface HackathonsProps {
   hackathons: Hackathon[];
 }
 
+const won = (hack: Hackathon) =>
+  hack.highlights.some((h) => /first place|winner|1st/i.test(h)) ||
+  /winner/i.test(hack.description);
+
 export const Hackathons = ({ hackathons }: HackathonsProps) => {
+  useReveal();
   if (!hackathons || hackathons.length === 0) return null;
 
   return (
-    <section
-      id="hackathons"
-      className="mb-32 animate-fade-in-up"
-      style={{ animationDelay: '0.15s' }}
-    >
-      <h2 className="text-2xl font-bold text-white mb-12 flex items-center gap-6 font-mono">
-        <span className="text-emerald-500">~/</span> hackathons
-        <div className="h-px bg-zinc-800 flex-1 border-b border-dashed border-zinc-700"></div>
-      </h2>
+    <section id="hackathons" className="pb-28">
+      <div data-reveal className="mb-8 flex items-center gap-5">
+        <h2 className="font-mono text-xl font-semibold tracking-tight text-white">
+          <span className="text-emerald-500">~/</span>hackathons
+        </h2>
+        <div className="h-0 flex-1 border-b border-dashed border-zinc-800" />
+      </div>
 
-      <div className="flex flex-col gap-10">
+      <div className="grid grid-cols-1 gap-3.5 md:grid-cols-2">
         {hackathons.map((hack) => (
-          <div
+          <article
             key={hack.title}
-            className="hack-panel p-6 md:p-8 rounded-none md:rounded-lg relative overflow-hidden"
+            data-reveal
+            className="flex flex-col rounded-lg border border-[#1a1a1a] bg-[#050505] p-7 transition-[border-color,box-shadow] duration-300 hover:border-emerald-500/30 hover:shadow-[0_10px_40px_rgba(0,0,0,.6),0_0_34px_rgba(16,185,129,.05)]"
           >
-            <div className="flex flex-col gap-2 mb-6 pb-4 border-b border-zinc-800/60">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="font-mono text-emerald-400 text-xs uppercase tracking-widest border border-emerald-500/20 px-3 py-1 bg-emerald-500/5">
-                  {hack.event}
+            <div data-stagger className="flex flex-1 flex-col">
+              <div className="mb-4 flex flex-wrap items-center gap-2 font-mono text-[10.5px] tracking-[0.1em] uppercase">
+                <span className="rounded-sm border border-emerald-500/25 bg-emerald-500/5 px-2.5 py-1 text-emerald-400">
+                  {hack.event} · {hack.date}
                 </span>
-                {hack.organizer && (
-                  <span className="text-zinc-400 font-mono text-xs">
-                    by {hack.organizer}
+                {won(hack) && (
+                  <span className="rounded-sm bg-emerald-500 px-2.5 py-1 font-semibold text-black">
+                    1st place
                   </span>
                 )}
               </div>
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-zinc-400 font-mono mt-2">
-                <span>{hack.date}</span>
-                <span className="text-zinc-600">|</span>
-                <span>{hack.location}</span>
-              </div>
-            </div>
 
-            <div className="flex flex-col justify-center">
-              <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+              <h3 className="mb-2 text-xl font-bold tracking-tight text-white">
                 {hack.title}
               </h3>
 
-              <p className="mb-6 text-zinc-400 leading-relaxed">
+              <div className="mb-4 font-mono text-xs text-zinc-600">
+                {hack.organizer ? `${hack.organizer} — ` : ''}
+                {hack.location}
+              </div>
+
+              <p className="mb-4.5 text-[14.5px] leading-relaxed text-zinc-400 text-pretty">
                 {hack.description}
               </p>
 
-              {hack.highlights.length > 0 && (
-                <div className="mb-6">
-                  <strong className="text-zinc-400 font-mono text-xs uppercase tracking-wider block mb-3">
-                    &gt; Key_Features
-                  </strong>
-                  <ul className="space-y-1.5">
-                    {hack.highlights.map((h, i) => (
-                      <li
-                        key={i}
-                        className="text-sm text-zinc-400 flex items-start gap-2"
-                      >
-                        <span className="text-emerald-500/70 mt-0.5 shrink-0">
-                          *
-                        </span>
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <ul className="mb-4.5 flex list-none flex-col gap-2 p-0">
+                {hack.highlights.map((h) => (
+                  <li
+                    key={h}
+                    className="flex gap-2.5 text-[13.5px] leading-snug text-zinc-400"
+                  >
+                    <span className="shrink-0 font-mono text-emerald-500/70">
+                      *
+                    </span>
+                    <span>{h}</span>
+                  </li>
+                ))}
+              </ul>
 
               {hack.decision && (
-                <div className="mb-6 bg-zinc-900/50 border-l-2 border-emerald-500/50 p-4">
-                  <strong className="text-zinc-400 font-mono text-xs uppercase tracking-wider block mb-2">
-                    &gt; Architecture_Decision
-                  </strong>
-                  <p className="text-zinc-300 text-sm">{hack.decision}</p>
+                <div className="mb-4.5 rounded-r border-l-2 border-emerald-500/45 bg-zinc-900/50 p-4">
+                  <div className="mb-2 font-mono text-[10.5px] tracking-[0.12em] text-zinc-600 uppercase">
+                    key decision
+                  </div>
+                  <p className="text-sm leading-relaxed text-zinc-300">
+                    {hack.decision}
+                  </p>
                 </div>
               )}
 
-              <div className="mt-auto flex flex-wrap gap-2 pt-2 font-mono text-xs">
-                {hack.techStack.map((tech) => (
+              <div className="mt-auto flex flex-wrap items-center gap-1.5 font-mono text-[11px]">
+                {hack.techStack.map((t) => (
                   <span
-                    key={tech}
-                    className="px-2 py-1 text-zinc-400 border border-zinc-800 bg-zinc-900/50"
+                    key={t}
+                    className="rounded-sm border border-zinc-800 bg-zinc-950/80 px-2.5 py-1 text-zinc-500"
                   >
-                    {tech}
+                    {t}
                   </span>
                 ))}
+                {hack.codeUrl && (
+                  <a
+                    href={hack.codeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="ml-auto font-mono text-xs text-zinc-600 hover:text-emerald-400"
+                  >
+                    source ↗
+                  </a>
+                )}
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

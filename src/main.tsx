@@ -17,7 +17,7 @@ console.log(
   'color:#a1a1aa;font-family:monospace;font-size:12px',
 );
 console.log(
-  '%cCurious? Source lives at https://github.com/MaiDormo/maidormo.github.io\nTry the prompt on the page — type `help` (or press /).',
+  '%cCurious? Source lives at https://github.com/MaiDormo/maidormo.github.io\nPress / (or ⌘K) on the page to jump anywhere.',
   'color:#71717a;font-family:monospace;font-size:12px',
 );
 

@@ -2,6 +2,9 @@ export interface Project {
   title: string;
   description?: string;
   imageUrl?: string;
+  /** Intrinsic pixel size of imageUrl, so the layout can reserve its box. */
+  imageWidth?: number;
+  imageHeight?: number;
   techStack: string[];
   highlights?: string[];
   metrics?: string[];
@@ -55,11 +58,6 @@ export interface Social {
   strava?: string;
 }
 
-export interface SystemStatus {
-  display: boolean;
-  region: string;
-}
-
 export interface Resume {
   fileUrl: string;
   buttonText?: string;
@@ -84,5 +82,4 @@ export interface Config {
   hackathons: Hackathon[];
   experiences: Experience[];
   educations: Education[];
-  systemStatus: SystemStatus;
 }
