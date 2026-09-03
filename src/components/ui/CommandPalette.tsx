@@ -235,7 +235,7 @@ export const CommandPalette = ({
               type="button"
               onClick={cmd.run}
               className={`flex w-full cursor-pointer items-center gap-3 rounded-sm px-3 py-2.5 text-left font-mono text-sm transition-colors hover:bg-paper-2 ${
-                i === 0 ? 'bg-paper-2 text-accent' : 'text-ink'
+                i === 0 ? 'bg-paper-2 text-ink' : 'text-ink'
               }`}
             >
               <span className="w-12 shrink-0 text-[11px] text-ink-3">
@@ -244,7 +244,7 @@ export const CommandPalette = ({
               <span className="flex-1">{cmd.label}</span>
               {/* Enter runs the top match — only mark that row. */}
               {i === 0 && (
-                <span aria-hidden="true" className="text-[11px] text-ink-3">
+                <span aria-hidden="true" className="text-[11px] text-accent">
                   ↵
                 </span>
               )}

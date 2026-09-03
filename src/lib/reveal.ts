@@ -56,18 +56,3 @@ export function scanReveal(root: ParentNode = document): void {
     observer().observe(el);
   });
 }
-
-/** Force an element to its final visible state (used before a FLIP move). */
-export function skipReveal(el: HTMLElement): void {
-  el.dataset.revealed = '1';
-  el.style.animation = 'none';
-  el.style.opacity = '1';
-  show(el);
-  kids(el).forEach((child) => {
-    child.style.animation = 'none';
-    child.style.opacity = '1';
-  });
-}
-
-export const REVEAL_EASE = EASE;
-export const prefersReducedMotion = reduced;

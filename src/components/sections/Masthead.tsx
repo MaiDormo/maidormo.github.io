@@ -54,7 +54,7 @@ export const Masthead = ({ resume }: MastheadProps) => {
             rel="noreferrer"
             className={PILL}
           >
-            CV <span aria-hidden="true">↓</span>
+            CV
           </a>
         </nav>
       </div>

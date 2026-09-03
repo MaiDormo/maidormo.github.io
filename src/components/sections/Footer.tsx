@@ -2,13 +2,9 @@ interface FooterProps {
   onOpenPalette: () => void;
 }
 
-/** Colophon: rights, typefaces, and the keyboard hint. */
 export const Footer = ({ onOpenPalette }: FooterProps) => (
   <footer className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-ink pt-6 pb-16 font-mono text-meta text-ink-3">
     <span>© {new Date().getFullYear()} Elia Gatti</span>
-    <span className="hidden sm:inline">
-      Set in Instrument Serif, Plus Jakarta Sans & JetBrains Mono
-    </span>
     <button
       type="button"
       onClick={onOpenPalette}

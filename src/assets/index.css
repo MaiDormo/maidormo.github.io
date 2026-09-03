@@ -57,16 +57,6 @@
   }
 }
 
-@keyframes pulseDot {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(194, 71, 11, 0.35);
-  }
-  70% {
-    box-shadow: 0 0 0 6px rgba(194, 71, 11, 0);
-  }
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -103,36 +93,6 @@
 /* Data is set in mono without ligatures so `->` stays two glyphs. */
 .font-mono {
   font-variant-ligatures: none;
-}
-
-/* Engineering-paper grid behind the hero, fading out as the page scrolls. */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(
-      color-mix(in srgb, var(--color-rule) 85%, transparent) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      color-mix(in srgb, var(--color-rule) 85%, transparent) 1px,
-      transparent 1px
-    );
-  background-size: 24px 24px;
-  mask-image: radial-gradient(
-    ellipse 95% 70% at 50% 0%,
-    #000 20%,
-    transparent 80%
-  );
-  -webkit-mask-image: radial-gradient(
-    ellipse 95% 70% at 50% 0%,
-    #000 20%,
-    transparent 80%
-  );
-  pointer-events: none;
-  z-index: -1;
 }
 
 /* Hairline that draws in from the left when its entry is revealed.

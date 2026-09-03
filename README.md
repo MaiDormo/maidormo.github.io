@@ -7,7 +7,7 @@ Personal site at [maidormo.github.io](https://maidormo.github.io). React, TypeSc
 A light "technical editorial" layout: paper ground, ink text, one orange accent, serif display type over mono data. The design tokens (palette, type scale, section spacing) are the `@theme` block in `src/assets/index.css`; components compose those tokens and do not hardcode colours. Shared class recipes (links, pills, tags) live in `src/lib/styles.ts`.
 
 - **Display**: Instrument Serif · **Body**: Plus Jakarta Sans · **Data**: JetBrains Mono (all self-hosted via `@fontsource`)
-- **Hero figure**: a deterministic sparse matrix drawn to canvas (`src/lib/sparsity.ts`, `src/components/ui/SparsityFigure.tsx`); hover scrubs rows.
+- **Hero figure**: a deterministic sparse matrix drawn to canvas (`src/lib/sparsity.ts`, `src/components/ui/SparsityFigure.tsx`).
 - **Motion**: scroll reveal with hairlines that draw in (`src/lib/reveal.ts`); everything respects `prefers-reduced-motion`.
 - **Keyboard**: `/` or `⌘K` opens a command palette to jump, open links, or copy the email.
 

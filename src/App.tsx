@@ -13,7 +13,6 @@ import { CommandPalette } from './components/ui/CommandPalette';
 
 const App = () => {
   const {
-    now,
     headline,
     tagline,
     social,
@@ -34,7 +33,6 @@ const App = () => {
 
       <div className="relative mx-auto max-w-6xl px-5 md:px-10">
         <Hero
-          now={now}
           headline={headline}
           tagline={tagline}
           social={social}

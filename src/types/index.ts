@@ -1,11 +1,8 @@
 export interface Project {
   title: string;
-  description?: string;
   techStack: string[];
-  highlights?: string[];
-  metrics?: string[];
-  decision?: string;
-  demoUrl?: string;
+  /** Outcome bullets, mirrored from the CV. */
+  highlights: string[];
   codeUrl?: string;
 }
 
@@ -17,7 +14,7 @@ export interface Experience {
   to: string;
   location?: string;
   description?: string;
-  /** Outcome bullets, one per line, mirrored from the CV. */
+  /** Outcome bullets, mirrored from the CV. */
   highlights?: string[];
   technologies?: string[];
 }
@@ -29,10 +26,12 @@ export interface Hackathon {
   location: string;
   team: string[];
   title: string;
+  /** One sentence on what it is. */
   description: string;
   techStack: string[];
   highlights: string[];
-  decision?: string;
+  /** Set when the team placed. */
+  result?: string;
   codeUrl?: string;
 }
 
@@ -77,13 +76,7 @@ export interface Config {
     id: string;
   };
   enablePWA: boolean;
-  /** Current role, shown as the "now" line above the headline. */
-  now: {
-    role: string;
-    company: string;
-    location: string;
-  };
-  /** Display headline. Wrap a phrase in *asterisks* to set it in italic. */
+  /** Display headline. */
   headline: string;
   /** One line under the headline: role and affiliation. */
   tagline: string;

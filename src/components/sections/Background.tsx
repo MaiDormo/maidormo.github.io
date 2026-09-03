@@ -10,9 +10,7 @@ interface BackgroundProps {
 }
 
 const ColumnLabel = ({ text }: { text: string }) => (
-  <h3 className="mb-2 font-mono text-meta tracking-[0.14em] text-ink-3 uppercase">
-    {text}
-  </h3>
+  <h3 className="mb-2 font-serif text-[1.25rem] text-ink-2">{text}</h3>
 );
 
 /** Education and the CV skills block, side by side. */

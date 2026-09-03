@@ -18,11 +18,7 @@ export const Work = ({ experiences }: WorkProps) => {
 
   return (
     <section id="work" className="scroll-mt-20 pb-section">
-      <SectionHeader
-        index="01"
-        title="Work"
-        aside={`${roles.length} ${roles.length === 1 ? 'role' : 'roles'}`}
-      />
+      <SectionHeader index="01" title="Work" />
 
       <div>
         {roles.map((exp, i) => (
@@ -37,15 +33,7 @@ export const Work = ({ experiences }: WorkProps) => {
                   {exp.from} — {exp.to}
                 </span>
                 {exp.location && <span>{exp.location}</span>}
-                {exp.ongoing && (
-                  <span className="flex items-center gap-1.5 text-accent">
-                    <span
-                      aria-hidden="true"
-                      className="h-1.5 w-1.5 rounded-full bg-accent"
-                    />
-                    now
-                  </span>
-                )}
+                {exp.ongoing && <span className="text-accent">current</span>}
               </div>
             }
           >
@@ -68,7 +56,7 @@ export const Work = ({ experiences }: WorkProps) => {
               <p className="mt-1.5 text-[15px] text-ink-3">{exp.description}</p>
             )}
             {exp.highlights && exp.highlights.length > 0 && (
-              <Bullets items={exp.highlights} className="mt-5" />
+              <Bullets items={exp.highlights} className="mt-4" />
             )}
             {exp.technologies && exp.technologies.length > 0 && (
               <Tags items={exp.technologies} className="mt-6" />

@@ -88,12 +88,3 @@ export function buildPattern(
 
   return { n, cells, nnz };
 }
-
-/** Nonzero count in one row. */
-export function rowNnz(pattern: Pattern, row: number): number {
-  const { n, cells } = pattern;
-  if (row < 0 || row >= n) return 0;
-  let count = 0;
-  for (let j = 0; j < n; j++) if (cells[row * n + j]) count++;
-  return count;
-}

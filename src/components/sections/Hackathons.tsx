@@ -5,17 +5,12 @@ import { SectionHeader } from '../ui/SectionHeader';
 import { Entry } from '../ui/Entry';
 import { Bullets } from '../ui/Bullets';
 import { Tags } from '../ui/Tags';
-import { Decision } from '../ui/Decision';
 
 interface HackathonsProps {
   hackathons: Hackathon[];
 }
 
 const SELF = 'Elia Gatti';
-
-const won = (hack: Hackathon) =>
-  hack.highlights.some((h) => /first place|winner|1st/i.test(h)) ||
-  /first place|winner/i.test(hack.description);
 
 /** Teammates other than the site owner, or null for a solo entry. */
 const teammates = (team: string[]): string[] | null => {
@@ -29,11 +24,7 @@ export const Hackathons = ({ hackathons }: HackathonsProps) => {
 
   return (
     <section id="hackathons" className="scroll-mt-20 pb-section">
-      <SectionHeader
-        index="03"
-        title="Hackathons"
-        aside={`${hackathons.length} ${hackathons.length === 1 ? 'event' : 'events'}`}
-      />
+      <SectionHeader index="03" title="Hackathons" />
 
       <div>
         {hackathons.map((hack, i) => {
@@ -47,40 +38,31 @@ export const Hackathons = ({ hackathons }: HackathonsProps) => {
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="text-ink-2">{hack.event}</span>
-                  <span>{hack.date}</span>
-                  <span>{hack.location}</span>
-                  {hack.organizer && <span>{hack.organizer}</span>}
-                  <span className="mt-1">
-                    {others ? `with ${others.join(', ')}` : 'solo'}
+                  <span>
+                    {hack.date} · {hack.location}
                   </span>
+                  {hack.result && (
+                    <span className="text-accent">{hack.result}</span>
+                  )}
+                  {others && <span>with {others.join(', ')}</span>}
                   {hack.codeUrl && (
                     <a
                       href={hack.codeUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className={`${LINK} mt-1 w-fit text-ink-2`}
+                      className={`${LINK} w-fit text-ink-2`}
                     >
-                      source <span aria-hidden="true">↗</span>
+                      source
                     </a>
                   )}
                 </div>
               }
             >
-              <h3 className="flex flex-wrap items-center gap-x-3 gap-y-1 font-serif text-h3 text-ink">
-                {hack.title}
-                {won(hack) && (
-                  <span className="rounded-sm bg-accent px-1.5 py-0.5 font-mono text-[10.5px] tracking-[0.1em] text-paper uppercase">
-                    1st place
-                  </span>
-                )}
-              </h3>
-              <p className="mt-3 max-w-[62ch] text-[15.5px] leading-relaxed text-ink-2 text-pretty">
+              <h3 className="font-serif text-h3 text-ink">{hack.title}</h3>
+              <p className="mt-2 max-w-[62ch] text-[15.5px] leading-relaxed text-ink-2 text-pretty">
                 {hack.description}
               </p>
-              <Bullets items={hack.highlights} className="mt-5" />
-              {hack.decision && (
-                <Decision text={hack.decision} className="mt-6" />
-              )}
+              <Bullets items={hack.highlights} className="mt-4" />
               <Tags items={hack.techStack} className="mt-6" />
             </Entry>
           );

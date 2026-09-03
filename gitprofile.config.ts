@@ -11,11 +11,6 @@ const CONFIG = {
   googleAnalytics: { id: '' },
   enablePWA: true,
 
-  now: {
-    role: 'Software Engineer Intern',
-    company: 'Bitmovin',
-    location: 'Klagenfurt',
-  },
   headline: 'Elia Gatti',
   tagline:
     'HPC & GPU software engineer. M.S. Computer Science, University of Trento.',
@@ -34,59 +29,39 @@ const CONFIG = {
 
   projects: [
     {
-      title: 'SpMV Optimization on NVIDIA A30',
-      description:
-        'Optimized sparse matrix-vector multiplication kernels in C and CUDA for AMD EPYC and NVIDIA A30, ending in a hybrid adaptive kernel that switches strategy on the sparsity pattern at runtime.',
+      title: 'Sparse matrix-vector multiplication (SpMV) optimization',
       techStack: ['CUDA', 'C', 'OpenMP'],
       highlights: [
-        'Hybrid adaptive CUDA kernel that selects a per-input strategy',
-        'Profiled execution time and GFLOPS; tuned memory coalescing and occupancy',
+        'Developed a hybrid adaptive CUDA kernel for NVIDIA A30.',
+        'Profiled execution time and GFLOPS, focusing on memory access coalescing and occupancy tuning.',
       ],
-      metrics: ['NVIDIA A30', 'Adaptive kernel'],
-      decision:
-        'Switch kernels on the sparsity pattern at runtime instead of committing to one layout for every matrix.',
       codeUrl: 'https://github.com/MaiDormo/GPU-Computing-2025-256137',
     },
     {
-      title: 'Parallel Minimum Spanning Tree',
-      description:
-        'Hybrid MPI and OpenMP implementations of Borůvka and Kruskal, with speedup and scalability analysis on a multicore cluster of up to 32 nodes.',
+      title: 'Parallel minimum spanning tree',
       techStack: ['MPI', 'OpenMP', 'C'],
       highlights: [
-        'Borůvka and Kruskal with hybrid distributed and shared-memory parallelism',
-        'Speedup and scalability profiling across node counts',
+        'Implemented parallel MST algorithms (Borůvka, Kruskal) using OpenMP and MPI.',
+        'Analyzed speedup and scalability on multicore CPU clusters up to 32 nodes.',
       ],
-      metrics: ['32-node cluster', 'MPI + OpenMP'],
-      decision:
-        'Hybrid parallelism cut communication overhead on dense graphs where pure MPI stalled.',
       codeUrl: 'https://github.com/MaiDormo/parallel_mst',
     },
     {
-      title: 'Distributed Key-Value Store',
-      description:
-        'Peer-to-peer storage system in Java 21 and Akka: consistent hashing, replication, quorum-based reads and writes, and sequential consistency under node failures.',
+      title: 'Distributed key-value storage system',
       techStack: ['Java 21', 'Akka'],
       highlights: [
-        'Consistent hashing, data replication, fault tolerance',
-        'Concurrent reads and writes and node failures without client disruption',
+        'Built with Akka actors: consistent hashing, data replication, fault tolerance.',
+        'Handled concurrent reads and writes and node failures without client disruption.',
       ],
-      metrics: ['Akka actors', 'Quorum consensus'],
-      decision:
-        'Quorum reads and writes trade a little latency for consistency that holds while nodes drop out.',
       codeUrl: 'https://github.com/MaiDormo/distributed-storage-system',
     },
     {
-      title: 'MPEG-DASH Performance Analysis',
-      description:
-        'Bachelor’s thesis on adaptive streaming behaviour under simulated (Mininet SDN) and real (AWS) network conditions, measured with custom Node.js clients.',
+      title: 'MPEG-DASH performance analysis',
       techStack: ['Node.js', 'Mininet', 'AWS'],
       highlights: [
-        'Reproducible testbed scripts and client-side metrics export',
-        'Controlled latency and loss before moving to cloud tests',
+        'Bachelor’s thesis: measured adaptive streaming under simulated (Mininet SDN) and real (AWS) network conditions.',
+        'Wrote the testbed scripts and Node.js clients that export playback metrics.',
       ],
-      metrics: ['SDN + cloud', 'Controlled latency'],
-      decision:
-        'Isolate transport behaviour in Mininet first, so cloud results have a baseline to compare against.',
       codeUrl: 'https://github.com/MaiDormo/thesis',
     },
   ],
@@ -103,17 +78,14 @@ const CONFIG = {
         'Mar Minguez',
         'Elia Gatti',
       ],
-      title: 'Guardian: Privacy-First Eldercare',
+      title: 'Guardian: privacy-first eldercare',
       description:
-        'On-device AI for families navigating cross-border elderly care. 1.68 million Hongkongers over 65 retire across the border while their children stay in Hong Kong for work; existing monitoring fails on cameras parents refuse, wearables they will not wear, and cloud infrastructure that breaks under cross-border data law.',
+        'Elderly monitoring for families split across the Hong Kong–Shenzhen border, built to work without cameras, wearables, or cloud.',
       techStack: ['mmWave radar', 'Gemma 4 (on-device LLM)', 'Agentic AI'],
       highlights: [
-        'Zero-config monitoring: no cameras, no wearables, nothing to charge',
-        'On-device LLM sidesteps cross-border cloud restrictions',
-        'Behavioural drift tracking with real-time crisis alerts',
+        'Zero-config monitoring with mmWave radar and an on-device Gemma 4 LLM.',
+        'Behavioural drift tracking with real-time crisis alerting.',
       ],
-      decision:
-        'Ceiling-mounted mmWave radar plus an on-device Gemma 4 model: zero configuration and zero data leaving the home, in any jurisdiction.',
       codeUrl: 'https://github.com/MaiDormo/Guardian',
     },
     {
@@ -122,18 +94,15 @@ const CONFIG = {
       date: '2025',
       location: 'Trento, Italy',
       team: [],
-      title: 'DWT-SVD Digital Watermarking',
+      title: 'DWT-SVD watermarking',
       description:
-        'First place. A watermarking scheme that embeds singular values in high-entropy DWT blocks, surviving compression, noise and geometric transforms while staying invisible to the eye.',
+        'Image watermarking that embeds singular values in high-entropy DWT blocks.',
       techStack: ['Python', 'Signal processing'],
       highlights: [
-        'Robust to compression, noise and transform attacks',
-        'High-entropy block selection keeps the mark invisible',
-        'Automated attack suite with ROC validation',
-        'First place in the university competition',
+        'Robust to compression, noise, and geometric transforms.',
+        'Automated attack suite with ROC validation.',
       ],
-      decision:
-        'Embed in high-entropy DWT bands: maximum invisibility at the robustness the attack suite demanded.',
+      result: '1st place',
       codeUrl: 'https://github.com/MaiDormo/DWT-SVD-watermarking',
     },
   ],
@@ -146,13 +115,11 @@ const CONFIG = {
       to: 'Sept 2026',
       location: 'Klagenfurt, Austria',
       companyLink: 'https://bitmovin.com',
-      description:
-        'Video streaming infrastructure: encoding, playback, analytics.',
       highlights: [
         'Shipped KAIROS, AI video highlight detection and segmentation for sports, news and podcasts: VOD and live analysis, a public API, MCP, and one-click highlight reels.',
-        'Cut transcription latency by 20% by tuning parallelism and slimming workers, and sped up live playback by measuring it, improving cost and reliability.',
-        'Drove 33k views to 130 signups in two weeks by launching a Google Ads campaign with signup tracking, a feedback loop into Slack, and admin traction charts.',
-        'Improved pipeline reliability with job orchestration, startup fixes and live observability, reducing failed runs and manual ops work.',
+        'Cut transcription latency by 20% by tuning parallelism and slimming workers; sped up live playback by measuring it.',
+        'Drove 33k views to 130 signups in two weeks with a Google Ads campaign, signup tracking, a Slack feedback loop, and admin traction charts.',
+        'Built job orchestration with startup fixes and live observability, reducing failed runs and manual ops work.',
       ],
       technologies: ['Python', 'FastAPI', 'Video pipelines', 'MCP'],
     },
@@ -163,7 +130,6 @@ const CONFIG = {
       to: 'Sept 2024',
       location: 'Trento, Italy',
       companyLink: 'https://www.deda.com',
-      description: 'Treasury software for public administration.',
       highlights: [
         "Migrated the 'TEN' treasury application from legacy Windows to Linux servers, halving VM resource requirements.",
         'Developed reactive HTMX frontend features and maintained the Java/Spring backend.',
