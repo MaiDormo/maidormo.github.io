@@ -17,6 +17,15 @@ export interface Experience {
   /** Outcome bullets, mirrored from the CV. */
   highlights?: string[];
   technologies?: string[];
+  /** Product shipped in the role, if it has a public home. */
+  product?: {
+    name: string;
+    url: string;
+    /** Path under /public to a small square mark. */
+    mark?: string;
+  };
+  /** Key of a figure the Work section knows how to render under the bullets. */
+  figure?: 'kairos-football';
 }
 
 export interface Hackathon {

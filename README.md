@@ -8,6 +8,7 @@ A light "technical editorial" layout: paper ground, ink text, one orange accent,
 
 - **Display**: Instrument Serif · **Body**: Plus Jakarta Sans · **Data**: JetBrains Mono (all self-hosted via `@fontsource`)
 - **Hero figure**: a deterministic sparse matrix drawn to canvas (`src/lib/sparsity.ts`, `src/components/ui/SparsityFigure.tsx`).
+- **Work figure**: a KAIROS segment timeline (`src/components/ui/SegmentTimeline.tsx`) drawn from `src/data/kairosFootball.ts`, a verbatim copy of the football sample the public demo at kairosapp.tech serves. `public/kairos-mark.png` is the product's public mark.
 - **Motion**: scroll reveal with hairlines that draw in (`src/lib/reveal.ts`); everything respects `prefers-reduced-motion`.
 - **Keyboard**: `/` or `⌘K` opens a command palette to jump, open links, or copy the email.
 

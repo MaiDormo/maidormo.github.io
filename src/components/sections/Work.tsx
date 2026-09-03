@@ -1,15 +1,29 @@
+import { ReactNode } from 'react';
 import { Experience } from '../../types';
 import { byRecency } from '../../lib/chrono';
 import { useReveal } from '../../hooks/useReveal';
 import { LINK, META } from '../../lib/styles';
+import { KAIROS_FOOTBALL } from '../../data/kairosFootball';
 import { SectionHeader } from '../ui/SectionHeader';
 import { Entry } from '../ui/Entry';
 import { Bullets } from '../ui/Bullets';
 import { Tags } from '../ui/Tags';
+import { SegmentTimeline } from '../ui/SegmentTimeline';
 
 interface WorkProps {
   experiences: Experience[];
 }
+
+/** Figures a role can reference from config. fig. 1 is the hero. */
+const FIGURES: Record<NonNullable<Experience['figure']>, ReactNode> = {
+  'kairos-football': (
+    <SegmentTimeline
+      index={2}
+      data={KAIROS_FOOTBALL}
+      caption="KAIROS output for a 10-minute football broadcast: live play in ink, down time in grey."
+    />
+  ),
+};
 
 export const Work = ({ experiences }: WorkProps) => {
   useReveal();
@@ -34,6 +48,27 @@ export const Work = ({ experiences }: WorkProps) => {
                 </span>
                 {exp.location && <span>{exp.location}</span>}
                 {exp.ongoing && <span className="text-accent">current</span>}
+                {exp.product && (
+                  <a
+                    href={exp.product.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${LINK} mt-2 flex w-fit items-center gap-2 text-ink-2`}
+                  >
+                    {exp.product.mark && (
+                      <img
+                        src={exp.product.mark}
+                        alt=""
+                        width={20}
+                        height={20}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-5 w-5 rounded-[3px]"
+                      />
+                    )}
+                    {exp.product.name}
+                  </a>
+                )}
               </div>
             }
           >
@@ -57,6 +92,9 @@ export const Work = ({ experiences }: WorkProps) => {
             )}
             {exp.highlights && exp.highlights.length > 0 && (
               <Bullets items={exp.highlights} className="mt-4" />
+            )}
+            {exp.figure && (
+              <div className="mt-6 max-w-[62ch]">{FIGURES[exp.figure]}</div>
             )}
             {exp.technologies && exp.technologies.length > 0 && (
               <Tags items={exp.technologies} className="mt-6" />

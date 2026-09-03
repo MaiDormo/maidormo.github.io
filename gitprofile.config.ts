@@ -122,6 +122,12 @@ const CONFIG = {
         'Built job orchestration with startup fixes and live observability, reducing failed runs and manual ops work.',
       ],
       technologies: ['Python', 'FastAPI', 'Video pipelines', 'MCP'],
+      product: {
+        name: 'kairosapp.tech',
+        url: 'https://kairosapp.tech',
+        mark: '/kairos-mark.png',
+      },
+      figure: 'kairos-football' as const,
     },
     {
       company: 'Dedagroup',
