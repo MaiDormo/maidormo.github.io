@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import CONFIG from '../gitprofile.config';
 import { ErrorBoundary } from './components/ErrorBoundary';
-import { Header } from './components/sections/Header';
+import { Masthead } from './components/sections/Masthead';
+import { Hero } from './components/sections/Hero';
+import { Work } from './components/sections/Work';
 import { Projects } from './components/sections/Projects';
 import { Hackathons } from './components/sections/Hackathons';
 import { Background } from './components/sections/Background';
@@ -11,24 +13,37 @@ import { CommandPalette } from './components/ui/CommandPalette';
 
 const App = () => {
   const {
-    customBio,
+    now,
+    headline,
+    tagline,
     social,
     resume,
     projects,
     experiences,
     educations,
     hackathons,
+    skills,
   } = CONFIG;
 
   const [paletteOpen, setPaletteOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-black text-zinc-400">
+    <div id="top" className="relative min-h-screen bg-paper text-ink">
       <ScrollProgress />
+      <Masthead resume={resume} />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 pb-24 md:px-12 lg:px-16">
-        <Header customBio={customBio} social={social} resume={resume} />
+      <div className="relative mx-auto max-w-6xl px-5 md:px-10">
+        <Hero
+          now={now}
+          headline={headline}
+          tagline={tagline}
+          social={social}
+          resume={resume}
+        />
         <main>
+          <ErrorBoundary>
+            <Work experiences={experiences} />
+          </ErrorBoundary>
           <ErrorBoundary>
             <Projects projects={projects} />
           </ErrorBoundary>
@@ -36,7 +51,7 @@ const App = () => {
             <Hackathons hackathons={hackathons} />
           </ErrorBoundary>
           <ErrorBoundary>
-            <Background experiences={experiences} educations={educations} />
+            <Background educations={educations} skills={skills} />
           </ErrorBoundary>
         </main>
         <Footer onOpenPalette={() => setPaletteOpen(true)} />

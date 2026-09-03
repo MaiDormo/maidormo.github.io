@@ -4,6 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 import CONFIG from './gitprofile.config';
 import { createHtmlPlugin } from 'vite-plugin-html';
 
+const PAPER = '#f6f3ec';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   base: CONFIG.base || '/',
@@ -37,10 +39,11 @@ export default defineConfig({
             },
             includeAssets: ['logo.png'],
             manifest: {
-              name: 'Elia Gatti — Software Engineer',
+              name: CONFIG.seo.title,
               short_name: 'Elia Gatti',
-              description:
-                'Software engineer specializing in GPU computing, HPC, and backend development.',
+              description: CONFIG.seo.description,
+              theme_color: PAPER,
+              background_color: PAPER,
               icons: [
                 {
                   src: 'logo.png',

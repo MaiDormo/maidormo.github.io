@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Thin emerald read-progress line pinned to the top of the viewport.
+ * Thin accent read-progress rule pinned to the top of the viewport.
  *
  * Deliberately does not hold progress in React state: scroll fires far more
  * often than once a frame, and a re-render per event is the one thing on this
@@ -43,11 +43,8 @@ export const ScrollProgress = () => {
     <div
       ref={ref}
       aria-hidden="true"
-      className="fixed top-0 left-0 z-60 h-px w-full origin-left bg-emerald-500"
-      style={{
-        transform: 'scaleX(0)',
-        boxShadow: '0 0 8px rgba(16,185,129,.6)',
-      }}
+      className="fixed top-0 left-0 z-60 h-[2px] w-full origin-left bg-accent"
+      style={{ transform: 'scaleX(0)' }}
     />
   );
 };

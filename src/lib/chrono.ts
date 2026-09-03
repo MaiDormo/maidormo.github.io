@@ -28,12 +28,29 @@ export function isOngoing(to: string): boolean {
   return /present|now|current/i.test(to || '');
 }
 
-/** Ongoing entries first, then most recent start date downward. */
+/** YYYYMM for a given moment, in the same shape as toSortKey. */
+export function monthKey(date: Date): number {
+  return date.getFullYear() * 100 + (date.getMonth() + 1);
+}
+
+/**
+ * An entry is current when its end is open ("Present") or still ahead of, or
+ * inside, the current month. A fixed-term role dated "June — Sept 2026" reads
+ * as "now" through September and flips over on its own in October.
+ */
+export function isCurrent(to: string, today: Date = new Date()): boolean {
+  if (isOngoing(to)) return true;
+  const end = toSortKey(to);
+  return end > 0 && end >= monthKey(today);
+}
+
+/** Current entries first, then most recent start date downward. */
 export function byRecency<T extends { from: string; to: string }>(
   list: T[],
+  today: Date = new Date(),
 ): (T & { ongoing: boolean })[] {
   return list
-    .map((item) => ({ ...item, ongoing: isOngoing(item.to) }))
+    .map((item) => ({ ...item, ongoing: isCurrent(item.to, today) }))
     .sort(
       (a, b) =>
         Number(b.ongoing) - Number(a.ongoing) ||

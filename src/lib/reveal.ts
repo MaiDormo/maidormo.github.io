@@ -14,6 +14,15 @@ function kids(el: HTMLElement): HTMLElement[] {
   return box ? (Array.from(box.children) as HTMLElement[]) : [];
 }
 
+/**
+ * Mark an element as on screen. CSS keys off `data-shown` for anything that
+ * cannot be driven from an inline style, such as the ::before hairline that
+ * draws in with the entry.
+ */
+function show(el: HTMLElement): void {
+  el.dataset.shown = '1';
+}
+
 function observer(): IntersectionObserver {
   if (io) return io;
   io = new IntersectionObserver(
@@ -21,9 +30,10 @@ function observer(): IntersectionObserver {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         const el = entry.target as HTMLElement;
-        el.style.animation = `fadeUp .5s ${EASE} both`;
+        el.style.animation = `fadeUp .55s ${EASE} both`;
+        show(el);
         kids(el).forEach((child, i) => {
-          child.style.animation = `fadeUp .5s ${EASE} ${0.09 + i * 0.055}s both`;
+          child.style.animation = `fadeUp .55s ${EASE} ${0.08 + i * 0.05}s both`;
         });
         io?.unobserve(el);
       }
@@ -52,6 +62,7 @@ export function skipReveal(el: HTMLElement): void {
   el.dataset.revealed = '1';
   el.style.animation = 'none';
   el.style.opacity = '1';
+  show(el);
   kids(el).forEach((child) => {
     child.style.animation = 'none';
     child.style.opacity = '1';

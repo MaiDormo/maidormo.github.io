@@ -1,123 +1,91 @@
-import { Education, Experience } from '../../types';
+import { Education, Skills } from '../../types';
 import { byRecency } from '../../lib/chrono';
 import { useReveal } from '../../hooks/useReveal';
-import { LogoTile } from '../ui/LogoTile';
+import { LINK, META } from '../../lib/styles';
+import { SectionHeader } from '../ui/SectionHeader';
 
 interface BackgroundProps {
-  experiences: Experience[];
   educations: Education[];
+  skills: Skills;
 }
 
 const ColumnLabel = ({ text }: { text: string }) => (
-  <div className="mb-6 flex items-center gap-2.5 font-mono text-[11px] tracking-[0.14em] text-zinc-600 uppercase">
-    <span>{text}</span>
-    <span className="text-zinc-800">/</span>
-    <span className="tracking-[0.1em] text-zinc-700">now ↓ then</span>
-  </div>
+  <h3 className="mb-2 font-mono text-meta tracking-[0.14em] text-ink-3 uppercase">
+    {text}
+  </h3>
 );
 
-/** Filled + pulsing when the entry is ongoing, hollow grey when finished. */
-const Marker = ({ ongoing }: { ongoing: boolean }) =>
-  ongoing ? (
-    <span className="absolute top-3.5 -left-[31px] h-[9px] w-[9px]">
-      <span
-        className="absolute inset-0 rounded-sm bg-emerald-500"
-        style={{
-          boxShadow: '0 0 0 4px #000, 0 0 14px 2px rgba(16,185,129,.45)',
-        }}
-      />
-      <span
-        className="absolute inset-0 rounded-sm border border-emerald-500"
-        style={{ animation: 'pulseRing 2.8s ease-out infinite' }}
-      />
-    </span>
-  ) : (
-    <span
-      className="absolute top-3.5 -left-[31px] box-border h-[9px] w-[9px] rounded-sm border border-zinc-700 bg-zinc-950"
-      style={{ boxShadow: '0 0 0 4px #000' }}
-    />
-  );
-
-export const Background = ({ experiences, educations }: BackgroundProps) => {
+/** Education and the CV skills block, side by side. */
+export const Background = ({ educations, skills }: BackgroundProps) => {
   useReveal();
-  const work = byRecency(experiences);
   const study = byRecency(educations);
+  const rows: [string, string[]][] = [
+    ['Languages', skills.languages],
+    ['Tools', skills.tools],
+    ['Concepts', skills.concepts],
+  ];
 
   return (
-    <section id="background" className="pb-24">
-      <div data-reveal className="mb-8 flex items-center gap-5">
-        <h2 className="font-mono text-xl font-semibold tracking-tight text-white">
-          <span className="text-emerald-500">~/</span>background
-        </h2>
-        <div className="h-0 flex-1 border-b border-dashed border-zinc-800" />
-      </div>
+    <section id="background" className="scroll-mt-20 pb-section">
+      <SectionHeader index="04" title="Background" />
 
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
-        <div>
-          <ColumnLabel text="experience" />
-          <div className="flex flex-col gap-7 border-l border-[#1f1f22] pl-6">
-            {work.map((exp) => (
-              <div key={exp.company} data-reveal className="relative">
-                <Marker ongoing={exp.ongoing} />
-                <div className="mb-2 flex items-center gap-3">
-                  <LogoTile src={exp.companyLogo} name={exp.company} />
-                  <div>
-                    <h3 className="text-[16.5px] font-bold tracking-tight text-white">
-                      {exp.position}
-                    </h3>
+      <div className="grid gap-12 py-9 md:grid-cols-12 md:gap-8">
+        <div className="md:col-span-6">
+          <ColumnLabel text="Education" />
+          <div>
+            {study.map((edu) => (
+              <div key={edu.degree} data-reveal className="rule-draw py-5">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h4 className="font-serif text-[1.3rem] leading-tight text-ink">
+                    {edu.degree}
+                  </h4>
+                  <span className={META}>
+                    {edu.from} — {edu.to}
+                  </span>
+                </div>
+                <div className="mt-1 text-[15px]">
+                  {edu.institutionLink ? (
                     <a
-                      href={exp.companyLink}
+                      href={edu.institutionLink}
                       target="_blank"
                       rel="noreferrer"
-                      className="font-mono text-[12.5px] text-emerald-500/85 hover:text-emerald-400"
+                      className={`${LINK} text-ink-2`}
                     >
-                      @ {exp.company}
+                      {edu.institution}
                     </a>
-                  </div>
+                  ) : (
+                    <span className="text-ink-2">{edu.institution}</span>
+                  )}
                 </div>
-                <div className="mb-2.5 font-mono text-[11.5px] text-zinc-600">
-                  [{exp.from} — {exp.to}]
-                  {exp.location ? ` · ${exp.location}` : ''}
-                </div>
-                <p className="max-w-[46ch] text-sm leading-relaxed text-zinc-400 text-pretty">
-                  {exp.description}
-                </p>
+                {(edu.description || edu.score) && (
+                  <p className="mt-1.5 flex flex-wrap items-baseline gap-x-3 text-[15px] text-ink-3">
+                    {edu.description && <span>{edu.description}</span>}
+                    {edu.score && (
+                      <span className="font-mono text-meta">{edu.score}</span>
+                    )}
+                  </p>
+                )}
               </div>
             ))}
           </div>
         </div>
 
-        <div>
-          <ColumnLabel text="education" />
-          <div className="flex flex-col gap-7 border-l border-[#1f1f22] pl-6">
-            {study.map((edu) => (
-              <div key={edu.degree} data-reveal className="relative">
-                <Marker ongoing={edu.ongoing} />
-                <div className="mb-2 flex items-center gap-3">
-                  <LogoTile src={edu.institutionLogo} name={edu.institution} />
-                  <div>
-                    <h3 className="text-[16.5px] font-bold tracking-tight text-white">
-                      {edu.degree}
-                    </h3>
-                    <a
-                      href={edu.institutionLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="font-mono text-[12.5px] text-emerald-500/85 hover:text-emerald-400"
-                    >
-                      @ {edu.institution}
-                    </a>
-                  </div>
-                </div>
-                <div className="mb-2.5 font-mono text-[11.5px] text-zinc-600">
-                  [{edu.from} — {edu.to}]{edu.score ? ` · ${edu.score}` : ''}
-                </div>
-                <p className="max-w-[46ch] text-sm leading-relaxed text-zinc-400 text-pretty">
-                  {edu.description}
-                </p>
+        <div className="md:col-span-6">
+          <ColumnLabel text="Skills" />
+          <dl className="m-0">
+            {rows.map(([label, items]) => (
+              <div
+                key={label}
+                data-reveal
+                className="rule-draw grid grid-cols-[6.5rem_1fr] gap-4 py-4"
+              >
+                <dt className={META}>{label}</dt>
+                <dd className="m-0 text-[15px] leading-relaxed text-ink-2">
+                  {items.join(' · ')}
+                </dd>
               </div>
             ))}
-          </div>
+          </dl>
         </div>
       </div>
     </section>

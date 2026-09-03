@@ -1,21 +1,46 @@
 @import 'tailwindcss';
 
+/* ------------------------------------------------------------------------
+ * Design tokens. Single committed look: paper ground, ink text, one accent.
+ * Everything else in the codebase composes these; do not hardcode colours.
+ * ---------------------------------------------------------------------- */
 @theme {
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 
-  --color-base-100: #000000;
-  --color-base-content: #a1a1aa;
-  --color-primary: #ffffff;
+  --color-paper: #f6f3ec;
+  --color-paper-2: #efeae0;
+  --color-ink: #171512;
+  --color-ink-2: #4a463f;
+  --color-ink-3: #736c60; /* 4.7:1 on paper — safe for 12px meta */
+  --color-rule: #d9d3c6;
+  --color-accent: #c2470b; /* international orange, 4.5:1 on paper */
 
-  --color-accent-hack: #10b981; /* emerald-500 */
+  --text-display: clamp(3.5rem, 2rem + 6vw, 7.5rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.02em;
+  --text-h2: clamp(2rem, 1.5rem + 1.8vw, 2.875rem);
+  --text-h2--line-height: 1;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.15;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.65;
+  --text-meta: 0.75rem;
+  --text-meta--line-height: 1.5;
+  --text-meta--letter-spacing: 0.01em;
+
+  --spacing-section: clamp(5rem, 3rem + 6vw, 9rem);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Motion primitives driven from JS (scroll reveal, live status, timeline) */
+/* Motion primitives driven from JS (scroll reveal, live marker, hairlines) */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -23,104 +48,120 @@
   }
 }
 
+@keyframes drawRule {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
 @keyframes pulseDot {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45);
+    box-shadow: 0 0 0 0 rgba(194, 71, 11, 0.35);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 6px rgba(194, 71, 11, 0);
   }
 }
 
-@keyframes pulseRing {
-  0% {
-    transform: scale(1);
-    opacity: 0.6;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+    scrollbar-color: var(--color-rule) var(--color-paper);
   }
-  70%,
-  100% {
-    transform: scale(2.8);
-    opacity: 0;
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 400;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: rgba(194, 71, 11, 0.16);
   }
 }
 
-html {
-  scroll-behavior: smooth;
-  color-scheme: dark;
-  scrollbar-color: #27272a #000000;
-}
-
-:focus-visible {
-  outline: 2px solid var(--color-accent-hack);
-  outline-offset: 2px;
-}
-
-/* Terminal authenticity: no code ligatures in mono text */
+/* Data is set in mono without ligatures so `->` stays two glyphs. */
 .font-mono {
   font-variant-ligatures: none;
 }
 
-body {
-  font-family: var(--font-sans);
-  background-color: var(--color-base-100);
-  color: var(--color-base-content);
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* Grid overlay, faded out below the hero so long sections stay calm */
+/* Engineering-paper grid behind the hero, fading out as the page scrolls. */
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(
+      color-mix(in srgb, var(--color-rule) 85%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-rule) 85%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 24px 24px;
   mask-image: radial-gradient(
-    ellipse 90% 60% at 50% 0%,
-    #000 25%,
-    transparent 78%
+    ellipse 95% 70% at 50% 0%,
+    #000 20%,
+    transparent 80%
   );
   -webkit-mask-image: radial-gradient(
-    ellipse 90% 60% at 50% 0%,
-    #000 25%,
-    transparent 78%
+    ellipse 95% 70% at 50% 0%,
+    #000 20%,
+    transparent 80%
   );
   pointer-events: none;
   z-index: -1;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--color-primary);
-  font-weight: 600;
-  letter-spacing: -0.02em;
+/* Hairline that draws in from the left when its entry is revealed.
+ * Visible by default; only hidden once the reveal system has armed it. */
+.rule-draw {
+  position: relative;
 }
 
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: all 0.2s ease;
+.rule-draw::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-rule);
+  transform-origin: left center;
 }
 
-a:hover {
-  color: var(--color-accent-hack);
+.rule-draw:first-child::before {
+  display: none;
 }
 
-::selection {
-  background: rgba(16, 185, 129, 0.2);
-  color: #10b981;
+.rule-draw[data-revealed]:not([data-shown])::before {
+  transform: scaleX(0);
+}
+
+.rule-draw[data-shown]::before {
+  animation: drawRule 0.9s var(--ease-out-expo) both;
 }
 
 /* Respect user preferences for reduced motion */

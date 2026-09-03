@@ -1,10 +1,6 @@
 export interface Project {
   title: string;
   description?: string;
-  imageUrl?: string;
-  /** Intrinsic pixel size of imageUrl, so the layout can reserve its box. */
-  imageWidth?: number;
-  imageHeight?: number;
   techStack: string[];
   highlights?: string[];
   metrics?: string[];
@@ -17,11 +13,12 @@ export interface Experience {
   position: string;
   company: string;
   companyLink?: string;
-  companyLogo?: string;
   from: string;
   to: string;
   location?: string;
   description?: string;
+  /** Outcome bullets, one per line, mirrored from the CV. */
+  highlights?: string[];
   technologies?: string[];
 }
 
@@ -43,11 +40,16 @@ export interface Education {
   degree: string;
   institution: string;
   institutionLink?: string;
-  institutionLogo?: string;
   from: string;
   to: string;
   description?: string;
   score?: string;
+}
+
+export interface Skills {
+  languages: string[];
+  tools: string[];
+  concepts: string[];
 }
 
 export interface Social {
@@ -75,11 +77,21 @@ export interface Config {
     id: string;
   };
   enablePWA: boolean;
-  customBio: string;
+  /** Current role, shown as the "now" line above the headline. */
+  now: {
+    role: string;
+    company: string;
+    location: string;
+  };
+  /** Display headline. Wrap a phrase in *asterisks* to set it in italic. */
+  headline: string;
+  /** One line under the headline: role and affiliation. */
+  tagline: string;
   social: Social;
   resume: Resume;
   projects: Project[];
   hackathons: Hackathon[];
   experiences: Experience[];
   educations: Education[];
+  skills: Skills;
 }
