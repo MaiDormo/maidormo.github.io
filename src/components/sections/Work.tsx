@@ -43,6 +43,16 @@ export const Work = ({ experiences }: WorkProps) => {
                 <span className="text-ink">
                   {String(i + 1).padStart(2, '0')}
                 </span>
+                {exp.companyLogo && (
+                  <img
+                    src={exp.companyLogo}
+                    alt={`${exp.company} logo`}
+                    height={20}
+                    loading="lazy"
+                    decoding="async"
+                    className="my-1 h-5 w-auto max-w-[140px] object-contain object-left"
+                  />
+                )}
                 <span>
                   {exp.from} — {exp.to}
                 </span>

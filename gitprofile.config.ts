@@ -69,7 +69,9 @@ const CONFIG = {
   hackathons: [
     {
       event: 'EuroTech-Hong Kong Hackathon',
-      organizer: 'EuroTech Federation',
+      organizer: 'EuroTech Universities Alliance',
+      organizerLink: 'https://eurotech-universities.eu',
+      organizerLogo: '/logos/eurotech.png',
       date: 'June 2026',
       location: 'Munich, Germany',
       team: [
@@ -91,6 +93,8 @@ const CONFIG = {
     {
       event: 'CTM Challenge',
       organizer: 'University of Trento',
+      organizerLink: 'https://www.unitn.it',
+      organizerLogo: '/logos/unitn.png',
       date: '2025',
       location: 'Trento, Italy',
       team: [],
@@ -115,13 +119,23 @@ const CONFIG = {
       to: 'Sept 2026',
       location: 'Klagenfurt, Austria',
       companyLink: 'https://bitmovin.com',
+      companyLogo: '/logos/bitmovin.png',
       highlights: [
         'Shipped KAIROS, AI video highlight detection and segmentation for sports, news and podcasts: VOD and live analysis, a public API, MCP, and one-click highlight reels.',
         'Cut transcription latency by 20% by tuning parallelism and slimming workers; sped up live playback by measuring it.',
         'Drove 33k views to 130 signups in two weeks with a Google Ads campaign, signup tracking, a Slack feedback loop, and admin traction charts.',
         'Built job orchestration with startup fixes and live observability, reducing failed runs and manual ops work.',
       ],
-      technologies: ['Python', 'FastAPI', 'Video pipelines', 'MCP'],
+      technologies: [
+        'Next.js',
+        'TypeScript',
+        'Supabase',
+        'Go',
+        'Python',
+        'Google Cloud',
+        'Terraform',
+        'MCP',
+      ],
       product: {
         name: 'kairosapp.tech',
         url: 'https://kairosapp.tech',
@@ -136,6 +150,7 @@ const CONFIG = {
       to: 'Sept 2024',
       location: 'Trento, Italy',
       companyLink: 'https://www.deda.com',
+      companyLogo: '/logos/dedagroup.png',
       highlights: [
         "Migrated the 'TEN' treasury application from legacy Windows to Linux servers, halving VM resource requirements.",
         'Developed reactive HTMX frontend features and maintained the Java/Spring backend.',
@@ -151,6 +166,7 @@ const CONFIG = {
       from: '2024',
       to: 'Present',
       institutionLink: 'https://www.unitn.it',
+      institutionLogo: '/logos/unitn.png',
       score: 'Expected 2026',
       description: 'GPU programming and high-performance computing.',
     },
@@ -160,6 +176,7 @@ const CONFIG = {
       from: '2020',
       to: '2024',
       institutionLink: 'https://www.unitn.it',
+      institutionLogo: '/logos/unitn.png',
       description: 'Software engineering, algorithms, systems programming.',
     },
   ],

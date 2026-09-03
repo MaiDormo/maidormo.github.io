@@ -37,7 +37,30 @@ export const Hackathons = ({ hackathons }: HackathonsProps) => {
                   <span className="text-ink">
                     {String(i + 1).padStart(2, '0')}
                   </span>
+                  {hack.organizerLogo && (
+                    <img
+                      src={hack.organizerLogo}
+                      alt={`${hack.organizer ?? hack.event} logo`}
+                      height={32}
+                      loading="lazy"
+                      decoding="async"
+                      className="my-1 h-8 w-auto max-w-[170px] object-contain object-left"
+                    />
+                  )}
                   <span className="text-ink-2">{hack.event}</span>
+                  {hack.organizer &&
+                    (hack.organizerLink ? (
+                      <a
+                        href={hack.organizerLink}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`${LINK} w-fit`}
+                      >
+                        {hack.organizer}
+                      </a>
+                    ) : (
+                      <span>{hack.organizer}</span>
+                    ))}
                   <span>
                     {hack.date} · {hack.location}
                   </span>

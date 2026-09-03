@@ -40,6 +40,10 @@ bun run prettier   # Prettier check
 
 Everything on the page (roles, projects, hackathons, education, skills, social links, SEO copy) is configured in `gitprofile.config.ts`. The CV is `public/elia_gatti_cv.pdf`; replace the file to update the download.
 
+## Logos
+
+`public/logos/*.png` are monochrome ink renderings of third-party marks, shown small next to the organisation they identify: Bitmovin (from the KAIROS repo's white wordmark, inverted), Dedagroup (deda.com footer SVG, recoloured), EuroTech Universities Alliance (their 15-years lockup, inverted), University of Trento (the logo file on English Wikipedia, which is marked non-free fair use there). They are used for identification only; replace or remove any on request from the owner.
+
 ## Icons and OG image
 
 `public/favicon*.png`, `favicon.ico`, `apple-touch-icon.png`, and `logo.png` are rendered from a single SVG (a 4×4 sparsity pattern spelling an E) with `rsvg-convert` and ImageMagick. `public/og.png` is a 1200×630 screenshot of a small HTML page using the same fonts, rendered with headless Chrome. Both sources are throwaway; regenerate by re-creating them from the description above if the palette changes.

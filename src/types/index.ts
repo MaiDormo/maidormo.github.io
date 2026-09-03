@@ -10,6 +10,8 @@ export interface Experience {
   position: string;
   company: string;
   companyLink?: string;
+  /** Path under /public to a monochrome wordmark, shown in the meta column. */
+  companyLogo?: string;
   from: string;
   to: string;
   location?: string;
@@ -31,6 +33,9 @@ export interface Experience {
 export interface Hackathon {
   event: string;
   organizer?: string;
+  organizerLink?: string;
+  /** Path under /public to a monochrome organizer mark. */
+  organizerLogo?: string;
   date: string;
   location: string;
   team: string[];
@@ -48,6 +53,8 @@ export interface Education {
   degree: string;
   institution: string;
   institutionLink?: string;
+  /** Path under /public to a monochrome institution mark. */
+  institutionLogo?: string;
   from: string;
   to: string;
   description?: string;

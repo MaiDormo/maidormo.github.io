@@ -33,6 +33,16 @@ export const Background = ({ educations, skills }: BackgroundProps) => {
           <div>
             {study.map((edu) => (
               <div key={edu.degree} data-reveal className="rule-draw py-5">
+                {edu.institutionLogo && (
+                  <img
+                    src={edu.institutionLogo}
+                    alt={`${edu.institution} logo`}
+                    height={22}
+                    loading="lazy"
+                    decoding="async"
+                    className="mb-3 h-[22px] w-auto object-contain object-left"
+                  />
+                )}
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                   <h4 className="font-serif text-[1.3rem] leading-tight text-ink">
                     {edu.degree}
