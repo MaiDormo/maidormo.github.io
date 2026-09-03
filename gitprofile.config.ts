@@ -35,7 +35,7 @@ const CONFIG = {
         'Developed a **hybrid adaptive CUDA kernel** for NVIDIA A30.',
         'Profiled execution time and GFLOPS, focusing on memory access coalescing and occupancy tuning.',
       ],
-      codeUrl: 'https://github.com/MaiDormo/GPU-Computing-2025-256137',
+      codeUrl: 'https://github.com/MaiDormo/cuda-SpMV',
     },
     {
       title: 'Parallel minimum spanning tree',
@@ -62,7 +62,7 @@ const CONFIG = {
         'Bachelor’s thesis: measured **adaptive streaming** under simulated (Mininet SDN) and real (AWS) network conditions.',
         'Wrote the testbed scripts and Node.js clients that export playback metrics.',
       ],
-      codeUrl: 'https://github.com/MaiDormo/thesis',
+      codeUrl: 'https://github.com/MaiDormo/mpeg-dash-analysis',
     },
   ],
 
