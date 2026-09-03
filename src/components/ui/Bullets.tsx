@@ -1,3 +1,5 @@
+import { withEmphasis } from '../../lib/emphasis';
+
 interface BulletsProps {
   items: string[];
   className?: string;
@@ -14,7 +16,7 @@ export const Bullets = ({ items, className = '' }: BulletsProps) => (
         <span aria-hidden="true" className="font-mono text-ink-3">
           –
         </span>
-        <span className="text-pretty">{item}</span>
+        <span className="text-pretty">{withEmphasis(item)}</span>
       </li>
     ))}
   </ul>

@@ -32,7 +32,7 @@ const CONFIG = {
       title: 'Sparse matrix-vector multiplication (SpMV) optimization',
       techStack: ['CUDA', 'C', 'OpenMP'],
       highlights: [
-        'Developed a hybrid adaptive CUDA kernel for NVIDIA A30.',
+        'Developed a **hybrid adaptive CUDA kernel** for NVIDIA A30.',
         'Profiled execution time and GFLOPS, focusing on memory access coalescing and occupancy tuning.',
       ],
       codeUrl: 'https://github.com/MaiDormo/GPU-Computing-2025-256137',
@@ -41,7 +41,7 @@ const CONFIG = {
       title: 'Parallel minimum spanning tree',
       techStack: ['MPI', 'OpenMP', 'C'],
       highlights: [
-        'Implemented parallel MST algorithms (Borůvka, Kruskal) using OpenMP and MPI.',
+        'Implemented parallel MST algorithms (Borůvka, Kruskal) using **OpenMP and MPI**.',
         'Analyzed speedup and scalability on multicore CPU clusters up to 32 nodes.',
       ],
       codeUrl: 'https://github.com/MaiDormo/parallel_mst',
@@ -50,7 +50,7 @@ const CONFIG = {
       title: 'Distributed key-value storage system',
       techStack: ['Java 21', 'Akka'],
       highlights: [
-        'Built with Akka actors: consistent hashing, data replication, fault tolerance.',
+        'Built with **Akka actors**: consistent hashing, data replication, fault tolerance.',
         'Handled concurrent reads and writes and node failures without client disruption.',
       ],
       codeUrl: 'https://github.com/MaiDormo/distributed-storage-system',
@@ -59,7 +59,7 @@ const CONFIG = {
       title: 'MPEG-DASH performance analysis',
       techStack: ['Node.js', 'Mininet', 'AWS'],
       highlights: [
-        'Bachelor’s thesis: measured adaptive streaming under simulated (Mininet SDN) and real (AWS) network conditions.',
+        'Bachelor’s thesis: measured **adaptive streaming** under simulated (Mininet SDN) and real (AWS) network conditions.',
         'Wrote the testbed scripts and Node.js clients that export playback metrics.',
       ],
       codeUrl: 'https://github.com/MaiDormo/thesis',
@@ -85,7 +85,7 @@ const CONFIG = {
         'Elderly monitoring for families split across the Hong Kong–Shenzhen border, built to work without cameras, wearables, or cloud.',
       techStack: ['mmWave radar', 'Gemma 4 (on-device LLM)', 'Agentic AI'],
       highlights: [
-        'Zero-config monitoring with mmWave radar and an on-device Gemma 4 LLM.',
+        'Zero-config monitoring with **mmWave radar and an on-device Gemma 4 LLM**.',
         'Behavioural drift tracking with real-time crisis alerting.',
       ],
       codeUrl: 'https://github.com/MaiDormo/Guardian',
@@ -103,7 +103,7 @@ const CONFIG = {
         'Image watermarking that embeds singular values in high-entropy DWT blocks.',
       techStack: ['Python', 'Signal processing'],
       highlights: [
-        'Robust to compression, noise, and geometric transforms.',
+        '**Robust to compression, noise, and geometric transforms.**',
         'Automated attack suite with ROC validation.',
       ],
       result: '1st place',
@@ -121,10 +121,10 @@ const CONFIG = {
       companyLink: 'https://bitmovin.com',
       companyLogo: '/logos/bitmovin.png',
       highlights: [
-        'Shipped KAIROS, AI video highlight detection and segmentation for sports, news and podcasts: VOD and live analysis, a public API, MCP, and one-click highlight reels.',
-        'Cut transcription latency by 20% by tuning parallelism and slimming workers; sped up live playback by measuring it.',
-        'Drove 33k views to 130 signups in two weeks with a Google Ads campaign, signup tracking, a Slack feedback loop, and admin traction charts.',
-        'Built job orchestration with startup fixes and live observability, reducing failed runs and manual ops work.',
+        'Shipped KAIROS, **AI video highlight detection and segmentation** for sports, news and podcasts: VOD and live analysis, a public API, MCP, and one-click highlight reels.',
+        'Cut transcription latency by **20%** by tuning parallelism and slimming workers; sped up live playback by measuring it.',
+        'Drove **33k views to 130 signups in two weeks** with a Google Ads campaign, signup tracking, a Slack feedback loop, and admin traction charts.',
+        'Improved **pipeline reliability** with job orchestration, startup fixes and live observability, reducing failed runs and manual ops work.',
       ],
       technologies: [
         'Next.js',
@@ -152,8 +152,8 @@ const CONFIG = {
       companyLink: 'https://www.deda.com',
       companyLogo: '/logos/dedagroup.png',
       highlights: [
-        "Migrated the 'TEN' treasury application from legacy Windows to Linux servers, halving VM resource requirements.",
-        'Developed reactive HTMX frontend features and maintained the Java/Spring backend.',
+        "Migrated the 'TEN' treasury application from legacy Windows to Linux servers, **halving VM resource requirements**.",
+        'Developed reactive **HTMX frontend features** and maintained the Java/Spring backend.',
       ],
       technologies: ['Java', 'Spring', 'HTMX', 'Linux'],
     },
