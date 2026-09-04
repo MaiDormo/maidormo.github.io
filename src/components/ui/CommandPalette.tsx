@@ -4,7 +4,9 @@ import { Config } from '../../types';
 const SECTIONS = ['work', 'projects', 'hackathons', 'background'] as const;
 
 /** Clearance for the sticky masthead when jumping to a section. */
-const JUMP_OFFSET = 80;
+const JUMP_OFFSET_DESKTOP = 80;
+/** Taller two-row masthead on phones (main bar + scrollable section nav). */
+const JUMP_OFFSET_MOBILE = 128;
 
 interface CommandPaletteProps {
   social: Config['social'];
@@ -39,8 +41,10 @@ export const CommandPalette = ({
       const el = document.getElementById(id);
       close();
       if (el) {
+        const offset =
+          window.innerWidth < 768 ? JUMP_OFFSET_MOBILE : JUMP_OFFSET_DESKTOP;
         window.scrollTo({
-          top: el.getBoundingClientRect().top + window.scrollY - JUMP_OFFSET,
+          top: el.getBoundingClientRect().top + window.scrollY - offset,
           behavior: 'smooth',
         });
       }
@@ -205,7 +209,7 @@ export const CommandPalette = ({
         aria-label="Command palette"
         onClick={(e) => e.stopPropagation()}
         onKeyDown={trapFocus}
-        className="w-full max-w-[520px] overflow-hidden border border-rule bg-paper shadow-[0_24px_60px_rgba(23,21,18,0.18)]"
+        className="max-h-[calc(100dvh-7rem)] w-full max-w-[520px] overflow-hidden border border-rule bg-paper shadow-[0_24px_60px_rgba(23,21,18,0.18)]"
       >
         <div className="flex items-center gap-2.5 border-b border-rule p-4 font-mono">
           <span aria-hidden="true" className="text-sm text-accent">
@@ -217,7 +221,7 @@ export const CommandPalette = ({
             onChange={(e) => setQuery(e.target.value)}
             placeholder="jump to, open, copy…"
             aria-label="Command"
-            className="flex-1 bg-transparent text-sm text-ink outline-none placeholder:text-ink-3"
+            className="flex-1 bg-transparent text-base text-ink outline-none placeholder:text-ink-3"
           />
           <button
             type="button"
@@ -234,14 +238,14 @@ export const CommandPalette = ({
               key={cmd.kind + cmd.label}
               type="button"
               onClick={cmd.run}
-              className={`flex w-full cursor-pointer items-center gap-3 rounded-sm px-3 py-2.5 text-left font-mono text-sm transition-colors hover:bg-paper-2 ${
+              className={`flex min-h-[44px] w-full cursor-pointer items-center gap-3 rounded-sm px-3 py-2.5 text-left font-mono text-sm transition-colors hover:bg-paper-2 ${
                 i === 0 ? 'bg-paper-2 text-ink' : 'text-ink'
               }`}
             >
               <span className="w-12 shrink-0 text-[11px] text-ink-3">
                 {cmd.kind}
               </span>
-              <span className="flex-1">{cmd.label}</span>
+              <span className="min-w-0 flex-1 truncate">{cmd.label}</span>
               {/* Enter runs the top match — only mark that row. */}
               {i === 0 && (
                 <span aria-hidden="true" className="text-[11px] text-accent">

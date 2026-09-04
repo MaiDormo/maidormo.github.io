@@ -24,7 +24,10 @@ export const Background = ({ educations, skills }: BackgroundProps) => {
   ];
 
   return (
-    <section id="background" className="scroll-mt-20 pb-section">
+    <section
+      id="background"
+      className="scroll-mt-32 pb-section md:scroll-mt-20"
+    >
       <SectionHeader index="04" title="Background" />
 
       <div className="grid gap-12 py-9 md:grid-cols-12 md:gap-8">
@@ -85,7 +88,7 @@ export const Background = ({ educations, skills }: BackgroundProps) => {
               <div
                 key={label}
                 data-reveal
-                className="rule-draw grid grid-cols-[6.5rem_1fr] gap-4 py-4"
+                className="rule-draw grid grid-cols-1 gap-1 py-4 min-[420px]:grid-cols-[6.5rem_1fr] min-[420px]:gap-4"
               >
                 <dt className={META}>{label}</dt>
                 <dd className="m-0 text-[15px] leading-relaxed text-ink-2">

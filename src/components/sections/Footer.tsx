@@ -8,9 +8,10 @@ export const Footer = ({ onOpenPalette }: FooterProps) => (
     <button
       type="button"
       onClick={onOpenPalette}
-      className="cursor-pointer transition-colors hover:text-accent"
+      className="inline-flex min-h-[44px] cursor-pointer items-center transition-colors hover:text-accent print:hidden"
     >
-      press / to jump anywhere
+      <span className="hidden sm:inline">press / to jump anywhere</span>
+      <span className="sm:hidden">tap to jump anywhere</span>
     </button>
   </footer>
 );

@@ -34,7 +34,10 @@ export const Hero = ({ headline, tagline, social, resume }: HeroProps) => {
           {tagline}
         </p>
 
-        <div data-reveal className="mt-9 flex flex-wrap gap-2">
+        <div
+          data-reveal
+          className="mt-7 flex flex-wrap gap-2.5 md:mt-9 md:gap-2"
+        >
           <a
             href={`https://github.com/${social.github}`}
             target="_blank"
@@ -63,6 +66,12 @@ export const Hero = ({ headline, tagline, social, resume }: HeroProps) => {
             Email
           </a>
         </div>
+
+        {/* Paper only: the Email pill carries no address, and links don't
+            click on paper. */}
+        <p className="mt-4 hidden font-mono text-[12px] text-ink-2 print:block">
+          {social.email}
+        </p>
       </div>
 
       <div data-reveal className="lg:col-span-5">

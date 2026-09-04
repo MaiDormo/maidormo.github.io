@@ -23,7 +23,10 @@ export const Hackathons = ({ hackathons }: HackathonsProps) => {
   if (!hackathons || hackathons.length === 0) return null;
 
   return (
-    <section id="hackathons" className="scroll-mt-20 pb-section">
+    <section
+      id="hackathons"
+      className="scroll-mt-32 pb-section md:scroll-mt-20"
+    >
       <SectionHeader index="03" title="Hackathons" />
 
       <div>
@@ -33,7 +36,9 @@ export const Hackathons = ({ hackathons }: HackathonsProps) => {
             <Entry
               key={hack.title}
               meta={
-                <div className={`flex flex-col gap-1.5 ${META}`}>
+                <div
+                  className={`flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 md:flex-col md:items-start ${META}`}
+                >
                   <span className="text-ink">
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -44,7 +49,7 @@ export const Hackathons = ({ hackathons }: HackathonsProps) => {
                       height={32}
                       loading="lazy"
                       decoding="async"
-                      className="my-1 h-8 w-auto max-w-[170px] object-contain object-left"
+                      className="h-8 w-auto max-w-[170px] object-contain object-left md:my-1"
                     />
                   )}
                   <span className="text-ink-2">{hack.event}</span>

@@ -43,7 +43,7 @@ export const ScrollProgress = () => {
     <div
       ref={ref}
       aria-hidden="true"
-      className="fixed top-0 left-0 z-60 h-[2px] w-full origin-left bg-accent"
+      className="fixed top-0 left-0 z-60 h-[2px] w-full origin-left bg-accent print:hidden"
       style={{ transform: 'scaleX(0)' }}
     />
   );

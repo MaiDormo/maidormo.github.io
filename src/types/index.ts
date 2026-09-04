@@ -4,6 +4,10 @@ export interface Project {
   /** Outcome bullets, mirrored from the CV. */
   highlights: string[];
   codeUrl?: string;
+  /** Year shown in the meta column. */
+  date?: string;
+  /** Public PDF of the thesis behind the project, if any. */
+  thesisUrl?: string;
 }
 
 export interface Experience {

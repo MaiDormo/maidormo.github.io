@@ -23,7 +23,7 @@ export const Masthead = ({ resume }: MastheadProps) => {
   const pastHero = active !== null;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-md print:hidden">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 md:px-10">
         <a
           href="#top"
@@ -45,7 +45,7 @@ export const Masthead = ({ resume }: MastheadProps) => {
                   <a
                     href={`#${id}`}
                     aria-current={on ? 'true' : undefined}
-                    className={`rounded-full px-3 py-1.5 font-mono text-[12.5px] transition-colors hover:text-accent ${
+                    className={`rounded-full px-3 py-2 font-mono text-[12.5px] transition-colors hover:text-accent ${
                       on ? 'text-accent' : 'text-ink-2'
                     }`}
                   >
@@ -65,6 +65,28 @@ export const Masthead = ({ resume }: MastheadProps) => {
           </a>
         </nav>
       </div>
+      {/* Mobile section nav: the desktop pills are hidden below md, and the
+          command palette needs a keyboard, so phones get a scrollable row. */}
+      <nav aria-label="Sections" className="border-t border-rule/70 md:hidden">
+        <ul className="mx-auto flex max-w-6xl list-none items-center gap-1 overflow-x-auto p-0 px-3 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {NAV.map(({ id, label }) => {
+            const on = active === id;
+            return (
+              <li key={id} className="shrink-0">
+                <a
+                  href={`#${id}`}
+                  aria-current={on ? 'true' : undefined}
+                  className={`inline-flex min-h-[44px] items-center rounded-full px-3 font-mono text-[12.5px] transition-colors hover:text-accent ${
+                    on ? 'text-accent' : 'text-ink-2'
+                  }`}
+                >
+                  {label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
     </header>
   );
 };

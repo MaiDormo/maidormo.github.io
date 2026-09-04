@@ -15,7 +15,7 @@ export const Projects = ({ projects }: ProjectsProps) => {
   if (!projects || projects.length === 0) return null;
 
   return (
-    <section id="projects" className="scroll-mt-20 pb-section">
+    <section id="projects" className="scroll-mt-32 pb-section md:scroll-mt-20">
       <SectionHeader index="02" title="Projects" />
 
       <div>
@@ -23,10 +23,13 @@ export const Projects = ({ projects }: ProjectsProps) => {
           <Entry
             key={project.title}
             meta={
-              <div className={`flex flex-col gap-1.5 ${META}`}>
+              <div
+                className={`flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 md:flex-col md:items-start ${META}`}
+              >
                 <span className="text-ink">
                   {String(i + 1).padStart(2, '0')}
                 </span>
+                {project.date && <span>{project.date}</span>}
                 {project.codeUrl && (
                   <a
                     href={project.codeUrl}
@@ -35,6 +38,16 @@ export const Projects = ({ projects }: ProjectsProps) => {
                     className={`${LINK} w-fit text-ink-2`}
                   >
                     source
+                  </a>
+                )}
+                {project.thesisUrl && (
+                  <a
+                    href={project.thesisUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${LINK} w-fit text-ink-2`}
+                  >
+                    thesis
                   </a>
                 )}
               </div>

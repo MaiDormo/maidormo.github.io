@@ -17,7 +17,7 @@
   --color-rule: #d9d3c6;
   --color-accent: #c2470b; /* international orange, 4.5:1 on paper */
 
-  --text-display: clamp(3.5rem, 2rem + 6vw, 7.5rem);
+  --text-display: clamp(2.75rem, 1.4rem + 6.75vw, 7.5rem);
   --text-display--line-height: 0.98;
   --text-display--letter-spacing: -0.02em;
   --text-h2: clamp(2rem, 1.5rem + 1.8vw, 2.875rem);
@@ -133,5 +133,38 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Print: the page doubles as a CV. Reveal-hiding is undone (observers never
+ * fire on paper), chrome is hidden via `print:hidden` utilities, and external
+ * URLs are expanded since links don't click on paper. */
+@media print {
+  :root {
+    --spacing-section: 3rem;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  [data-reveal],
+  [data-stagger] > * {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  .rule-draw::before {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  figure {
+    break-inside: avoid;
   }
 }

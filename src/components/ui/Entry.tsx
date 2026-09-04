@@ -19,7 +19,7 @@ export const Entry = ({
   <article
     data-reveal
     {...rest}
-    className={`rule-draw grid gap-5 py-9 md:grid-cols-12 md:gap-8 ${className}`}
+    className={`rule-draw grid gap-4 py-7 md:grid-cols-12 md:gap-8 md:py-9 ${className}`}
   >
     <div className="md:col-span-3">{meta}</div>
     <div data-stagger className="min-w-0 md:col-span-9">

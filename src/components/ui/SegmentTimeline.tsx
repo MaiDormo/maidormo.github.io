@@ -1,9 +1,10 @@
+import { ReactNode } from 'react';
 import { SegmentTimelineData } from '../../data/kairosFootball';
 
 interface SegmentTimelineProps {
   data: SegmentTimelineData;
   /** Caption shown under the strip, after the figure number. */
-  caption: string;
+  caption: ReactNode;
   index: number;
 }
 
@@ -41,7 +42,7 @@ export const SegmentTimeline = ({
           viewBox={`0 0 ${W} ${H}`}
           role="img"
           aria-label={`${data.segments.length} segments over ${fmt(data.durationSeconds)}: ${live} live play, ${data.segments.length - live} down time, ${goals.length} goals.`}
-          className="block h-auto w-full"
+          className="block h-16 w-full sm:h-auto"
           preserveAspectRatio="none"
         >
           {data.segments.map(([start, end, on], i) => (
@@ -49,7 +50,7 @@ export const SegmentTimeline = ({
               key={i}
               x={start * scale}
               y={BAR_Y}
-              width={Math.max(0.5, (end - start) * scale - 1)}
+              width={Math.max(1.5, (end - start) * scale - 1)}
               height={BAR_H}
               className={on ? 'fill-ink' : 'fill-rule'}
             />
@@ -57,9 +58,9 @@ export const SegmentTimeline = ({
           {goals.map(([t], i) => (
             <rect
               key={i}
-              x={t * scale - 1}
+              x={t * scale - 2}
               y={TICK_Y}
-              width={2}
+              width={4}
               height={TICK_H}
               className="fill-accent"
             />

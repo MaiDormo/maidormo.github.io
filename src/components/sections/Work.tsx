@@ -20,7 +20,21 @@ const FIGURES: Record<NonNullable<Experience['figure']>, ReactNode> = {
     <SegmentTimeline
       index={2}
       data={KAIROS_FOOTBALL}
-      caption="KAIROS output for a 10-minute football broadcast: live play in ink, down time in grey."
+      caption={
+        <>
+          KAIROS output for a 10-minute football broadcast: live play in ink,
+          down time in grey.{' '}
+          <a
+            href="https://kairosapp.tech"
+            target="_blank"
+            rel="noreferrer"
+            className={LINK}
+          >
+            Live sample
+          </a>
+          .
+        </>
+      }
     />
   ),
 };
@@ -31,7 +45,7 @@ export const Work = ({ experiences }: WorkProps) => {
   if (roles.length === 0) return null;
 
   return (
-    <section id="work" className="scroll-mt-20 pb-section">
+    <section id="work" className="scroll-mt-32 pb-section md:scroll-mt-20">
       <SectionHeader index="01" title="Work" />
 
       <div>
@@ -39,7 +53,9 @@ export const Work = ({ experiences }: WorkProps) => {
           <Entry
             key={`${exp.company}-${exp.from}`}
             meta={
-              <div className={`flex flex-col gap-1.5 ${META}`}>
+              <div
+                className={`flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 md:flex-col md:items-start ${META}`}
+              >
                 <span className="text-ink">
                   {String(i + 1).padStart(2, '0')}
                 </span>
@@ -50,7 +66,7 @@ export const Work = ({ experiences }: WorkProps) => {
                     height={20}
                     loading="lazy"
                     decoding="async"
-                    className="my-1 h-5 w-auto max-w-[140px] object-contain object-left"
+                    className="h-5 w-auto max-w-[140px] object-contain object-left md:my-1"
                   />
                 )}
                 <span>
@@ -63,7 +79,7 @@ export const Work = ({ experiences }: WorkProps) => {
                     href={exp.product.url}
                     target="_blank"
                     rel="noreferrer"
-                    className={`${LINK} mt-2 flex w-fit items-center gap-2 text-ink-2`}
+                    className={`${LINK} flex w-fit items-center gap-2 text-ink-2 md:mt-2`}
                   >
                     {exp.product.mark && (
                       <img

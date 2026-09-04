@@ -8,13 +8,13 @@
 export const LINK =
   'underline decoration-1 decoration-ink/30 underline-offset-[3px] transition-colors hover:text-accent hover:decoration-accent';
 
-/** Mono pill button/link with a hairline border. */
+/** Mono pill button/link with a hairline border. Roomy on touch, compact on md+. */
 export const PILL =
-  'inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-rule px-3.5 py-1.5 font-mono text-[12.5px] text-ink transition-colors hover:border-ink';
+  'inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-1.5 rounded-full border border-rule px-4 py-2 font-mono text-[13px] text-ink transition-colors hover:border-ink md:min-h-0 md:px-3.5 md:py-1.5 md:text-[12.5px]';
 
 /** Filled variant for the single primary action. */
 export const PILL_PRIMARY =
-  'inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-ink bg-ink px-3.5 py-1.5 font-mono text-[12.5px] text-paper transition-colors hover:border-accent hover:bg-accent';
+  'inline-flex min-h-[44px] cursor-pointer items-center justify-center gap-1.5 rounded-full border border-ink bg-ink px-4 py-2 font-mono text-[13px] text-paper transition-colors hover:border-accent hover:bg-accent md:min-h-0 md:px-3.5 md:py-1.5 md:text-[12.5px]';
 
 /** Small mono metadata. */
 export const META = 'font-mono text-meta text-ink-3';

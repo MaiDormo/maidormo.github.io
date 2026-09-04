@@ -30,6 +30,7 @@ const CONFIG = {
   projects: [
     {
       title: 'Sparse matrix-vector multiplication (SpMV) optimization',
+      date: '2025',
       techStack: ['CUDA', 'C', 'OpenMP'],
       highlights: [
         'Developed a **hybrid adaptive CUDA kernel** for NVIDIA A30.',
@@ -39,6 +40,7 @@ const CONFIG = {
     },
     {
       title: 'Parallel minimum spanning tree',
+      date: '2025',
       techStack: ['MPI', 'OpenMP', 'C'],
       highlights: [
         'Implemented parallel MST algorithms (Borůvka, Kruskal) using **OpenMP and MPI**.',
@@ -48,6 +50,7 @@ const CONFIG = {
     },
     {
       title: 'Distributed key-value storage system',
+      date: '2025',
       techStack: ['Java 21', 'Akka'],
       highlights: [
         'Built with **Akka actors**: consistent hashing, data replication, fault tolerance.',
@@ -57,12 +60,14 @@ const CONFIG = {
     },
     {
       title: 'MPEG-DASH performance analysis',
+      date: '2024',
       techStack: ['Node.js', 'Mininet', 'AWS'],
       highlights: [
         'Bachelor’s thesis: measured **adaptive streaming** under simulated (Mininet SDN) and real (AWS) network conditions.',
         'Wrote the testbed scripts and Node.js clients that export playback metrics.',
       ],
       codeUrl: 'https://github.com/MaiDormo/mpeg-dash-analysis',
+      thesisUrl: '/thesis.pdf',
     },
   ],
 
