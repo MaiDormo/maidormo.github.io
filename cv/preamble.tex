@@ -1,0 +1,66 @@
+% Shared preamble for Elia Gatti CV variants (Overleaf + local Tectonic).
+% ATS-first: no icon fonts, single-column flow, standard pdfTeX hygiene.
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{montserrat}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{url}
+\usepackage{parskip}
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9, top=1.2cm, bottom=1.0cm]{geometry}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[unicode, draft=false]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
+
+% ATS / copy-paste hygiene (pdfTeX only; XeTeX emits Unicode natively).
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage{cmap}
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+\definecolor{maintext}{RGB}{25,25,25}
+\definecolor{accent}{RGB}{50,50,50}
+\definecolor{linkcolour}{RGB}{50,50,50}
+\definecolor{sectionrule}{RGB}{180,180,180}
+\definecolor{dividergrey}{RGB}{210,210,210}
+
+\titleformat{\section}
+  {\Large\bfseries\color{accent}\raggedright}
+  {}
+  {0em}
+  {}
+  [\color{sectionrule}\titlerule]
+\titlespacing{\section}{0pt}{5pt}{5pt}  % Tight: one-page budget
+
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+
+\newcommand{\projectdivider}{%
+    \vspace{1pt}
+    \noindent\begin{tikzpicture}
+        \draw[dividergrey, dash pattern=on 2pt off 2pt, line width=0.4pt] (0,0) -- (\linewidth,0);
+    \end{tikzpicture}%
+    \vspace{1pt}
+}
+
+% Single-row header (title left, date right). Body stays single-column flow.
+\newenvironment{joblong}[2]{%
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill & #2 \\[2pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+}{%
+    \end{itemize}
+    \end{minipage}%
+}

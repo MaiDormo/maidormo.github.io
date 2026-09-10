@@ -51,7 +51,7 @@ export const Background = ({ educations, skills }: BackgroundProps) => {
                     {edu.degree}
                   </h4>
                   <span className={META}>
-                    {edu.from} — {edu.to}
+                    {edu.from} – {edu.to}
                   </span>
                 </div>
                 <div className="mt-1 text-[15px]">

@@ -72,7 +72,7 @@ export const SegmentTimeline = ({
         </div>
       </div>
       <figcaption className="mt-3 font-mono text-meta text-ink-3">
-        fig. {index} — {caption} {data.segments.length} segments, {live} live
+        fig. {index} – {caption} {data.segments.length} segments, {live} live
         play; {goals.length} goals marked.
       </figcaption>
     </figure>

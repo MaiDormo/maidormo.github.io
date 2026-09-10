@@ -70,7 +70,7 @@ export const Work = ({ experiences }: WorkProps) => {
                   />
                 )}
                 <span>
-                  {exp.from} — {exp.to}
+                  {exp.from} – {exp.to}
                 </span>
                 {exp.location && <span>{exp.location}</span>}
                 {exp.ongoing && <span className="text-accent">current</span>}

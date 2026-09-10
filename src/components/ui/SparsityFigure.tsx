@@ -86,7 +86,7 @@ export const SparsityFigure = () => {
         />
       </div>
       <figcaption className="mt-3 font-mono text-meta text-ink-3">
-        fig. 1 — {pattern.n}×{pattern.n} sparse matrix, {pattern.nnz} nonzeros.
+        fig. 1 – {pattern.n}×{pattern.n} sparse matrix, {pattern.nnz} nonzeros.
       </figcaption>
     </figure>
   );

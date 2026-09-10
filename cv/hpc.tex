@@ -1,0 +1,78 @@
+% HPC/GPU-first CV variant (labs, GPU-platform, video-infra eng roles).
+% Builds to public/elia_gatti_cv_hpc.pdf.
+\input{preamble}
+
+\begin{document}
+\pagestyle{empty}
+\color{maintext}
+
+\begin{center}
+{\Huge\textbf{Elia Gatti}} \\[6pt]
+{\large Software Engineer (HPC \& GPU) \ $\cdot$ \ M.S. Computer Science, University of Trento} \\[5pt]
+\href{mailto:elia.gatti01@gmail.com}{elia.gatti01@gmail.com} \ $\cdot$ \
+\href{https://www.linkedin.com/in/elia-gatti/}{linkedin.com/in/elia-gatti} \ $\cdot$ \
+\href{https://github.com/MaiDormo}{github.com/MaiDormo} \ $\cdot$ \
+\href{https://maidormo.github.io/}{maidormo.github.io} \\[3pt]
+{\small Available Mar 2027}
+\end{center}
+
+\section{Work Experience}
+\begin{joblong}{Bitmovin, Software Engineer Intern}{June 2026 to Sept 2026}
+    \item Shipped KAIROS \textbf{end-to-end}, an AI video highlight detection and segmentation service (VOD plus live): a \textbf{public API with MCP} and Go/Python workers on Terraform-managed GCP. [\href{https://kairosapp.tech}{demo}]
+    \item Cut transcription latency by \textbf{20\%} by tuning worker parallelism and slimming workers, guided by live playback measurements.
+    \item Reduced failed runs and manual operations by building \textbf{job orchestration} with startup fixes and \textbf{live observability}.
+    \item Backed the API and workers with a \textbf{Supabase/PostgreSQL schema}, queries, and \textbf{RLS policies}.
+\end{joblong}
+
+\vspace{4pt}
+
+\begin{joblong}{Dedagroup, Software Engineer Intern}{May 2024 to Sept 2024}
+    \item Halved VM resource requirements by migrating the `TEN' treasury application from legacy Windows to Linux servers.
+    \item Delivered full-stack features with an HTMX frontend on a Java/Spring backend while maintaining the existing codebase.
+\end{joblong}
+
+\section{Education}
+\textbf{M.S. in Computer Science, University of Trento} \hfill Expected Mar 2027 \\
+{\small Thesis (in progress): GPU kernel optimization. GPU programming and high-performance computing.} \\[4pt]
+\textbf{B.S. in Computer Science, University of Trento} \hfill 2024 \\
+{\small Bachelor's thesis: MPEG-DASH performance analysis under simulated (Mininet) and real (AWS) networks.}
+
+\section{Projects}
+
+\textbf{Sparse Matrix-Vector Multiplication on GPU} [\href{https://github.com/MaiDormo/cuda-SpMV}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Developed a \textbf{hybrid adaptive CUDA kernel} for NVIDIA A30, plus a V2 with sub-warp lane classes and huge-row splitting (deterministic finalize, no atomics).
+    \item Verified results against a double-precision CPU reference while profiling execution time and GFLOPS (memory coalescing, occupancy, L2-cache control).
+\end{itemize}
+
+\projectdivider
+\textbf{Parallel Minimum Spanning Tree (MPI + OpenMP)} [\href{https://github.com/MaiDormo/parallel_mst}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Implemented parallel Boruvka/Kruskal MST with \textbf{MPI + OpenMP} using a flat 1D layout, mmap I/O, and bulk collectives; analyzed speedup and scalability on a CPU cluster (report in repo).
+\end{itemize}
+
+\projectdivider
+\textbf{Distributed Key-Value Storage System} [\href{https://github.com/MaiDormo/distributed-storage-system}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Built a fault-tolerant store with \textbf{Akka actors} (Java 21) using consistent hashing and quorum reads/writes, surviving concurrent access and node failures without client disruption.
+\end{itemize}
+
+\section{Achievements}
+\textbf{CTM Challenge, Trento 2025 --- 1st place} [\href{https://github.com/MaiDormo/DWT-SVD-watermarking}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Engineered SVD-based watermark embedding within DWT blocks, robust to compression, noise and transforms; validated with an automated attack suite using ROC analysis.
+\end{itemize}
+
+\projectdivider
+\textbf{EuroTech HK Hackathon, Munich 2026 --- Guardian: privacy-first eldercare monitor} [\href{https://github.com/MaiDormo/Guardian}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Built zero-config elderly monitoring with mmWave radar plus an on-device Gemma 4 LLM (no cameras, wearables, or cloud) with behavioral drift tracking and real-time crisis alerting.
+\end{itemize}
+
+\section{Skills}
+\small
+\textbf{Languages:} C, C++, CUDA, Java, Python, Go \\
+\textbf{Tools \& Frameworks:} MPI, OpenMP, Slurm, Docker, Git, Linux, PostgreSQL, FastAPI \\
+\textbf{Spoken languages:} Italian (native), English (fluent)
+
+\end{document}

@@ -1,4 +1,4 @@
-# Elia Gatti — Portfolio
+# Elia Gatti Portfolio
 
 Personal site at [maidormo.github.io](https://maidormo.github.io). React, TypeScript, Tailwind CSS 4, deployed to GitHub Pages.
 
@@ -50,4 +50,4 @@ Everything on the page (roles, projects, hackathons, education, skills, social l
 
 ## Deployment
 
-Push to `main` — GitHub Actions builds and deploys to GitHub Pages automatically.
+Push to `main`: GitHub Actions builds and deploys to GitHub Pages automatically.

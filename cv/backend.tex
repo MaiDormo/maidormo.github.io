@@ -1,0 +1,77 @@
+% Backend-first CV variant (default for applications + site link).
+% Builds to public/elia_gatti_cv_backend.pdf (and public/elia_gatti_cv.pdf as copy).
+\input{preamble}
+
+\begin{document}
+\pagestyle{empty}
+\color{maintext}
+
+\begin{center}
+{\Huge\textbf{Elia Gatti}} \\[6pt]
+{\large Backend Software Engineer \ $\cdot$ \ M.S. Computer Science, University of Trento} \\[5pt]
+\href{mailto:elia.gatti01@gmail.com}{elia.gatti01@gmail.com} \ $\cdot$ \
+\href{https://www.linkedin.com/in/elia-gatti/}{linkedin.com/in/elia-gatti} \ $\cdot$ \
+\href{https://github.com/MaiDormo}{github.com/MaiDormo} \ $\cdot$ \
+\href{https://maidormo.github.io/}{maidormo.github.io} \\[3pt]
+{\small Available Mar 2027}
+\end{center}
+
+\section{Work Experience}
+\begin{joblong}{Bitmovin, Software Engineer Intern}{June 2026 to Sept 2026}
+    \item Shipped KAIROS \textbf{end-to-end}, an AI video highlight detection and segmentation service for sports, news and podcasts (VOD plus live): built Next.js frontend flows, a \textbf{public API with MCP}, and Go/Python workers backed by Supabase on Terraform-managed GCP. [\href{https://kairosapp.tech}{demo}]
+    \item Cut transcription latency by \textbf{20\%} by tuning worker parallelism and slimming workers, guided by live playback measurements, improving cost and reliability.
+    \item Reduced failed runs and manual operations by building \textbf{job orchestration} with startup fixes and \textbf{live observability}.
+    \item Backed the API and workers with a \textbf{Supabase/PostgreSQL schema}, queries, and \textbf{RLS policies}.
+\end{joblong}
+
+\vspace{4pt}
+
+\begin{joblong}{Dedagroup, Software Engineer Intern}{May 2024 to Sept 2024}
+    \item Halved VM resource requirements by migrating the `TEN' treasury application from legacy Windows to Linux servers.
+    \item Delivered full-stack features with an HTMX frontend on a Java/Spring backend while maintaining the existing codebase.
+\end{joblong}
+
+\section{Education}
+\textbf{M.S. in Computer Science, University of Trento} \hfill Expected Mar 2027 \\
+{\small Thesis (in progress): GPU kernel optimization. GPU programming and high-performance computing.} \\[4pt]
+\textbf{B.S. in Computer Science, University of Trento} \hfill 2024 \\
+{\small Bachelor's thesis: MPEG-DASH performance analysis under simulated (Mininet) and real (AWS) networks.}
+
+\section{Projects}
+
+\textbf{Distributed Key-Value Storage System} [\href{https://github.com/MaiDormo/distributed-storage-system}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Built a fault-tolerant store with \textbf{Akka actors} (Java 21) using consistent hashing and quorum reads/writes, surviving concurrent access and node failures without client disruption.
+\end{itemize}
+
+\projectdivider
+\textbf{MPEG-DASH Performance Analysis (B.S. thesis)} [\href{https://github.com/MaiDormo/mpeg-dash-analysis}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Measured \textbf{adaptive streaming quality} under simulated (Mininet SDN) and real (AWS) networks with Node.js testbed clients exporting playback metrics.
+\end{itemize}
+
+\projectdivider
+\textbf{Sparse Matrix-Vector Multiplication on GPU} [\href{https://github.com/MaiDormo/cuda-SpMV}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Developed a \textbf{hybrid adaptive CUDA kernel} for NVIDIA A30 and profiled execution time and GFLOPS (coalescing, occupancy).
+\end{itemize}
+
+\projectdivider
+\textbf{Guardian: privacy-first eldercare monitor} [\href{https://github.com/MaiDormo/Guardian}{code}] \textit{--- EuroTech HK Hackathon, Munich, June 2026}
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Built zero-config elderly monitoring with mmWave radar plus an on-device Gemma 4 LLM (no cameras, wearables, or cloud) with behavioral drift tracking and real-time crisis alerting.
+\end{itemize}
+
+\section{Achievements}
+\textbf{CTM Challenge, Trento 2025 --- 1st place} [\href{https://github.com/MaiDormo/DWT-SVD-watermarking}{code}]
+\begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \item Engineered SVD-based watermark embedding within DWT blocks, robust to compression, noise and transforms; validated with an automated attack suite using ROC analysis.
+\end{itemize}
+
+\section{Skills}
+\small
+\textbf{Languages:} C, C++, Java, Python, Go \\
+\textbf{Tools \& Frameworks:} PostgreSQL, Supabase, Akka, Docker, Git, Linux, GCP, Terraform, FastAPI, OpenMP, MPI \\
+\textbf{Spoken languages:} Italian (native), English (fluent)
+
+\end{document}

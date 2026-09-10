@@ -3,9 +3,9 @@
 const CONFIG = {
   base: '/',
   seo: {
-    title: 'Elia Gatti — HPC & GPU Software Engineer',
+    title: 'Elia Gatti | Backend & GPU-aware Systems Engineer',
     description:
-      "Master's student in Computer Science at the University of Trento. HPC and GPU software engineer: CUDA kernels, MPI graph algorithms, distributed systems.",
+      'M.S. Computer Science, University of Trento (Mar 2027). Backend & video systems: Go/Java/Python APIs, distributed systems; GPU-aware with CUDA/MPI.',
     imageURL: 'https://maidormo.github.io/og.png',
   },
   googleAnalytics: { id: '' },
@@ -13,7 +13,7 @@ const CONFIG = {
 
   headline: 'Elia Gatti',
   tagline:
-    'HPC & GPU software engineer. M.S. Computer Science, University of Trento.',
+    'Systems software engineer: backend & video, GPU-aware. M.S. Computer Science, University of Trento.',
   social: {
     linkedin: 'elia-gatti',
     github: 'MaiDormo',
@@ -22,7 +22,7 @@ const CONFIG = {
     strava: '34560653',
   },
   resume: {
-    fileUrl: '/elia_gatti_cv.pdf',
+    fileUrl: '/elia_gatti_cv_backend.pdf',
     buttonText: 'CV',
     showInNavbar: true,
   },
@@ -33,8 +33,8 @@ const CONFIG = {
       date: '2025',
       techStack: ['CUDA', 'C', 'OpenMP'],
       highlights: [
-        'Developed a **hybrid adaptive CUDA kernel** for NVIDIA A30.',
-        'Profiled execution time and GFLOPS, focusing on memory access coalescing and occupancy tuning.',
+        'Developed a **hybrid adaptive CUDA kernel** for NVIDIA A30, plus V2 with sub-warp lane classes and huge-row splitting.',
+        'Profiled execution time and GFLOPS with CPU-reference verification; repro scripts in repo.',
       ],
       codeUrl: 'https://github.com/MaiDormo/cuda-SpMV',
     },
@@ -43,8 +43,8 @@ const CONFIG = {
       date: '2025',
       techStack: ['MPI', 'OpenMP', 'C'],
       highlights: [
-        'Implemented parallel MST algorithms (Borůvka, Kruskal) using **OpenMP and MPI**.',
-        'Analyzed speedup and scalability on multicore CPU clusters up to 32 nodes.',
+        'Implemented parallel MST algorithms (Borůvka, Kruskal) using **OpenMP and MPI**: flat layout, mmap I/O, bulk collectives.',
+        'Analyzed speedup and scalability on a CPU cluster; full report in repo.',
       ],
       codeUrl: 'https://github.com/MaiDormo/parallel_mst',
     },
@@ -126,14 +126,12 @@ const CONFIG = {
       companyLink: 'https://bitmovin.com',
       companyLogo: '/logos/bitmovin.png',
       highlights: [
-        'Shipped KAIROS, **AI video highlight detection and segmentation** for sports, news and podcasts: VOD and live analysis, a public API, MCP, and one-click highlight reels.',
-        'Cut transcription latency by **20%** by tuning parallelism and slimming workers; sped up live playback by measuring it.',
-        'Drove **33k views to 130 signups in two weeks** with a Google Ads campaign, signup tracking, a Slack feedback loop, and admin traction charts.',
-        'Improved **pipeline reliability** with job orchestration, startup fixes and live observability, reducing failed runs and manual ops work.',
+        'Shipped KAIROS **end-to-end**, AI video highlight detection and segmentation for sports, news and podcasts (VOD plus live): Next.js frontend flows, a **public API with MCP**, and Go/Python workers backed by Supabase on Terraform-managed GCP.',
+        'Cut transcription latency by **20%** by tuning worker parallelism and slimming workers, guided by live playback measurements, improving cost and reliability.',
+        'Reduced failed runs and manual operations by building **job orchestration** with startup fixes and **live observability**.',
+        'Backed the API and workers with a **Supabase/PostgreSQL schema**, queries, and **RLS policies**.',
       ],
       technologies: [
-        'Next.js',
-        'TypeScript',
         'Supabase',
         'Go',
         'Python',
@@ -169,11 +167,12 @@ const CONFIG = {
       institution: 'University of Trento',
       degree: 'M.S. in Computer Science',
       from: '2024',
-      to: 'Present',
+      to: 'Mar 2027',
       institutionLink: 'https://www.unitn.it',
       institutionLogo: '/logos/unitn.png',
-      score: 'Expected 2026',
-      description: 'GPU programming and high-performance computing.',
+      score: 'Thesis: GPU kernel optimization',
+      description:
+        'GPU programming and high-performance computing. Available Mar 2027; open to thesis-with-company Oct–Mar.',
     },
     {
       institution: 'University of Trento',
@@ -187,13 +186,14 @@ const CONFIG = {
   ],
 
   skills: {
-    languages: ['C', 'C++', 'CUDA', 'Java', 'Python'],
-    tools: ['FastAPI', 'Docker', 'Git', 'Linux', 'OpenMP', 'MPI'],
+    languages: ['C', 'C++', 'CUDA', 'Java', 'Python', 'Go'],
+    tools: ['FastAPI', 'Docker', 'Git', 'Linux', 'PostgreSQL', 'OpenMP', 'MPI'],
     concepts: [
+      'REST APIs and distributed systems',
       'GPU programming: memory hierarchy, kernel optimization',
       'Parallel algorithms',
-      'Distributed systems',
       'Performance benchmarking',
+      'Video streaming (MPEG-DASH)',
     ],
   },
 };
