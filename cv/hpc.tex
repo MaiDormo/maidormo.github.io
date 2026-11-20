@@ -29,27 +29,27 @@
 
 % WORK EXPERIENCE
 \section{Work Experience}
-\begin{joblong}{Bitmovin --- Software Engineer Intern}{Klagenfurt, Austria \ |\ Jun--Sep 2026}
+\begin{joblong}{Bitmovin, Software Engineer Intern}{Klagenfurt, Austria \ |\ Jun--Sep 2026}
     \item Co-built \textbf{KAIROS} end-to-end, a live and on-demand AI video highlight pipeline using Go/Python workers, a public MCP API, and Terraform-managed GCP; owned the video-analysis stage, job orchestration, and live streaming pipeline.
     \item Cut video processing latency by \textbf{>10$\times$} and removed \textbf{~1 minute} of dead time per clip by switching the transcription engine, fixing CPU thread contention, and reducing frame windowing from quadratic to linear complexity.
 \end{joblong}
 
-\begin{joblong}{Dedagroup --- Software Developer Intern}{Trento, Italy \ |\ May--Sep 2024}
+\begin{joblong}{Dedagroup, Software Developer Intern}{Trento, Italy \ |\ May--Sep 2024}
     \item Halved VM resource requirements by migrating the `TEN' treasury application from Windows servers to Linux.
 \end{joblong}
 
 % EDUCATION
 \section{Education}
-\noindent\textbf{Master's Degree in Computer Science} --- University of Trento \hfill \textit{Expected Mar 2027}\par
+\noindent\textbf{Master's Degree in Computer Science}, University of Trento \hfill \textit{Expected Mar 2027}\par
 {\small Thesis (in progress): \textit{dist-patoh}, distributed GPU hypergraph partitioning (C++20, CUDA, MPI).}\par
 \vspace{2pt}
-\noindent\textbf{Bachelor's Degree in Computer Science} --- University of Trento \hfill \textit{Graduated 2024}\par
+\noindent\textbf{Bachelor's Degree in Computer Science}, University of Trento \hfill \textit{Graduated 2024}\par
 {\small Thesis: Adaptive MPEG-DASH video streaming performance under Mininet and AWS networks.}\par
 
 % PROJECTS
 \section{Research \& Projects}
 
-\projecthead{dist-patoh --- Distributed GPU Hypergraph Partitioning}{M.S. Thesis (In Progress), 2026--2027}
+\projecthead{dist-patoh: Distributed GPU Hypergraph Partitioning}{M.S. Thesis (In Progress), 2026--2027}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
     \item Developing a distributed multi-GPU hypergraph partitioner in \textbf{C++20, CUDA, and MPI} to split large, irregular sparse graphs across GPUs while balancing compute load and minimizing cross-node communication.
     \item Implementing a multilevel pipeline (parallel coarsening, recursive k-way partitioning, and local refinement) to handle the load imbalance and block-scheduling bottlenecks of standard sparse kernels.
@@ -58,7 +58,7 @@
 
 \projectdivider
 
-\projectheadcode{Hybrid Adaptive SpMV --- CUDA}{https://github.com/MaiDormo/cuda-SpMV}{GPU Computing, 2025}
+\projectheadcode{Hybrid Adaptive SpMV, CUDA}{https://github.com/MaiDormo/cuda-SpMV}{GPU Computing, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
     \item Wrote and benchmarked CSR sparse matrix-vector multiplication kernels on NVIDIA GPUs, combining thread-per-row and warp-per-row execution based on matrix sparsity.
     \item Matched or beat NVIDIA cuSPARSE bandwidth on irregular matrices and identified block-overscheduling bottlenecks on very large sparse graphs.
@@ -66,21 +66,21 @@
 
 \projectdivider
 
-\projectheadcode{Parallel Minimum Spanning Tree --- MPI + OpenMP}{https://github.com/MaiDormo/parallel-mst}{HPC, 2025}
+\projectheadcode{Parallel Minimum Spanning Tree, MPI + OpenMP}{https://github.com/MaiDormo/parallel-mst}{HPC, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
     \item Implemented a hybrid distributed/shared-memory graph algorithm in C using flat CSR arrays, memory-mapped I/O (mmap), and bulk collectives to reduce disk and communication overhead across multi-core cluster nodes.
 \end{itemize}
 
 \projectdivider
 
-\projectheadcode{Distributed Key-Value Store --- Akka/Java 21}{https://github.com/MaiDormo/distributed-storage-system}{Distributed Systems, 2025}
+\projectheadcode{Distributed Key-Value Store, Akka/Java 21}{https://github.com/MaiDormo/distributed-storage-system}{Distributed Systems, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
     \item Built a fault-tolerant, Dynamo-style storage engine with consistent hashing, configurable quorum replication, versioned values, and automatic recovery from node failures.
 \end{itemize}
 
 % ACHIEVEMENTS
 \section{Achievements}
-\projectheadcode{CTM Challenge --- 1st of 11 Teams}{https://github.com/MaiDormo/DWT-SVD-watermarking}{Trento, 2025}
+\projectheadcode{CTM Challenge, 1st of 11 Teams}{https://github.com/MaiDormo/DWT-SVD-watermarking}{Trento, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
     \item Built a blind image/video watermarking pipeline (DWT-SVD) resilient to compression and noise, tested against an automated attack suite.
 \end{itemize}

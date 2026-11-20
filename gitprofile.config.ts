@@ -27,7 +27,7 @@ const CONFIG = {
 
   projects: [
     {
-      title: 'dist-patoh — distributed GPU hypergraph partitioning',
+      title: 'dist-patoh: distributed GPU hypergraph partitioning',
       date: '2026–27',
       techStack: ['C++20', 'CUDA', 'MPI'],
       highlights: [
