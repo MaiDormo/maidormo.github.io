@@ -8,10 +8,11 @@
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage{url}
 \usepackage{parskip}
+\setlength{\parskip}{1pt}
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9, top=1.2cm, bottom=1.0cm]{geometry}
+\usepackage[scale=0.9, top=1.1cm, bottom=1.0cm]{geometry}
 \usepackage{tabularx}
 \usepackage{enumitem}
 \usepackage{titlesec}
@@ -41,7 +42,7 @@
   {0em}
   {}
   [\color{sectionrule}\titlerule]
-\titlespacing{\section}{0pt}{5pt}{5pt}  % Tight: one-page budget
+\titlespacing{\section}{0pt}{4pt}{4pt}  % Tight: one-page budget
 
 \hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
 
@@ -56,14 +57,17 @@
     \vspace{1pt}
 }
 
-% Single-row header (title left, date right). Body stays single-column flow.
+% Plain paragraphs, not tabularx: text order stays title -> date in every parser.
 \newenvironment{joblong}[2]{%
-    \begin{tabularx}{\linewidth}{@{}l X r@{}}
-    \textbf{#1} & \hfill & #2 \\[2pt]
-    \end{tabularx}
-    \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=2pt, label=\color{accent}\textbullet]
+    \noindent\textbf{#1}\hfill\textit{#2}\par
+    \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
 }{%
     \end{itemize}
-    \end{minipage}%
+}
+
+\newcommand{\projecthead}[2]{%
+    \noindent\textbf{#1}\hfill\textit{#2}\par
+}
+\newcommand{\projectheadcode}[3]{%
+    \noindent\textbf{#1}\ \href{#2}{\footnotesize [code]}\hfill\textit{#3}\par
 }
