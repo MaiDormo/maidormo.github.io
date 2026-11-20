@@ -34,7 +34,6 @@ const CONFIG = {
         'M.S. thesis: multilevel partitioner with distributed coarsening, FM/Jet refinement and recursive-bisection k-way partitioning.',
         '**126/126** cluster runs passed; **5.0×** bit-exact GPU coarsening speedup; **up to 1,143×** faster local refinement from lossless net-dedup.',
       ],
-      codeUrl: 'https://github.com/MaiDormo/dist-patoh-case-study',
     },
     {
       title: 'Sparse matrix-vector multiplication (SpMV)',
