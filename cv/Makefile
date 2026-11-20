@@ -20,6 +20,7 @@ hpc:
 # Keep the legacy URL alive: site navbar + old links point here.
 default: hpc
 	cp $(OUTDIR)/elia_gatti_cv_hpc.pdf $(OUTDIR)/elia_gatti_cv.pdf
+	cp $(OUTDIR)/elia_gatti_cv_hpc.pdf $(OUTDIR)/Elia_Gatti_CV.pdf
 
 check:
 	pdftotext $(OUTDIR)/elia_gatti_cv_hpc.pdf - | head -12

@@ -1,5 +1,5 @@
 % HPC/GPU-first CV variant. Mirrors ../../cv/elia_gatti_cv.tex.
-% Builds to public/elia_gatti_cv_hpc.pdf.
+% Builds to public/elia_gatti_cv_hpc.pdf and public/Elia_Gatti_CV.pdf.
 \input{preamble}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 % Variants: Software Engineer (HPC \& GPU) | Software Engineer (C++, CUDA \& Distributed Systems) |
@@ -27,19 +27,19 @@
 % WORK EXPERIENCE
 \section{Work Experience}
 \begin{joblong}{Bitmovin --- Software Engineer Intern}{Klagenfurt, Austria \ $\cdot$ \ Jun--Sep 2026}
-    \item Co-built \textbf{KAIROS} end-to-end with one other intern: Next.js/React, Supabase/PostgreSQL with RLS, Go/Python workers, a public MCP API, and Terraform-managed GCP. Owned the sport-understanding stage (segment/moment ontology, deterministic consistency oracle, SoccerNet-v2 evaluation bench), orchestration, and the live pipeline.
+    \item Co-built \textbf{KAIROS} end-to-end with one other intern: a live/VOD AI video pipeline with Go/Python workers, a public MCP API, and Terraform-managed GCP. Owned the sport-understanding stage (segment/moment ontology, deterministic consistency oracle, SoccerNet-v2 evaluation bench), orchestration, and the live pipeline.
     \item Cut sport transcription latency \textbf{>10$\times$} by replacing whisper.cpp with parakeet; measured 12 threads \textbf{20\% slower} than 8 from core contention, made shot detection \textbf{~4$\times$} faster, changed frame windowing from quadratic to linear, and removed \textbf{~1 min} of dead time per clip. The launch campaign brought \textbf{~130 signups} in two weeks.
 \end{joblong}
 
 \begin{joblong}{Dedagroup --- Software Developer Intern}{Trento, Italy \ $\cdot$ \ May--Sep 2024}
-    \item Halved VM resource requirements by migrating the `TEN' treasury application from legacy Windows to Linux servers; delivered HTMX features on a Java/Spring backend.
+    \item Halved VM resource requirements by migrating the `TEN' treasury application from legacy Windows to Linux servers and re-architecting its runtime services.
 \end{joblong}
 
 % EDUCATION
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}l X@{}}
 Expected Mar 2027 & \textbf{Master's Degree in Computer Science} \hfill \textbf{University of Trento} \\
- & {\small Thesis: \textit{dist-patoh} --- distributed GPU hypergraph partitioning (C++20/CUDA/MPI).} \\[3pt]
+ & {\small Thesis: \textit{dist-patoh} --- distributed GPU hypergraph partitioning (\texttt{C++20}/CUDA/MPI).} \\[3pt]
 Graduated 2024 & \textbf{Bachelor's Degree in Computer Science} \hfill \textbf{University of Trento} \\
  & {\small Thesis: adaptive MPEG-DASH streaming under Mininet and AWS.}
 \end{tabularx}
@@ -53,8 +53,8 @@ Graduated 2024 & \textbf{Bachelor's Degree in Computer Science} \hfill \textbf{U
 \multicolumn{2}{@{}X@{}}{%
     \parbox{\linewidth}{%
         \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=0.5pt, label=\color{accent}\textbullet]
-            \item Built a distributed multilevel hypergraph partitioner in \textbf{C++20/CUDA/MPI}: distributed coarsening, FM/Jet refinement, and recursive-bisection k-way partitioning; \textbf{126/126} cluster runs passed correctness and balance at P=4--8, k=2--64 (2$\times$ A30, L40S).
-            \item GPU coarsening is \textbf{bit-exact} and \textbf{5.0$\times$ faster} on shipsec1 and \textbf{3.6$\times$} on web-Google; a CTA-hash kernel cut com-youtube coarsening from \textbf{28.9 s to 6.0 s}.
+            \item Built a distributed multilevel hypergraph partitioner in \textbf{\texttt{C++20}/CUDA/MPI}: distributed coarsening, FM/Jet refinement, and recursive-bisection k-way partitioning; \textbf{126/126} cluster runs passed correctness and balance at P=4--8, k=2--64 (2$\times$ A30, L40S).
+            \item GPU coarsening is \textbf{bit-exact} and \textbf{5.0$\times$ faster} on \texttt{shipsec1} and \textbf{3.6$\times$} on web-Google; a CTA-hash kernel cut com-youtube coarsening from \textbf{28.9 s to 6.0 s}.
             \item Added a lossless net-dedup pass: identical cuts on \textbf{10/10} graphs, \textbf{up to 1,143$\times$} faster local refinement (delaunay\_n23, 8.4M vertices: 347 s $\rightarrow$ 0.30 s), and \textbf{10\% lower} device memory.
         \end{itemize}%
     }%
@@ -65,7 +65,7 @@ Graduated 2024 & \textbf{Bachelor's Degree in Computer Science} \hfill \textbf{U
 
 % PROJECT 2: SpMV
 \begin{tabularx}{\linewidth}{@{}l r@{}}
-\href{https://github.com/MaiDormo/cuda-SpMV}{\textbf{Hybrid Adaptive SpMV --- CUDA}} & \textit{GPU Computing, 2025} \\[2pt]
+\href{https://github.com/MaiDormo/cuda-SpMV}{\textbf{Hybrid Adaptive SpMV --- CUDA}} \href{https://github.com/MaiDormo/cuda-SpMV}{\footnotesize [code]} & \textit{GPU Computing, 2025} \\[2pt]
 \multicolumn{2}{@{}X@{}}{%
     \parbox{\linewidth}{%
         \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=0.5pt, label=\color{accent}\textbullet]
@@ -79,11 +79,11 @@ Graduated 2024 & \textbf{Bachelor's Degree in Computer Science} \hfill \textbf{U
 
 % PROJECT 3: Parallel MST
 \begin{tabularx}{\linewidth}{@{}l r@{}}
-\href{https://github.com/MaiDormo/parallel-mst}{\textbf{Parallel Minimum Spanning Tree --- MPI + OpenMP}} & \textit{HPC, 2025} \\[2pt]
+\href{https://github.com/MaiDormo/parallel-mst}{\textbf{Parallel Minimum Spanning Tree --- MPI + OpenMP}} \href{https://github.com/MaiDormo/parallel-mst}{\footnotesize [code]} & \textit{HPC, 2025} \\[2pt]
 \multicolumn{2}{@{}X@{}}{%
     \parbox{\linewidth}{%
         \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=0.5pt, label=\color{accent}\textbullet]
-            \item Hybrid MPI+OpenMP Bor\r{u}vka with flat CSR, mmap I/O, and bulk collectives; \textbf{4.7$\times$} end-to-end and \textbf{77$\times$} lower I/O vs baseline at 20k vertices; scaling measured with \textbf{2--32 MPI ranks} on one 64-thread node.
+            \item Hybrid MPI+OpenMP Bor\r{u}vka with flat CSR, \texttt{mmap I/O}, and bulk collectives; \textbf{4.7$\times$} end-to-end and \textbf{77$\times$} lower I/O vs baseline on 20k--80k-vertex graphs; scaling measured with \textbf{2--32 MPI ranks} on one 64-thread node.
         \end{itemize}%
     }%
 }
@@ -93,7 +93,7 @@ Graduated 2024 & \textbf{Bachelor's Degree in Computer Science} \hfill \textbf{U
 
 % PROJECT 4: Distributed KV
 \begin{tabularx}{\linewidth}{@{}l r@{}}
-\href{https://github.com/MaiDormo/distributed-storage-system}{\textbf{Fault-Tolerant Distributed Key-Value Store --- Akka/Java 21}} & \textit{Distributed Systems, 2025} \\[2pt]
+\href{https://github.com/MaiDormo/distributed-storage-system}{\textbf{Distributed Key-Value Store --- Akka/Java 21}} \href{https://github.com/MaiDormo/distributed-storage-system}{\footnotesize [code]} & \textit{Distributed Systems, 2025} \\[2pt]
 \multicolumn{2}{@{}X@{}}{%
     \parbox{\linewidth}{%
         \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=0.5pt, label=\color{accent}\textbullet]
@@ -106,7 +106,7 @@ Graduated 2024 & \textbf{Bachelor's Degree in Computer Science} \hfill \textbf{U
 % ACHIEVEMENTS
 \section{Achievements}
 \begin{tabularx}{\linewidth}{@{}l r@{}}
-\href{https://github.com/MaiDormo/DWT-SVD-watermarking}{\textbf{CTM Challenge --- 1st of 11 teams}} & \textit{Trento, 2025} \\[2pt]
+\href{https://github.com/MaiDormo/DWT-SVD-watermarking}{\textbf{CTM Challenge --- 1st of 11 teams}} \href{https://github.com/MaiDormo/DWT-SVD-watermarking}{\footnotesize [code]} & \textit{Trento, 2025} \\[2pt]
 \multicolumn{2}{@{}X@{}}{%
     \parbox{\linewidth}{%
         \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=0.5pt, label=\color{accent}\textbullet]

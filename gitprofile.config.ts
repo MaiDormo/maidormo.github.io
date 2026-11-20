@@ -20,7 +20,7 @@ const CONFIG = {
     strava: '34560653',
   },
   resume: {
-    fileUrl: '/elia_gatti_cv.pdf',
+    fileUrl: '/Elia_Gatti_CV.pdf',
     buttonText: 'CV',
     showInNavbar: true,
   },

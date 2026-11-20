@@ -20,9 +20,10 @@ Build locally with the user-local Tectonic binary (no sudo needed):
 cd cv && make
 ```
 
-Outputs in `public/`: `elia_gatti_cv.pdf` (master) and
-`elia_gatti_cv_hpc.pdf` (same build, legacy name). `elia_gatti_cv_backend.pdf`
-is only rebuilt on demand with `make backend`.
+Outputs in `public/`: `Elia_Gatti_CV.pdf` (master, the download name),
+`elia_gatti_cv.pdf` (legacy URL), and `elia_gatti_cv_hpc.pdf` (legacy name).
+`elia_gatti_cv_backend.pdf` is copied from the master to keep the old URL safe;
+`make backend` rebuilds the legacy backend source only on demand.
 
 Numbers policy: no invented metrics, no forward-looking claims, no technique
 that is not in the code. The evidence map for every bullet is in
