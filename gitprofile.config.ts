@@ -51,7 +51,7 @@ const CONFIG = {
       date: '2025',
       techStack: ['MPI', 'OpenMP', 'C'],
       highlights: [
-        'Implemented a hybrid distributed/shared-memory graph algorithm in C using flat CSR arrays, **memory-mapped I/O (mmap)**, and bulk collectives to reduce disk and communication overhead across multi-core cluster nodes.',
+        'Implemented a hybrid MPI + OpenMP Boruvka MST in C using a flat, cache-aligned adjacency matrix, **memory-mapped I/O (mmap)**, and bulk collectives on a single 64-core node.',
       ],
       codeUrl: 'https://github.com/MaiDormo/parallel-mst',
     },

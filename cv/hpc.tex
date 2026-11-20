@@ -68,7 +68,7 @@
 
 \projectheadcode{Parallel Minimum Spanning Tree, MPI + OpenMP}{https://github.com/MaiDormo/parallel-mst}{HPC, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
-    \item Implemented a hybrid distributed/shared-memory graph algorithm in C using flat CSR arrays, memory-mapped I/O (mmap), and bulk collectives to reduce disk and communication overhead across multi-core cluster nodes.
+    \item Implemented a hybrid MPI + OpenMP Boruvka MST in C using a flat, cache-aligned adjacency matrix, memory-mapped I/O (mmap), and bulk collectives on a single 64-core cluster node.
 \end{itemize}
 
 \projectdivider
