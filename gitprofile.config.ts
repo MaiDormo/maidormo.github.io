@@ -33,7 +33,7 @@ const CONFIG = {
       highlights: [
         'M.S. thesis (in progress): a distributed multi-GPU hypergraph partitioner in **C++20, CUDA and MPI** for massive irregular sparse graphs.',
         'Multilevel pipeline: parallel coarsening, recursive k-way partitioning and local refinement, targeting the load-imbalance and scheduling bottlenecks of standard GPU sparse kernels.',
-        'Currently validating multi-GPU scaling, memory footprint and partition quality against established CPU and GPU baselines.',
+        'Currently testing multi-GPU scaling, memory usage and partition quality against established CPU and GPU baselines.',
       ],
     },
     {
@@ -41,7 +41,7 @@ const CONFIG = {
       date: '2025',
       techStack: ['CUDA', 'C', 'OpenMP'],
       highlights: [
-        'Built and evaluated CSR SpMV kernels on NVIDIA GPUs, combining thread-per-row and warp-per-row strategies based on matrix sparsity.',
+        'Wrote and benchmarked CSR SpMV kernels on NVIDIA GPUs, combining thread-per-row and warp-per-row strategies based on matrix sparsity.',
         'Reached competitive bandwidth with cuSPARSE on irregular matrices; diagnosed block-overscheduling bottlenecks that motivated the thesis.',
       ],
       codeUrl: 'https://github.com/MaiDormo/cuda-SpMV',
@@ -51,7 +51,7 @@ const CONFIG = {
       date: '2025',
       techStack: ['MPI', 'OpenMP', 'C'],
       highlights: [
-        'Hybrid distributed/shared-memory Borůvka in C with flat CSR layouts, **mmap I/O** and bulk collectives, reducing disk and communication bottlenecks on multi-core cluster nodes.',
+        'Implemented a hybrid distributed/shared-memory graph algorithm in C using flat CSR arrays, **memory-mapped I/O (mmap)**, and bulk collectives to reduce disk and communication overhead across multi-core cluster nodes.',
       ],
       codeUrl: 'https://github.com/MaiDormo/parallel-mst',
     },
@@ -108,8 +108,8 @@ const CONFIG = {
       companyLink: 'https://bitmovin.com',
       companyLogo: '/logos/bitmovin.png',
       highlights: [
-        'Co-built **KAIROS** end-to-end, a live and on-demand AI video highlight pipeline powered by Go/Python workers, a **public MCP API**, and Terraform-managed GCP. Owned the video-analysis stage, workflow orchestration and the live pipeline.',
-        'Cut video processing latency **>10×** and removed **~1 min** of dead time per clip by upgrading the transcription engine, resolving CPU thread contention, and changing frame windowing from quadratic to linear.',
+        'Co-built **KAIROS** end-to-end, a live and on-demand AI video highlight pipeline using Go/Python workers, a **public MCP API**, and Terraform-managed GCP. Owned the video-analysis stage, workflow orchestration and the live pipeline.',
+        'Cut video processing latency **>10×** and removed **~1 min** of dead time per clip by switching the transcription engine, fixing CPU thread contention, and changing frame windowing from quadratic to linear.',
       ],
       technologies: [
         'Supabase',
@@ -136,7 +136,7 @@ const CONFIG = {
       companyLink: 'https://www.deda.com',
       companyLogo: '/logos/dedagroup.png',
       highlights: [
-        "Migrated the 'TEN' legacy treasury platform from Windows servers to Linux, **halving VM infrastructure footprint**.",
+        "Halved VM resource requirements by migrating the 'TEN' treasury application from Windows servers to Linux.",
       ],
       technologies: ['Java', 'Spring', 'HTMX', 'Linux'],
     },

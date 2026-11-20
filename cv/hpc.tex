@@ -18,71 +18,71 @@
 \begin{center}
 {\Huge\textbf{Elia Gatti}}\\[6pt]
 {\large\cvheadline}\\[4pt]
+{\small EU citizen (no sponsorship required) \ $\cdot$ \ Available March 2027}\\[3pt]
 {\small
 \href{mailto:elia.gatti01@gmail.com}{elia.gatti01@gmail.com} \ $\cdot$ \
 \href{https://www.linkedin.com/in/elia-gatti/}{linkedin.com/in/elia-gatti} \ $\cdot$ \
 \href{https://github.com/MaiDormo}{github.com/MaiDormo} \ $\cdot$ \
 \href{https://maidormo.github.io/}{maidormo.github.io}
-}\\[3pt]
-{\small EU citizen (no sponsorship required) \ $\cdot$ \ Available March 2027}
+}
 \end{center}
 
 % WORK EXPERIENCE
 \section{Work Experience}
 \begin{joblong}{Bitmovin --- Software Engineer Intern}{Klagenfurt, Austria \ $\cdot$ \ Jun--Sep 2026}
-    \item Co-built \textbf{KAIROS} end-to-end, a live and on-demand AI video highlight pipeline powered by Go/Python workers, a public MCP API, and Terraform-managed GCP. Owned the video-analysis stage, workflow orchestration, and the live streaming pipeline.
-    \item Cut video processing latency by \textbf{>10$\times$} and removed \textbf{~1 min} of dead time per clip by upgrading the transcription engine, resolving CPU thread contention, and changing frame windowing from quadratic to linear.
+    \item Co-built \textbf{KAIROS} end-to-end, a live and on-demand AI video highlight pipeline using Go/Python workers, a public MCP API, and Terraform-managed GCP; owned the video-analysis stage, job orchestration, and live streaming pipeline.
+    \item Cut video processing latency by \textbf{>10$\times$} and removed \textbf{~1 minute} of dead time per clip by switching the transcription engine, fixing CPU thread contention, and reducing frame windowing from quadratic to linear complexity.
 \end{joblong}
 
 \begin{joblong}{Dedagroup --- Software Developer Intern}{Trento, Italy \ $\cdot$ \ May--Sep 2024}
-    \item Halved VM infrastructure footprint by migrating the `TEN' legacy treasury platform from Windows servers to Linux.
+    \item Halved VM resource requirements by migrating the `TEN' treasury application from Windows servers to Linux.
 \end{joblong}
 
 % EDUCATION
 \section{Education}
 \noindent\textbf{Master's Degree in Computer Science} --- University of Trento \hfill \textit{Expected Mar 2027}\par
-{\small Thesis (in progress): \textit{dist-patoh} --- distributed GPU hypergraph partitioning (\texttt{C++20}, CUDA, MPI).}\par
+{\small Thesis (in progress): \textit{dist-patoh}, distributed GPU hypergraph partitioning (C++20, CUDA, MPI).}\par
 \vspace{2pt}
 \noindent\textbf{Bachelor's Degree in Computer Science} --- University of Trento \hfill \textit{Graduated 2024}\par
-{\small Thesis: adaptive MPEG-DASH video streaming performance under simulated (Mininet) and AWS networks.}\par
+{\small Thesis: Adaptive MPEG-DASH video streaming performance under Mininet and AWS networks.}\par
 
 % PROJECTS
 \section{Research \& Projects}
 
 \projecthead{dist-patoh --- Distributed GPU Hypergraph Partitioning}{M.S. Thesis (In Progress), 2026--2027}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
-    \item Developing a distributed multi-GPU hypergraph partitioner in \textbf{C++20, CUDA, and MPI} to split massive, irregular sparse graphs across GPUs while balancing compute load and minimizing cross-node communication.
-    \item Implementing a multilevel pipeline --- parallel coarsening, recursive k-way partitioning, and local refinement --- to address the load-imbalance and scheduling bottlenecks of standard GPU sparse kernels.
-    \item Currently validating multi-GPU scaling, memory-footprint reduction, and partition quality against established CPU and GPU baselines.
+    \item Developing a distributed multi-GPU hypergraph partitioner in \textbf{C++20, CUDA, and MPI} to split large, irregular sparse graphs across GPUs while balancing compute load and minimizing cross-node communication.
+    \item Implementing a multilevel pipeline (parallel coarsening, recursive k-way partitioning, and local refinement) to handle the load imbalance and block-scheduling bottlenecks of standard sparse kernels.
+    \item Currently testing multi-GPU scaling, memory usage, and partition quality against existing CPU and GPU baselines.
 \end{itemize}
 
 \projectdivider
 
 \projectheadcode{Hybrid Adaptive SpMV --- CUDA}{https://github.com/MaiDormo/cuda-SpMV}{GPU Computing, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
-    \item Built and evaluated CSR sparse matrix-vector multiplication kernels on NVIDIA GPUs, dynamically combining thread-per-row and warp-per-row strategies based on matrix sparsity.
-    \item Achieved competitive memory bandwidth with NVIDIA cuSPARSE on irregular matrices and diagnosed block-overscheduling bottlenecks on massive graphs, directly motivating the M.S. thesis.
+    \item Wrote and benchmarked CSR sparse matrix-vector multiplication kernels on NVIDIA GPUs, combining thread-per-row and warp-per-row execution based on matrix sparsity.
+    \item Matched or beat NVIDIA cuSPARSE bandwidth on irregular matrices and identified block-overscheduling bottlenecks on very large sparse graphs.
 \end{itemize}
 
 \projectdivider
 
 \projectheadcode{Parallel Minimum Spanning Tree --- MPI + OpenMP}{https://github.com/MaiDormo/parallel-mst}{HPC, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
-    \item Implemented a hybrid distributed/shared-memory graph algorithm in C using flat CSR memory layouts, memory-mapped I/O (\texttt{mmap}), and bulk collectives to minimize disk and communication bottlenecks across multi-core cluster nodes.
+    \item Implemented a hybrid distributed/shared-memory graph algorithm in C using flat CSR arrays, memory-mapped I/O (mmap), and bulk collectives to reduce disk and communication overhead across multi-core cluster nodes.
 \end{itemize}
 
 \projectdivider
 
 \projectheadcode{Distributed Key-Value Store --- Akka/Java 21}{https://github.com/MaiDormo/distributed-storage-system}{Distributed Systems, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
-    \item Built a fault-tolerant, Dynamo-style storage engine featuring consistent hashing, configurable quorum replication, versioned values, and automatic node-failure recovery without client downtime.
+    \item Built a fault-tolerant, Dynamo-style storage engine with consistent hashing, configurable quorum replication, versioned values, and automatic recovery from node failures.
 \end{itemize}
 
 % ACHIEVEMENTS
 \section{Achievements}
 \projectheadcode{CTM Challenge --- 1st of 11 Teams}{https://github.com/MaiDormo/DWT-SVD-watermarking}{Trento, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
-    \item Engineered a blind image/video watermarking pipeline (DWT-SVD) resilient to compression and noise, validated against an automated attack suite.
+    \item Built a blind image/video watermarking pipeline (DWT-SVD) resilient to compression and noise, tested against an automated attack suite.
 \end{itemize}
 
 % SKILLS
