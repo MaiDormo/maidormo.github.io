@@ -7,7 +7,7 @@
 TECTONIC ?= /tmp/opencode/tectonic/tectonic
 OUTDIR ?= ../public
 
-all: backend hpc default
+all: hpc default
 
 backend:
 	$(TECTONIC) -X compile backend.tex --outdir $(OUTDIR)
@@ -18,9 +18,14 @@ hpc:
 	mv $(OUTDIR)/hpc.pdf $(OUTDIR)/elia_gatti_cv_hpc.pdf
 
 # Keep the legacy URL alive: site navbar + old links point here.
-default: backend
-	cp $(OUTDIR)/elia_gatti_cv_backend.pdf $(OUTDIR)/elia_gatti_cv.pdf
+default: hpc
+	cp $(OUTDIR)/elia_gatti_cv_hpc.pdf $(OUTDIR)/elia_gatti_cv.pdf
 
 check:
-	pdftotext $(OUTDIR)/elia_gatti_cv_backend.pdf - | head -8
-	pdftotext $(OUTDIR)/elia_gatti_cv_hpc.pdf - | head -8
+	pdftotext $(OUTDIR)/elia_gatti_cv_hpc.pdf - | head -12
+	pdftotext $(OUTDIR)/elia_gatti_cv.pdf - | head -12
+
+# Typst port (1:1 with backend.tex). Writes a _typst-suffixed PDF, never
+# overwrites the tectonic artifacts above.
+typst:
+	typst compile backend.typ $(OUTDIR)/elia_gatti_cv_backend_typst.pdf
