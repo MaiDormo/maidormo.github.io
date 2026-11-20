@@ -31,8 +31,9 @@ const CONFIG = {
       date: '2026–27',
       techStack: ['C++20', 'CUDA', 'MPI'],
       highlights: [
-        'M.S. thesis: multilevel partitioner with distributed coarsening, FM/Jet refinement and recursive-bisection k-way partitioning.',
-        '**126/126** cluster runs passed; **5.0×** bit-exact GPU coarsening speedup; **up to 1,143×** faster local refinement from lossless net-dedup.',
+        'M.S. thesis (in progress): a distributed multi-GPU hypergraph partitioner in **C++20, CUDA and MPI** for massive irregular sparse graphs.',
+        'Multilevel pipeline: parallel coarsening, recursive k-way partitioning and local refinement, targeting the load-imbalance and scheduling bottlenecks of standard GPU sparse kernels.',
+        'Currently validating multi-GPU scaling, memory footprint and partition quality against established CPU and GPU baselines.',
       ],
     },
     {
@@ -40,8 +41,8 @@ const CONFIG = {
       date: '2025',
       techStack: ['CUDA', 'C', 'OpenMP'],
       highlights: [
-        'Hybrid adaptive A30 kernel: **649 GB/s (70% of peak)** and **122 GFLOPS** on CurlCurl_4, **1.10× cuSPARSE**.',
-        'Diagnosed the **63% loss** on 226M-row mawi as **>800k-block overscheduling** — the failure that motivated the thesis.',
+        'Built and evaluated CSR SpMV kernels on NVIDIA GPUs, combining thread-per-row and warp-per-row strategies based on matrix sparsity.',
+        'Reached competitive bandwidth with cuSPARSE on irregular matrices; diagnosed block-overscheduling bottlenecks that motivated the thesis.',
       ],
       codeUrl: 'https://github.com/MaiDormo/cuda-SpMV',
     },
@@ -50,8 +51,7 @@ const CONFIG = {
       date: '2025',
       techStack: ['MPI', 'OpenMP', 'C'],
       highlights: [
-        'Hybrid Borůvka with flat CSR, mmap I/O and bulk collectives: **4.7×** end-to-end and **77×** lower I/O vs baseline at 20k vertices.',
-        'Scaling measured with **2–32 MPI ranks on one 64-thread node**; speedup flattens after 16 cores.',
+        'Hybrid distributed/shared-memory Borůvka in C with flat CSR layouts, **mmap I/O** and bulk collectives, reducing disk and communication bottlenecks on multi-core cluster nodes.',
       ],
       codeUrl: 'https://github.com/MaiDormo/parallel-mst',
     },
@@ -108,9 +108,8 @@ const CONFIG = {
       companyLink: 'https://bitmovin.com',
       companyLogo: '/logos/bitmovin.png',
       highlights: [
-        'Co-built KAIROS **end-to-end** with one other intern: Next.js/React, Supabase/PostgreSQL with RLS, Go/Python workers, a **public MCP API**, and Terraform-managed GCP. Owned the sport-understanding stage, orchestration and the live pipeline.',
-        'Cut sport transcription latency **>10×** by replacing whisper.cpp with parakeet; measured 12 threads **20% slower** than 8 from core contention, made shot detection **~4×** faster, changed frame windowing from quadratic to linear, and removed **~1 min** of dead time per clip.',
-        'Built the launch campaign and conversion tracking: **~130 signups** in the first two weeks.',
+        'Co-built **KAIROS** end-to-end, a live and on-demand AI video highlight pipeline powered by Go/Python workers, a **public MCP API**, and Terraform-managed GCP. Owned the video-analysis stage, workflow orchestration and the live pipeline.',
+        'Cut video processing latency **>10×** and removed **~1 min** of dead time per clip by upgrading the transcription engine, resolving CPU thread contention, and changing frame windowing from quadratic to linear.',
       ],
       technologies: [
         'Supabase',
@@ -137,8 +136,7 @@ const CONFIG = {
       companyLink: 'https://www.deda.com',
       companyLogo: '/logos/dedagroup.png',
       highlights: [
-        "Migrated the 'TEN' treasury application from legacy Windows to Linux servers, **halving VM resource requirements**.",
-        'Developed reactive **HTMX frontend features** and maintained the Java/Spring backend.',
+        "Migrated the 'TEN' legacy treasury platform from Windows servers to Linux, **halving VM infrastructure footprint**.",
       ],
       technologies: ['Java', 'Spring', 'HTMX', 'Linux'],
     },
@@ -152,7 +150,7 @@ const CONFIG = {
       to: 'Mar 2027',
       institutionLink: 'https://www.unitn.it',
       institutionLogo: '/logos/unitn.png',
-      score: 'Thesis: distributed GPU hypergraph partitioning (C++20/CUDA/MPI)',
+      score: 'Thesis (in progress): distributed GPU hypergraph partitioning (C++20, CUDA, MPI)',
       description:
         'GPU programming and high-performance computing. Available Mar 2027; open to thesis-with-company Oct–Mar.',
     },
@@ -172,7 +170,6 @@ const CONFIG = {
     tools: [
       'MPI',
       'OpenMP',
-      'NCCL',
       'Slurm',
       'CMake',
       'Docker',
