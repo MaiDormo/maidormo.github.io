@@ -31,7 +31,7 @@
 \section{Work Experience}
 \begin{joblong}{Bitmovin, Software Engineer Intern}{Klagenfurt, Austria \ |\ Jun--Sep 2026}
     \item Co-built \textbf{KAIROS} end-to-end, a live and on-demand AI video highlight pipeline using Go/Python workers, a public MCP API, and Terraform-managed GCP; owned the video-analysis stage, job orchestration, and live streaming pipeline.
-    \item Cut video processing latency by \textbf{>10$\times$} and removed \textbf{~1 minute} of dead time per clip by switching the transcription engine, fixing CPU thread contention, and reducing frame windowing from quadratic to linear complexity.
+    \item Cut video processing latency by \textbf{>10$\times$} and removed \textbf{about 1 minute} of dead time per clip by switching the transcription engine, fixing CPU thread contention, and reducing frame windowing from quadratic to linear complexity.
 \end{joblong}
 
 \begin{joblong}{Dedagroup, Software Developer Intern}{Trento, Italy \ |\ May--Sep 2024}
@@ -53,22 +53,23 @@
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
     \item Developing a distributed multi-GPU hypergraph partitioner in \textbf{C++20, CUDA, and MPI} to split large, irregular sparse graphs across GPUs while balancing compute load and minimizing cross-node communication.
     \item Implementing a multilevel pipeline (parallel coarsening, recursive k-way partitioning, and local refinement) to handle the load imbalance and block-scheduling bottlenecks of standard sparse kernels.
-    \item Currently testing multi-GPU scaling, memory usage, and partition quality against existing CPU and GPU baselines.
+    \item Validated GPU coarsening and refinement across 4--8 MPI ranks on A30/L40S nodes, with correctness checks passing and measured speedups over CPU baselines; extending the pipeline to larger multi-GPU runs.
 \end{itemize}
 
 \projectdivider
 
 \projectheadcode{Hybrid Adaptive SpMV, CUDA}{https://github.com/MaiDormo/cuda-SpMV}{GPU Computing, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
-    \item Wrote and benchmarked CSR sparse matrix-vector multiplication kernels on NVIDIA GPUs, combining thread-per-row and warp-per-row execution based on matrix sparsity.
-    \item Matched or beat NVIDIA cuSPARSE bandwidth on irregular matrices and identified block-overscheduling bottlenecks on very large sparse graphs.
+    \item Wrote and benchmarked CSR SpMV kernels on an NVIDIA A30, combining thread-per-row and warp-per-row execution with read-only cache loads (\texttt{\_\_ldg}) and warp-shuffle reductions.
+    \item Best measured 649 GB/s (about 70\% of peak HBM bandwidth); matched or beat cuSPARSE on several irregular matrices and diagnosed block-overscheduling on very large sparse graphs.
 \end{itemize}
 
 \projectdivider
 
 \projectheadcode{Parallel Minimum Spanning Tree, MPI + OpenMP}{https://github.com/MaiDormo/parallel-mst}{HPC, 2025}
 \begin{itemize}[nosep, after=\strut, leftmargin=1.5em, itemsep=1pt, label=\color{accent}\textbullet]
-    \item Implemented a hybrid MPI + OpenMP Boruvka MST in C using a flat, cache-aligned adjacency matrix, memory-mapped I/O (mmap), and bulk collectives on a single 64-core cluster node.
+    \item Implemented a hybrid MPI + OpenMP Boruvka MST in C for dense graphs using a flat, cache-aligned symmetric adjacency matrix, memory-mapped I/O (mmap), and bulk collectives.
+    \item Evaluated 2--32 MPI ranks on a 64-core node (best measured 12.9$\times$ on 40k vertices); the flat layout avoids pointer chasing, and mmap plus one bulk broadcast replace the baseline's per-row input path.
 \end{itemize}
 
 \projectdivider
@@ -90,8 +91,8 @@
 \small
 \begin{tabularx}{\linewidth}{@{}p{0.22\linewidth} X@{}}
 \textbf{Languages} & C, C++ (C++17/20), CUDA, Go, Python, Java \\
-\textbf{HPC \& GPU} & MPI, OpenMP, Slurm, CMake, cuSPARSE, GPU profiling and performance analysis \\
-\textbf{Systems \& Cloud} & Linux, Docker, Terraform, GCP, PostgreSQL, Akka, FastAPI, Git \\
+\textbf{HPC \& GPU} & MPI, OpenMP, Slurm, CMake, cuSPARSE \\
+\textbf{Systems \& Cloud} & Linux, Docker, Terraform, GCP, PostgreSQL, Akka, Git \\
 \textbf{Spoken} & Italian (native), English (fluent) \\
 \end{tabularx}
 

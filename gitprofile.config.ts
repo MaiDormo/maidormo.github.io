@@ -51,7 +51,7 @@ const CONFIG = {
       date: '2025',
       techStack: ['MPI', 'OpenMP', 'C'],
       highlights: [
-        'Implemented a hybrid MPI + OpenMP Boruvka MST in C using a flat, cache-aligned adjacency matrix, **memory-mapped I/O (mmap)**, and bulk collectives on a single 64-core node.',
+        'Implemented a hybrid MPI + OpenMP Boruvka MST in C for dense graphs using a flat, cache-aligned symmetric adjacency matrix, **memory-mapped I/O (mmap)**, and bulk collectives; measured 2–32 rank scaling on a 64-core node.',
       ],
       codeUrl: 'https://github.com/MaiDormo/parallel-mst',
     },
