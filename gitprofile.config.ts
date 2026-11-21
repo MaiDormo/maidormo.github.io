@@ -152,7 +152,7 @@ const CONFIG = {
       institutionLogo: '/logos/unitn.png',
       score: 'Thesis (in progress): distributed GPU hypergraph partitioning (C++20, CUDA, MPI)',
       description:
-        'GPU programming and high-performance computing. Available Mar 2027; open to thesis-with-company Oct–Mar.',
+        'GPU programming and high-performance computing. Open to thesis-with-company Oct–Mar.',
     },
     {
       institution: 'University of Trento',
